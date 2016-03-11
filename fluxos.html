@@ -5,10 +5,14 @@
 <body>
     <h1>Fluxos!</h1>
     {{> searchForm}}
+    {{> graphContainer}}
+</body>
+
+<template name="graphContainer">
     <div id="cy">
         {{> circularMenu}}
     </div>
-</body>
+</template>
 
 
 <template name="searchForm">

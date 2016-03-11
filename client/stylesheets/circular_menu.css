@@ -1,10 +1,10 @@
 
 .component-circular-menu {
-    position: relative;
+    position: absolute; /* relative */
     margin-bottom: 3em;
     height: 15em;
-    background: rgba(0,0,0,0.05);
     font-family: 'Lato', Arial, sans-serif;
+
 }
 
 .component-circular-menu > h2 {
@@ -150,7 +150,7 @@
     position: relative;
     top: 1.8em;
     display: block;
-    font-size: .5em;
+    font-size: .7em;
     font-weight: 700;
     text-transform: uppercase;
 }

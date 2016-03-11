@@ -1,7 +1,7 @@
 <template name="circularMenu">
     <div class="component-circular-menu">
         <!-- Start Nav Structure -->
-        <button class="cn-button" id="cn-button">Menu</button>
+        <!--<button class="cn-button" id="cn-button">Menu</button>-->
         <div class="cn-wrapper" id="cn-wrapper">
             <ul>
                 {{#each items}}
@@ -14,5 +14,5 @@
 </template>
 
 <template name="menuItem">
-    <li><a href="{{href}}"><span>{{content}}</span></a></li>
+    <li><a href="{{href}}"><span><i class="fa {{icon}}"></i></span></a></li>
 </template>

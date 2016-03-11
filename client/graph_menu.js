@@ -3,27 +3,45 @@
  */
 
 class CircularMenu{
-    constructor(wrapper){
-        this.open = false;
-        this.button = undefined;
-        this.wrapper = undefined;
-        this.x = 0;
-        this.y = 0;
+    constructor(element){
+        this.element = element;
+
+        this.wrapper = $(this.element).find('.cn-wrapper');
+        this.position = {x:0, y:0};
+
+        // Container deve ser quadrado, logo: largura==altura==diametro do menu
+        this.diameter = $(this.wrapper).width();
+
+        this.currentTarget = undefined;
     }
 
-    show(event, element, position){
-        this.x = position.x;
-        this.y = position.y;
+    isOpen(){
+        return $(this.wrapper).hasClass('opened-nav');
+    }
 
-        if(!this.open){
-            this.innerHTML = "Close";
-            //classie.add(this.wrapper, 'opened-nav');
+    show(event, fluxo, position){
+        this.position = position;
+
+        this.updatePosition();
+
+        if(!this.isOpen()){
+            //this.innerHTML = "Close";
+            $(this.wrapper).addClass('opened-nav');
         }
-        else{
-            this.innerHTML = "Menu";
-            //classie.remove(this.wrapper, 'opened-nav');
-        }
-        this.open = !this.open;
+    }
+
+    hide(){
+        $(this.wrapper).removeClass('opened-nav');
+    }
+
+    resize(factor){
+        const newDiameter = this.diameter * factor;
+        $(this.wrapper).width(newDiameter);
+        $(this.wrapper).height(newDiameter);
+    }
+
+    updatePosition(x=this.position.x, y=this.position.y){
+        $(this.wrapper).css({left: x, top: y, position:'absolute', 'z-index': 9999});
     }
 }
 
