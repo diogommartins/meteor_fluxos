@@ -1,0 +1,18 @@
+<template name="circularMenu">
+    <div class="component-circular-menu">
+        <!-- Start Nav Structure -->
+        <button class="cn-button" id="cn-button">Menu</button>
+        <div class="cn-wrapper" id="cn-wrapper">
+            <ul>
+                {{#each items}}
+                    {{>menuItem}}
+                {{/each}}
+            </ul>
+        </div>
+        <!-- End of Nav Structure -->
+    </div>
+</template>
+
+<template name="menuItem">
+    <li><a href="{{href}}"><span>{{content}}</span></a></li>
+</template>

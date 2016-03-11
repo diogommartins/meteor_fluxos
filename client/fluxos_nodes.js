@@ -11,9 +11,14 @@ Template.searchForm.events({
 
         Meteor.call('getFluxo', id_tipo_doc, function(error, fluxos){
             var graph = new Graph(fluxos);
-
-            Meteor.call('renderGraph', graph);
+            var menu = new CircularMenu();
+            Meteor.call('renderGraph', graph, function(){
+                this.cy.on('click', 'edge', function(event){
+                    const edge = this.data();
+                    menu.show(event.originalEvent, edge, event.cyRenderedPosition);
+                });
             });
+        });
 
         e.target.id_tipo_doc.value = '';
     }
@@ -56,8 +61,8 @@ Meteor.methods({
                 .selector(':selected')
                 .css({
                     'content': 'data(name)',
-                    'border-width': 3,
-                    'border-color': '#333'
+                    'line-width': 3,
+                    'line-color': '#333'
                 })
                 .selector('.highlighted')
                 .css({

@@ -1,0 +1,27 @@
+/* CSS declarations go here */
+* {
+    position: relative;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    /*background: #52be7f;*/
+    /*color: #fff;*/
+}
+
+#cy {
+    height: 80%;
+    width: 80%;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+}
