@@ -5,14 +5,11 @@
 class CircularMenu{
     constructor(element){
         this.element = element;
-
         this.wrapper = $(this.element).find('.cn-wrapper');
         this.position = {x:0, y:0};
-
         // Container deve ser quadrado, logo: largura==altura==diametro do menu
         this.diameter = $(this.wrapper).width();
-
-        this.currentTarget = undefined;
+        this.currentEdge = undefined;
     }
 
     isOpen(){
