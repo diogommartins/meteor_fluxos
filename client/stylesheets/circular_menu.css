@@ -4,7 +4,6 @@
     margin-bottom: 3em;
     height: 15em;
     font-family: 'Lato', Arial, sans-serif;
-
 }
 
 .component-circular-menu > h2 {
@@ -63,7 +62,6 @@
     -ms-transform: scale(0.1);
     -moz-transform: scale(0.1);
     transform: scale(0.1);
-    pointer-events: none;
     overflow: hidden;
 }
 

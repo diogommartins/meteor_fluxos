@@ -3,11 +3,12 @@
  */
 Template.circularMenu.helpers({
     items:[
-        {href:"#", icon:"fa-plus-square-o", content:"Inserir", action:function(){console.log('Insert')}},
-        {href:"#", icon:"fa-pencil-square-o", content:"Editar", action:function(){console.log('Edit')}},
-        {href:"#", icon:"fa-trash-o", content:"Deletar", action:function(){console.log('Deletar')}},
-        {href:"#", icon:"fa-info", content:"Detalhes", action:function(){console.log('Detalhes')}},
-        {href:"#", icon:"fa-clone", content:"Copiar", action:function(){console.log('Copiar')}}
+        {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action:function(){console.log('Insert')}},
+        {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action:function(){console.log('Edit')}},
+        {href:"#/", icon:"fa-trash-o", content:"Deletar", action:function(){console.log('Deletar')}},
+        {href:"#/", icon:"fa-info", content:"Detalhes", action:function(){console.log('Detalhes')}},
+        {href:"#/", icon:"fa-clone", content:"Copiar", action:function(){console.log('Copiar')}},
+        {href:"#/", icon:"fa-times", content:"Copiar", action:function(){console.log('Fechar')}}
     ]
 });
 
