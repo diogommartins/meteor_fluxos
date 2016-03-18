@@ -17,6 +17,7 @@ class Graph{
 
     showMenu(type, ...args) {
         this.hideMenu();
+        /** @type CircularMenu */
         const menu = this[type];
         menu.show(...args);
         this.visibleMenu = menu;
@@ -30,7 +31,7 @@ class Graph{
     }
 
     hasNode(node){
-        return this.nodes.filter(n => {return n.data.id === node.data.id}).length !== 0;
+        return this.nodes.filter(n => n.data.id === node.data.id).length !== 0;
     }
 
     addNode(name, fluxo) {
