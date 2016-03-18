@@ -1,16 +1,14 @@
-<head>
-    <title>fluxos</title>
-</head>
-
-<body>
-    <h1>Fluxos!</h1>
-    {{> searchForm}}
+<template name="fluxo">
+    <h2>Fluxos!</h2>
     {{> graphContainer}}
-</body>
+</template>
+
 
 <template name="graphContainer">
-    <div id="cy">{{> circularMenu}}</div>
-
+    <div id="cy">
+        {{> edgesMenu}}
+        {{> nodesMenu}}
+    </div>
 </template>
 
 

@@ -5,19 +5,21 @@
 class CircularMenu{
     constructor(element){
         this.element = element;
-        this.wrapper = $(this.element).find('.cn-wrapper');
+        this.wrapper = $(this.element).find('.cn-wrapper')[0];
         this.position = {x:0, y:0};
         // Container deve ser quadrado, logo: largura==altura==diametro do menu
         this.diameter = $(this.wrapper).width();
-        this.currentEdge = undefined;
+        this.currentItem = undefined;
+        this.z = 9999;
     }
 
     isOpen(){
         return $(this.wrapper).hasClass('opened-nav');
     }
 
-    show(event, fluxo, position){
+    show(event, item, position){
         this.position = position;
+        this.currentItem = item;
 
         this.updatePosition();
 
@@ -37,8 +39,13 @@ class CircularMenu{
         $(this.wrapper).height(newDiameter);
     }
 
-    updatePosition(x=this.position.x, y=this.position.y){
-        $(this.wrapper).css({left: x, top: y, position:'absolute', 'z-index': 9999});
+    updatePosition(position=this.position){
+        $(this.wrapper).css({
+            left: position.x,
+            top: position.y,
+            position:'absolute',
+            'z-index': this.z
+        });
     }
 }
 
