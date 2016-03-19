@@ -7,7 +7,14 @@ Meteor.methods({
         console.log("Consultando: " + url);
 
         var result = HTTP.get(url);
-
-        return result.data.content;
+        if (result.statusCode == 200){
+            var fluxos = result.data.content;
+            Fluxos.upsert({id_tipo_doc:id_tipo_doc}, {$set: {fluxos:fluxos}});
+            var grafico = FluxosParser(fluxos).parse();
+            return grafico;
+        }
+        else{
+            console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
+        }
     }
 });
