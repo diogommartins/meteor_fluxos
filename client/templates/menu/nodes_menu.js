@@ -17,5 +17,26 @@ Template.nodesMenu.events({
     'click .cn-button': function(event, template){
         const wrapper = template.find('.cn-wrapper');
         $(wrapper).toggleClass('opened-nav');
+    },
+    'click a': function(event, template){
+        //const node = ;
+        Modal.show('exampleModal');
     }
+});
+
+Template.exampleModal.helpers({
+    node: function(){
+        return window.cy.nodesMenu.currentItem;
+    }
+});
+
+Template.exampleModal.events({
+   'keyup input': function(event, template){
+       const field = event.target.name;
+       /** @type Graph **/
+       const graph = window.cy;
+       graph.nodesMenu.currentItem[field] = event.target.value;
+       console.log(field+" mudou para " + event.target.value);
+       graph.cy.forceRender();
+   }
 });
