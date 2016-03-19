@@ -2,16 +2,19 @@
  * Created by diogomartins on 3/10/16.
  */
 class Graph{
-    constructor(fluxos){
+    constructor(id, fluxos){
+        this.id = id;
         this.fluxos = fluxos;
         this.edges = [];
         this.nodes = [];
         this.nodeColors = {};
         this._makeGraph();
         this._addColorDataToNodes();
+        /** @type cytoscape */
         this.cy = undefined;
         this.edgesMenu = new CircularMenu($('#edges-menu')[0]);
         this.nodesMenu = new CircularMenu($('#nodes-menu')[0]);
+        /** @type CircularMenu */
         this.visibleMenu = undefined;
     }
 
@@ -21,6 +24,8 @@ class Graph{
         const menu = this[type];
         menu.show(...args);
         this.visibleMenu = menu;
+
+        return menu;
     }
 
     hideMenu(){
@@ -59,6 +64,12 @@ class Graph{
             self.addNode(fluxo.SITUACAO_ATUAL, fluxo);
             self.addNode(fluxo.SITUACAO_FUTURA, fluxo);
         });
+        this._updateDataModel();
+    }
+
+    _updateDataModel(){
+        const fluxo = {id_tipo_doc: this.id, edges: this.edges, nodes: this.nodes};
+        Meteor.call('updateFluxos', fluxo);
     }
 
     _colorForNode(node){
@@ -70,6 +81,42 @@ class Graph{
     _addColorDataToNodes(){
         var self = this;
         this.nodes.forEach(node => {node.data.color = self._colorForNode(node)});
+    }
+
+    static _tempNode(){
+        return {
+            group: 'nodes',
+            data: {
+                id:'tempNode_' + Date.now(),
+                name: 'Clique para editar',
+                color:'rgb(100, 100, 100)'
+            }
+        }
+    }
+
+    /**
+     *
+     * @param {{x: number, y: number}} position
+     */
+    insertNewTempNode(position){
+        var node = Graph._tempNode();
+        node.position = position;
+
+        this.cy.add(node);
+    }
+
+    /**
+     * Dada uma posição, a função retornará uma posição relativa ao deslocamento de pan e zoom
+     * @param position
+     * @returns {{x: number, y: number}}
+     */
+    relativePosition(position){
+        const pan = this.cy.pan();
+        const zoom = this.cy.zoom();
+        return {
+            x: position.x * zoom + pan.x,
+            y: position.y * zoom + pan.y
+        }
     }
 
     renderGraph(){
@@ -118,10 +165,13 @@ class Graph{
                 }),
 
             elements:{
-                nodes: self.nodes,
+                nodes: function(){return self.nodes},
                 edges: self.edges
             },
-            ready: () => { window.cy = this; }
+            ready: function(){
+                window.cy = this;
+                Meteor.call('updateFluxos');
+            }
         });
     }
 }
