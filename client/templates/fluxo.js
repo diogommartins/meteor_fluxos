@@ -1,51 +1,43 @@
 Template.graphContainer.created = function(){
     var id_tipo_doc = this.data.id_tipo_doc;
     Meteor.call('getFluxo', id_tipo_doc, function(error, fluxos){
-        var graph = new Graph(fluxos);
+        var graph = new Graph(id_tipo_doc, fluxos);
         graph.renderGraph();
 
         graph.cy.ready(function(){
             var cy = this;
 
-            cy.on('click', function(event){
+            cy.on('tap', event => {
                 var target = event.cyTarget;
                 if (target !== cy){
                     if (target.isEdge()){
-                        const edge = target.data();
+                        let edge = target.data();
                         graph.showMenu('edgesMenu', event.originalEvent, edge, event.cyRenderedPosition);
-                        //graph.edgesMenu.show(event.originalEvent, fluxo, event.cyRenderedPosition);
                     }
                     else if (target.isNode()){
-                        const node = target.data();
-                        graph.showMenu('nodesMenu', event.originalEvent, node, event.cyRenderedPosition);
+                        let node = target.data();
+                        graph.showMenu('nodesMenu', event.originalEvent, node, event.cyRenderedPosition).changeBackgroundColor(node.color);
                     }
                 } else if (target === cy){
                     graph.hideMenu();
                     if (event.originalEvent.ctrlKey){
-                        const pan = event.cyTarget.pan();
-                        const zoom = event.cyTarget.zoom();
-
-                        const node = {
-                            group:'nodes',
-                            data: {
-                                id:'tempNode_' + Date.now(),
-                                name: 'Clique para editar',
-                                color:'rgb(100, 100, 100)'
-                            },
-                            position:{
-                                x: event.cyRenderedPosition.x * zoom + pan.x,
-                                y: event.cyRenderedPosition.y * zoom + pan.y
-                            }
-                        };
-                        cy.add(node);
+                        const position = graph.relativePosition(event.cyRenderedPosition);
+                        graph.insertNewTempNode(position);
                     }
+                }
+            });
+            cy.on('taphold', event => {
+                var target = event.cyTarget;
+                if (target === cy){
+                    const position = graph.relativePosition(event.cyRenderedPosition);
+                    graph.insertNewTempNode(position);
                 }
             });
             cy.on('pan',function(event){
                 const pan = event.cyTarget.pan();
                 const zoom = event.cyTarget.zoom();
 
-                if(typeof graph.visibleMenu !== 'undefined' && graph.visibleMenu.isOpen()){
+                if(typeof graph.visibleMenu !== 'undefined'){
                     graph.visibleMenu.updatePosition({
                         x: graph.visibleMenu.position.x * zoom + pan.x,
                         y: graph.visibleMenu.position.y * zoom + pan.y
@@ -62,3 +54,12 @@ Template.graphContainer.created = function(){
         });
     });
 };
+
+Template.graphContainer.events({
+    'nodeDidChange': function(event, template){
+        console.log('nodeDidChange');
+    },
+    'graphDidUpdate': function(event, template){
+        console.log('nodeDidChange');
+    }
+});
