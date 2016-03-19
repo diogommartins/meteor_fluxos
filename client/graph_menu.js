@@ -47,6 +47,14 @@ class CircularMenu{
             'z-index': this.z
         });
     }
+
+    changeBackgroundColor(color){
+        $(this.wrapper).find('li a')
+            .css({'background': color})
+            .css({'background': '-webkit-radial-gradient(transparent 35%, ' + color + ' 35%)'})
+            .css({'background': '-moz-radial-gradient(transparent 35%, ' + color + ' 35%)'})
+            .css({'background': 'radial-gradient(transparent 35%, ' + color + ' 35%)'})
+    }
 }
 
 this.CircularMenu = CircularMenu;
