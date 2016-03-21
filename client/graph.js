@@ -2,19 +2,19 @@
  * Created by diogomartins on 3/10/16.
  */
 class Graph{
-    constructor(id, fluxos){
+    constructor(id, layout='preset'){
         this.id = id;
-        this.edges = fluxos.edges;
-        this.nodes = fluxos.nodes;
+        this.edges = [];
+        this.nodes = [];
         this.nodeColors = {};
         //this._makeGraph();
-        this._addColorDataToNodes();
         /** @type cytoscape */
         this.cy = undefined;
         this.edgesMenu = new CircularMenu($('#edges-menu')[0]);
         this.nodesMenu = new CircularMenu($('#nodes-menu')[0]);
         /** @type CircularMenu */
         this.visibleMenu = undefined;
+        this.layout = layout;
     }
 
     showMenu(type, ...args) {
@@ -50,6 +50,14 @@ class Graph{
             this.nodes.push(node);
     }
 
+    getNodeByData(data){
+        return this.nodes.find(ele => ele.data.id === data.id);
+    }
+    
+    getNodeById(id){
+        return this.nodes.find(ele => ele._id === id);
+    }
+
     _colorForNode(node){
         if (!this.nodeColors.hasOwnProperty(node.data.tipo))
             this.nodeColors[node.data.tipo] = randomColor({format: 'rgb'});
@@ -57,15 +65,15 @@ class Graph{
     }
 
     _addColorDataToNodes(){
-        var self = this;
-        this.nodes.forEach(node => {node.data.color = self._colorForNode(node)});
+        this.nodes.forEach(node => {node.data.color = this._colorForNode(node)});
     }
 
-    static _tempNode(){
+    _tempNode(){
         return {
+            id_tipo_doc: this.id,
             group: 'nodes',
             data: {
-                id:'tempNode_' + Date.now(),
+                id: Date.now(),
                 name: 'Clique para editar',
                 color:'rgb(100, 100, 100)'
             }
@@ -77,11 +85,25 @@ class Graph{
      * @param {{x: number, y: number}} position
      */
     insertNewTempNode(position){
-        var node = Graph._tempNode();
+        var node = this._tempNode();
         node.position = position;
+        Nodes.insert(node, (error, _id) => {
+            (typeof error !== 'undefined') ? node._id = _id : console.log(error); 
+        });
+    }
+    
+    addElement(group, element){
+        this[group].push(element);
+        this.cy.add(element);
+    }
 
-        this.nodes.push(node);
-        this.cy.add(node);
+    removeElement(group, element){
+        /** @type Array */
+        const collection = this[group];
+        var index = collection.indexOf(element);
+        collection.splice(index, 1);
+        let cyElement = this.cy.getElementById(element.data.id);
+        cyElement.remove();
     }
 
     /**
@@ -101,9 +123,16 @@ class Graph{
     refresh(){
         this.cy.elements("node:visible").select().unselect();
     }
+    
+    load(elements){
+        elements.forEach(element => this[element.group].push(element));
+        this.renderGraph().add(elements);
+        return this;
+    }
 
-    renderGraph(){
+    renderGraph(elements=[]){
         var self = this;
+        this._addColorDataToNodes();
         this.cy = cytoscape({
             container: document.getElementById('cy'),
 
@@ -111,7 +140,7 @@ class Graph{
             zoomingEnabled: false,
 
             layout: {
-                name: 'breadthfirst', // breadthfirst 'cose' sao os unicos rasoáveis
+                name: self.layout, // 'preset' 'breadthfirst' 'cose' sao os unicos rasoáveis
                 //fit: true,
                 padding: 30,
                 directed: true,
@@ -147,14 +176,12 @@ class Graph{
                     'target-arrow-color': '#61bffc'
                 }),
 
-            elements:{
-                nodes: self.nodes,
-                edges: self.edges
-            },
+            elements:elements,
             ready: function(){
-                window.cy = self;
+                window.graph = self;
             }
         });
+        return this;
     }
 }
 
