@@ -2,7 +2,8 @@
  * Created by diogomartins on 3/18/16.
  */
 class FluxosParser{
-    constructor(fluxos){
+    constructor(id, fluxos){
+        this.id = Number(id);
         this.fluxos = fluxos;
         this._edges = [];
         this._nodes = [];
@@ -13,10 +14,11 @@ class FluxosParser{
     }
 
     addNode(name, fluxo) {
-        var node = {
+        const node = {
+            id_tipo_doc: this.id,
             data: {
-                id: name,
-                name: name,
+                id: String(name),
+                name: String(name),
                 tipo: fluxo.TIPO_DESTINO.toString() + fluxo.ID_DESTINO.toString()
             }
         };
@@ -25,8 +27,10 @@ class FluxosParser{
     }
 
     parse() {
+        const gambiDescricaoTipoDocumento = this.fluxos[0].DESCR_TIPO_DOC.trimRight();
         this.fluxos.forEach(fluxo => {
             this._edges.push({
+                id_tipo_doc: this.id,
                 data: {
                     source: fluxo.SITUACAO_ATUAL,
                     target: fluxo.SITUACAO_FUTURA,
@@ -36,7 +40,7 @@ class FluxosParser{
             this.addNode(fluxo.SITUACAO_ATUAL, fluxo);
             this.addNode(fluxo.SITUACAO_FUTURA, fluxo);
         });
-        return { nodes: this._nodes, edges: this._edges };
+        return { nodes: this._nodes, edges: this._edges, name: gambiDescricaoTipoDocumento };
     }
 }
 
