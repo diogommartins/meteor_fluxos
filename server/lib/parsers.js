@@ -9,7 +9,7 @@ class FluxosParser{
     }
 
     hasNode(node){
-        return this.nodes.filter(n => n.data.id === node.data.id).length !== 0;
+        return this._nodes.filter(n => n.data.id === node.data.id).length !== 0;
     }
 
     addNode(name, fluxo) {
@@ -28,7 +28,7 @@ class FluxosParser{
         var self = this;
 
         this.fluxos.forEach(function(fluxo){
-            self.edges.push({
+            self._edges.push({
                 data: {
                     source: fluxo.SITUACAO_ATUAL,
                     target: fluxo.SITUACAO_FUTURA,
