@@ -27,3 +27,6 @@ fortawesome:fontawesome
 iron:router
 twbs:bootstrap
 peppelg:bootstrap-3-modal
+aldeed:autoform
+aldeed:collection2
+aldeed:simple-schema
