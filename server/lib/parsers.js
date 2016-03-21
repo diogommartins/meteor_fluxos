@@ -25,18 +25,16 @@ class FluxosParser{
     }
 
     parse() {
-        var self = this;
-
-        this.fluxos.forEach(function(fluxo){
-            self._edges.push({
+        this.fluxos.forEach(fluxo => {
+            this._edges.push({
                 data: {
                     source: fluxo.SITUACAO_ATUAL,
                     target: fluxo.SITUACAO_FUTURA,
                     name: fluxo.DESCR_FLUXO
                 }
             });
-            self.addNode(fluxo.SITUACAO_ATUAL, fluxo);
-            self.addNode(fluxo.SITUACAO_FUTURA, fluxo);
+            this.addNode(fluxo.SITUACAO_ATUAL, fluxo);
+            this.addNode(fluxo.SITUACAO_FUTURA, fluxo);
         });
         return { nodes: this._nodes, edges: this._edges };
     }
