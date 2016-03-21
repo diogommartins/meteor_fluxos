@@ -4,11 +4,10 @@
 class Graph{
     constructor(id, fluxos){
         this.id = id;
-        this.fluxos = fluxos;
-        this.edges = [];
-        this.nodes = [];
+        this.edges = fluxos.edges;
+        this.nodes = fluxos.nodes;
         this.nodeColors = {};
-        this._makeGraph();
+        //this._makeGraph();
         this._addColorDataToNodes();
         /** @type cytoscape */
         this.cy = undefined;
@@ -51,27 +50,6 @@ class Graph{
             this.nodes.push(node);
     }
 
-    _makeGraph(){
-        var self = this;
-        this.fluxos.forEach(function(fluxo){
-            self.edges.push({
-                data: {
-                    source: fluxo.SITUACAO_ATUAL,
-                    target: fluxo.SITUACAO_FUTURA,
-                    name: fluxo.DESCR_FLUXO
-                }
-            });
-            self.addNode(fluxo.SITUACAO_ATUAL, fluxo);
-            self.addNode(fluxo.SITUACAO_FUTURA, fluxo);
-        });
-        this._updateDataModel();
-    }
-
-    _updateDataModel(){
-        const fluxo = {id_tipo_doc: this.id, edges: this.edges, nodes: this.nodes};
-        Meteor.call('updateFluxos', fluxo);
-    }
-
     _colorForNode(node){
         if (!this.nodeColors.hasOwnProperty(node.data.tipo))
             this.nodeColors[node.data.tipo] = randomColor({format: 'rgb'});
@@ -102,6 +80,7 @@ class Graph{
         var node = Graph._tempNode();
         node.position = position;
 
+        this.nodes.push(node);
         this.cy.add(node);
     }
 
@@ -117,6 +96,10 @@ class Graph{
             x: position.x * zoom + pan.x,
             y: position.y * zoom + pan.y
         }
+    }
+
+    refresh(){
+        this.cy.elements("node:visible").select().unselect();
     }
 
     renderGraph(){
@@ -165,12 +148,11 @@ class Graph{
                 }),
 
             elements:{
-                nodes: function(){return self.nodes},
+                nodes: self.nodes,
                 edges: self.edges
             },
             ready: function(){
-                window.cy = this;
-                Meteor.call('updateFluxos');
+                window.cy = self;
             }
         });
     }
