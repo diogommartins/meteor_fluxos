@@ -10,3 +10,26 @@
         </div>
     </div>
 </template>
+
+
+<template name="addEdge">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Criação de arestas</h4>
+                </div>
+
+                <div class="modal-body">
+                    {{> quickForm id="add-edge" collection="Edges" omitFields='id_tipo_doc'}}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>
