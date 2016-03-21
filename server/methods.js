@@ -10,8 +10,9 @@ Meteor.methods({
         if (result.statusCode == 200){
             var fluxos = result.data.content;
             Fluxos.upsert({id_tipo_doc:id_tipo_doc}, {$set: {fluxos:fluxos}});
-            var grafico = FluxosParser(fluxos).parse();
-            return grafico;
+            var parser = new FluxosParser(fluxos);
+            const grafo = parser.parse();
+            return grafo;
         }
         else{
             console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
