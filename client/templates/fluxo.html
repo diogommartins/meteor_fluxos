@@ -1,5 +1,6 @@
 <template name="fluxo">
     <h2>Fluxos!</h2>
+    {{> graphControlls}}
     {{> graphContainer}}
 </template>
 
@@ -12,8 +13,8 @@
 </template>
 
 
-<template name="searchForm">
-    <form id="#search">
-        <input type="text" name="id_tipo_doc" placeholder="Digite um ID" style="z-index: 9999"/>
-    </form>
+<template name="graphControlls">
+    <button type="button" class="btn btn-default btn-lg save-graph">
+        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Salvar
+    </button>
 </template>
