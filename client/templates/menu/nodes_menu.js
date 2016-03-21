@@ -3,14 +3,17 @@
  */
 Template.nodesMenu.helpers({
     items:[
-        {href:"#/", icon:"fa-long-arrow-up", content:"Adicionar aresta", action:function(){console.log('Adicionar')}},
-        {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action:function(){console.log('Insert')}},
-        {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action: () => Modal.show('exampleModal') },
-        {href:"#/", icon:"fa-trash-o", content:"Deletar", action:function(){
-            console.log('Deletar')
-        }},
-        {href:"#/", icon:"fa-info", content:"Detalhes", action:function(){console.log('Detalhes')}}
-    ]
+        {href:"#/", icon:"fa-long-arrow-up", content:"Adicionar aresta", action: node => Modal.show('addEdge')},
+        {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action: node => {console.log('Insert')}},
+        {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action: node => Modal.show('exampleModal') },
+        {href:"#/", icon:"fa-trash-o", content:"Deletar", action: node => Meteor.call('removeNode', node)},
+        {href:"#/", icon:"fa-info", content:"Detalhes", action: node => {
+            console.log('Detalhes')
+        }}
+    ],
+    node: function(){
+        return window.graph.nodesMenu.currentItem;
+    }
 });
 
 Template.nodesMenu.events({
@@ -21,17 +24,15 @@ Template.nodesMenu.events({
 });
 
 Template.exampleModal.helpers({
-    node: function(){
-        return window.cy.nodesMenu.currentItem;
-    }
+    
 });
 
 Template.exampleModal.events({
    'keyup input': function(event, template){
        const field = event.target.name;
        /** @type Graph **/
-       const graph = window.cy;
-       graph.nodesMenu.currentItem[field] = event.target.value
+       const graph = window.graph;
+       graph.nodesMenu.currentItem[field] = event.target.value;
        graph.refresh();
    }
 });
