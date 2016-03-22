@@ -126,57 +126,59 @@ class Graph{
     
     load(elements){
         elements.forEach(element => this[element.group].push(element));
-        this.renderGraph().add(elements);
+        this._addColorDataToNodes();
+        this.cy.add(elements);
         return this;
     }
 
-    renderGraph(elements=[]){
+    applyStyle(layout='preset'){
+        this.cy.style(cytoscape.stylesheet()
+            .selector('node')
+            .css({
+                'content': 'data(name)',
+                'background-color': 'data(color)'
+            })
+            .selector('edge')
+            .css({
+
+                'target-arrow-shape': 'triangle',
+                'width': 4,
+                'line-color': '#ddd',
+                'target-arrow-color': '#ddd'
+            })
+            .selector(':selected')
+            .css({
+                'content': 'data(name)',
+                'line-width': 2,
+                'line-color': '#61bffc', // lightblue
+                'text-outline-color': '#fff',
+                'text-outline-width': 3
+            })
+            .selector('.highlighted')
+            .css({
+                'background-color': '#61bffc',
+                'line-color': '#61bffc',
+                'target-arrow-color': '#61bffc'
+            })
+        );
+        this.cy.layout({
+            name: layout,
+            //fit: true,
+            padding: 30,
+            directed: true,
+            roots: "#1"
+        });
+        return this;
+    }
+
+    renderGraph(){
         var self = this;
-        this._addColorDataToNodes();
         this.cy = cytoscape({
             container: document.getElementById('cy'),
 
             zoom: 1,
             zoomingEnabled: false,
 
-            layout: {
-                name: self.layout, // 'preset' 'breadthfirst' 'cose' sao os unicos rasoáveis
-                //fit: true,
-                padding: 30,
-                directed: true,
-                roots: "#1"
-            },
-
-            style: cytoscape.stylesheet()
-                .selector('node')
-                .css({
-                    'content': 'data(name)',
-                    'background-color': 'data(color)'
-                })
-                .selector('edge')
-                .css({
-
-                    'target-arrow-shape': 'triangle',
-                    'width': 4,
-                    'line-color': '#ddd',
-                    'target-arrow-color': '#ddd'
-                })
-                .selector(':selected')
-                .css({
-                    'content': 'data(name)',
-                    'line-width': 2,
-                    'line-color': '#61bffc', // lightblue
-                    'text-outline-color': '#fff',
-                    'text-outline-width': 3
-                })
-                .selector('.highlighted')
-                .css({
-                    'background-color': '#61bffc',
-                    'line-color': '#61bffc',
-                    'target-arrow-color': '#61bffc'
-                }),
-
-            elements:elements,
             ready: function(){
                 window.graph = self;
             }

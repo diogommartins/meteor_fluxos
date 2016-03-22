@@ -2,30 +2,20 @@
 Template.graphContainer.created = function(){
     const id_tipo_doc = Number(this.data.id_tipo_doc);
 
-    let cyGraph = CyGraphs.findOne({id_tipo_doc: id_tipo_doc});
-    var graph = new Graph(id_tipo_doc);
-    if (typeof cyGraph === 'undefined') {
-        Meteor.call('getFluxo', id_tipo_doc, (error, fluxos) => constructGraph(fluxos));
-    }
-    else {
-        graph.load(cyGraph.elements);
-    }
+    //let cyGraph = CyGraphs.findOne({id_tipo_doc: id_tipo_doc});
 
-    function constructGraph(elements) {
-        
-        graph.renderGraph({nodes:elements.nodes, edges:elements.edges});
+    Meteor.call('getFluxo', id_tipo_doc, function(error, elements){
+        var graph = new Graph(id_tipo_doc).renderGraph();
 
         graph.cy.ready(function () {
             var cy = this;
+            graph.load(elements).applyStyle('breadthfirst');
 
-            var nodesObserver = Nodes.find({id_tipo_doc: id_tipo_doc}).observeChanges({
+            var nodesObserver = CyGraphs.find({id_tipo_doc: id_tipo_doc}).observeChanges({
                 added: function (_id, newNode) {
                     if (!nodesObserver) return;
                     newNode._id = _id;
                     graph.addElement('nodes', newNode);
-                },
-                addedAt: function () {
-                    ;
                 },
                 changed: function () {
                     console.log("Mudou");
@@ -84,8 +74,10 @@ Template.graphContainer.created = function(){
                 //menu.resize(factor);
             });
         });
-    }
+    });
+
 };
+
 
 
 Template.graphContainer.events({
