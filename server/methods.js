@@ -10,14 +10,17 @@ Meteor.methods({
         if (result.statusCode == 200){
             const fluxos = result.data.content;
             const parser = new FluxosParser(id_tipo_doc, fluxos);
-            const elements = parser.parse();
+            const graph = parser.parse();
             
-            Meteor.call('updateGraphDefinitions', elements);
-            return {
-                name: elements.name,
-                edges: Edges.find({id_tipo_doc: Number(id_tipo_doc)}).fetch(),
-                nodes: Nodes.find({id_tipo_doc: Number(id_tipo_doc)}).fetch()
-            };
+            const elements = [];
+            elements.push(...graph.edges, ...graph.nodes);
+            Meteor.call('saveGraph', id_tipo_doc, elements);
+
+            //Meteor.call('updateGraphDefinitions', graph);
+            //const edges = Edges.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
+            //const nodes = Nodes.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
+
+            return CyGraphs.findOne({id_tipo_doc: id_tipo_doc}).elements;
         }
         else{
             console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
@@ -34,7 +37,24 @@ Meteor.methods({
         elements.edges.forEach(edge => Edges.upsert(uniqueEdgeCondition(edge), {$set: edge}));
     },
     removeNode: function(node){
-        Nodes.remove(node._id);
+        var before = CyGraphs.findOne({id_tipo_doc: node.data.id_tipo_doc});
+        var elementsSize = () => CyGraphs.findOne({id_tipo_doc: node.data.id_tipo_doc}).elements.length;
+        console.log(elementsSize());
+        var after = CyGraphs.findOne({id_tipo_doc: node.data.id_tipo_doc});
+        let result = CyGraphs.update(
+            {id_tipo_doc: node.data.id_tipo_doc},
+            {
+                $pull: {
+                    elements: {
+                        data: {$elemMatch: {id: node.data.id}},
+                        group:'nodes'
+                    }
+                }
+            }
+        );
+        //{data:{id: node.data.id}
+        console.log(elementsSize());
+        console.log("removendis ", result);
     },
     /**
      *
@@ -44,8 +64,9 @@ Meteor.methods({
      */
     saveGraph: function(id, elements){
         id = Number(id);
-        let result = CyGraphs.upsert({id_tipo_doc: id}, {$set: {id_tipo_doc: id, elements:elements}});
-        console.log(elements[0]);
+        let result = CyGraphs.upsert(
+            { id_tipo_doc: id },
+            { $set: {id_tipo_doc: id, elements:elements} });
         return result.numberAffected;
     }
 });
