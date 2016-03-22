@@ -19,12 +19,14 @@ class FluxosParser{
             data: {
                 id: String(name),
                 name: String(name),
-                tipo: fluxo.TIPO_DESTINO.toString() + fluxo.ID_DESTINO.toString()
-            }
+                tipo: fluxo.TIPO_DESTINO.toString() + fluxo.ID_DESTINO.toString(),
+                id_tipo_doc: this.id
+            },
+            group: 'nodes'
         };
         if (!this.hasNode(node))
             this._nodes.push(node);
-    }
+    }Adici
 
     parse() {
         const gambiDescricaoTipoDocumento = this.fluxos[0].DESCR_TIPO_DOC.trimRight();
@@ -34,8 +36,10 @@ class FluxosParser{
                 data: {
                     source: fluxo.SITUACAO_ATUAL,
                     target: fluxo.SITUACAO_FUTURA,
-                    name: fluxo.DESCR_FLUXO
-                }
+                    name: fluxo.DESCR_FLUXO,
+                    id_tipo_doc: this.id
+                },
+                group: 'edges'
             });
             this.addNode(fluxo.SITUACAO_ATUAL, fluxo);
             this.addNode(fluxo.SITUACAO_FUTURA, fluxo);
