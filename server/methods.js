@@ -13,14 +13,14 @@ Meteor.methods({
             const graph = parser.parse();
             
             const elements = [];
-            elements.push(...graph.edges, ...graph.nodes);
-            Meteor.call('saveGraph', id_tipo_doc, elements);
+            // Meteor.call('saveGraph', id_tipo_doc, elements);
 
-            //Meteor.call('updateGraphDefinitions', graph);
-            //const edges = Edges.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
-            //const nodes = Nodes.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
+            Meteor.call('updateGraphDefinitions', graph);
+            const edges = Edges.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
+            const nodes = Nodes.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
 
-            return CyGraphs.findOne({id_tipo_doc: id_tipo_doc}).elements;
+            elements.push(...edges, ...nodes);
+            return elements;
         }
         else{
             console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
@@ -36,25 +36,21 @@ Meteor.methods({
         elements.nodes.forEach(node => Nodes.upsert(uniqueNodeCondition(node), {$set: node}));
         elements.edges.forEach(edge => Edges.upsert(uniqueEdgeCondition(edge), {$set: edge}));
     },
+    /**
+     * Remove nó no array de elements do grafo correspondente
+     * @param node: Nodes
+     */
     removeNode: function(node){
-        var before = CyGraphs.findOne({id_tipo_doc: node.data.id_tipo_doc});
-        var elementsSize = () => CyGraphs.findOne({id_tipo_doc: node.data.id_tipo_doc}).elements.length;
-        console.log(elementsSize());
-        var after = CyGraphs.findOne({id_tipo_doc: node.data.id_tipo_doc});
-        let result = CyGraphs.update(
-            {id_tipo_doc: node.data.id_tipo_doc},
-            {
-                $pull: {
-                    elements: {
-                        data: {$elemMatch: {id: node.data.id}},
-                        group:'nodes'
-                    }
-                }
-            }
-        );
-        //{data:{id: node.data.id}
-        console.log(elementsSize());
-        console.log("removendis ", result);
+        return Nodes.remove({_id: node._id});
+    },
+    /**
+     * Insere nó no array de elements do grafo correspondente 
+     * @param node: Nodes
+     * @return newId: Number
+     */
+    insertNode: function(node){
+        // CyGraphs.update({id_tipo_doc: node.data.id_tipo_doc}, {$push: {elements:node}});
+        return Nodes.insert(node);
     },
     /**
      *

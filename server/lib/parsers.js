@@ -34,6 +34,7 @@ class FluxosParser{
             this._edges.push({
                 id_tipo_doc: this.id,
                 data: {
+                    id: fluxo.ID_FLUXO,
                     source: fluxo.SITUACAO_ATUAL,
                     target: fluxo.SITUACAO_FUTURA,
                     name: fluxo.DESCR_FLUXO,

@@ -11,7 +11,7 @@ Template.graphContainer.created = function(){
             var cy = this;
             graph.load(elements).applyStyle('breadthfirst');
 
-            var nodesObserver = CyGraphs.find({id_tipo_doc: id_tipo_doc}).observeChanges({
+            var nodesObserver = Nodes.find({id_tipo_doc: id_tipo_doc}).observeChanges({
                 added: function (_id, newNode) {
                     if (!nodesObserver) return;
                     newNode._id = _id;
@@ -31,7 +31,7 @@ Template.graphContainer.created = function(){
 
             cy.on('tap', event => {
                 let target = event.cyTarget;
-                if (target !== cy) {
+                if (target !== this) {
                     if (target.isEdge()) {
                         const edge = target.data();
                         graph.showMenu('edgesMenu', event.originalEvent, edge, event.cyRenderedPosition);
@@ -40,12 +40,14 @@ Template.graphContainer.created = function(){
                         const node = graph.getNodeByData(target.data());
                         graph.showMenu('nodesMenu', event.originalEvent, node, event.cyRenderedPosition).changeBackgroundColor(node.color);
                     }
-                } else if (target === cy) {
+                } else if (target === this) {
                     graph.hideMenu();
                     if (event.originalEvent.ctrlKey) {
                         const position = graph.relativePosition(event.cyRenderedPosition);
                         graph.insertNewTempNode(position);
                     }
+                } else{
+                    console.log("Nunca deveria ter entrado aqui.");
                 }
             });
             cy.on('taphold', event => {

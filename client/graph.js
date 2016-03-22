@@ -73,7 +73,8 @@ class Graph{
             id_tipo_doc: this.id,
             group: 'nodes',
             data: {
-                id: Date.now(),
+                id: Date.now().toString(),
+                id_tipo_doc: this.id,
                 name: 'Clique para editar',
                 color:'rgb(100, 100, 100)'
             }
@@ -87,8 +88,8 @@ class Graph{
     insertNewTempNode(position){
         var node = this._tempNode();
         node.position = position;
-        Nodes.insert(node, (error, _id) => {
-            (typeof error !== 'undefined') ? node._id = _id : console.log(error); 
+        Meteor.call('insertNode', node, function(error, newId){
+            node._id = newId;
         });
     }
     
