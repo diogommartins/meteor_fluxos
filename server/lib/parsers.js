@@ -26,11 +26,11 @@ class FluxosParser{
         };
         if (!this.hasNode(node))
             this._nodes.push(node);
-    }Adici
+    }
 
     parse() {
         const gambiDescricaoTipoDocumento = this.fluxos[0].DESCR_TIPO_DOC.trimRight();
-        this.fluxos.forEach(fluxo => {
+        for(let fluxo of this.fluxos){
             this._edges.push({
                 id_tipo_doc: this.id,
                 data: {
@@ -43,7 +43,7 @@ class FluxosParser{
             });
             this.addNode(fluxo.SITUACAO_ATUAL, fluxo);
             this.addNode(fluxo.SITUACAO_FUTURA, fluxo);
-        });
+        }
         return { nodes: this._nodes, edges: this._edges, name: gambiDescricaoTipoDocumento };
     }
 }
