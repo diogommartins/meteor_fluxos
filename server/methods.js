@@ -49,8 +49,18 @@ Meteor.methods({
      * @return newId: Number
      */
     insertNode: function(node){
-        // CyGraphs.update({id_tipo_doc: node.data.id_tipo_doc}, {$push: {elements:node}});
         return Nodes.insert(node);
+    },
+    updateNodeData: function(node, data){
+        return Nodes.update({_id: node._id}, {$set: data});
+    },
+    /**
+     * Insere aresta no array de elements do grafo correspondente
+     * @param edge: Edges
+     * @return newId: Number
+     */
+    insertEdge: function(edge){
+        return Edges.insert(edge);
     },
     /**
      *

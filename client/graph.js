@@ -50,10 +50,20 @@ class Graph{
             this.nodes.push(node);
     }
 
+    /**
+     * 
+     * @param data: Object
+     * @return Nodes
+     */
     getNodeByData(data){
         return this.nodes.find(ele => ele.data.id === data.id);
     }
-    
+
+    /**
+     * 
+     * @param id: String identificador único na collection Nodes
+     * @return Nodes
+     */
     getNodeById(id){
         return this.nodes.find(ele => ele._id === id);
     }
@@ -65,7 +75,10 @@ class Graph{
     }
 
     _addColorDataToNodes(){
-        this.nodes.forEach(node => {node.data.color = this._colorForNode(node)});
+        for(let node of this.nodes){
+            if (typeof node.data.color === 'undefined')
+                node.data.color = this._colorForNode(node);
+        }
     }
 
     _tempNode(){

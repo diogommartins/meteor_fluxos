@@ -17,9 +17,16 @@ Template.graphContainer.created = function(){
                     newNode._id = _id;
                     graph.addElement('nodes', newNode);
                 },
-                changed: function () {
-                    console.log("Mudou");
-                    graph.refresh();
+                changed: function (nodeId, data) {
+                    const node = graph.getNodeById(nodeId);
+                    if (typeof data.position !== 'undefined'){
+                        graph.cy.$("#"+node.data.id).position(data.position);
+                    }
+                    else if (typeof data.data === 'object'){
+                        const updatedNodeData = data.data;
+                        const node = graph.cy.getElementById(updatedNodeData.id);
+                        node.data(updatedNodeData);
+                    }
                 },
                 removed: function (nodeId) {
                     console.log("Removed");
@@ -38,7 +45,7 @@ Template.graphContainer.created = function(){
                     }
                     else if (target.isNode()) {
                         const node = graph.getNodeByData(target.data());
-                        graph.showMenu('nodesMenu', event.originalEvent, node, event.cyRenderedPosition).changeBackgroundColor(node.color);
+                        graph.showMenu('nodesMenu', event.originalEvent, node, event.cyRenderedPosition).changeBackgroundColor(node.data.color);
                     }
                 } else if (target === this) {
                     graph.hideMenu();
@@ -55,6 +62,16 @@ Template.graphContainer.created = function(){
                 if (target === cy) {
                     const position = graph.relativePosition(event.cyRenderedPosition);
                     graph.insertNewTempNode(position);
+                }
+            });
+            cy.on('drag', function(event){
+                let target = event.cyTarget;
+                if (target.isNode()){
+                    const node = graph.getNodeByData(target.data());
+                    
+                    let position = this.$("#"+node.data.id).position();
+                    Nodes.update({_id: node._id}, { $set: {position: position}});
+                    // Meteor.call('updateNodePosition', node, position);
                 }
             });
             cy.on('pan', function (event) {

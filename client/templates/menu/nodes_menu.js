@@ -11,6 +11,10 @@ Template.nodesMenu.helpers({
             console.log('Detalhes')
         }}
     ],
+    /**
+     * 
+     * @return Nodes
+     */
     node: function(){
         return window.graph.nodesMenu.currentItem;
     }
@@ -24,7 +28,13 @@ Template.nodesMenu.events({
 });
 
 Template.exampleModal.helpers({
-    
+    /**
+     *
+     * @return Nodes
+     */
+    node: function(){
+        return window.graph.nodesMenu.currentItem;
+    }
 });
 
 Template.exampleModal.events({
@@ -32,7 +42,11 @@ Template.exampleModal.events({
        const field = event.target.name;
        /** @type Graph **/
        const graph = window.graph;
-       graph.nodesMenu.currentItem[field] = event.target.value;
-       graph.refresh();
+       const node = graph.nodesMenu.currentItem;
+       
+       let data = {};
+       data[field] = event.target.value;
+       
+       Meteor.call('updateNodeData', node, data);
    }
 });

@@ -4,14 +4,14 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal example {{node.color}}</h4>
+                    <h4 class="modal-title">Modal example {{node.data.name}}</h4>
                 </div>
 
                 <div class="modal-body">
                     <form id="node-edit">
-                        <input type="text" name="name" placeholder="{{node.name}}" />
-                        <input type="text" name="color" placeholder="{{node.color}}" />
-                        <input type="text" name="id" placeholder="{{node.id}}" />
+                        <input type="text" name="data.name" value="{{node.data.name}}" />
+                        <input type="text" name="data.color" value="{{node.data.color}}" />
+                        <input type="text" name="data.id" value="{{node.data.id}}" />
                     </form>
                 </div>
 
