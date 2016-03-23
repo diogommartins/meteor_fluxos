@@ -3,7 +3,7 @@
  */
 class FluxosParser{
     constructor(id, fluxos){
-        this.id = Number(id);
+        this.id = id;
         this.fluxos = fluxos;
         this._edges = [];
         this._nodes = [];
@@ -45,7 +45,12 @@ class FluxosParser{
             this.addNode(fluxo.SITUACAO_ATUAL, fluxo);
             this.addNode(fluxo.SITUACAO_FUTURA, fluxo);
         }
-        return { nodes: this._nodes, edges: this._edges, name: gambiDescricaoTipoDocumento };
+        return { 
+            id_tipo_doc: this.id,
+            nodes: this._nodes, 
+            edges: this._edges, 
+            name: gambiDescricaoTipoDocumento 
+        };
     }
 }
 
