@@ -9,7 +9,7 @@ Template.graphContainer.created = function(){
 
         graph.cy.ready(function () {
             var cy = this;
-            graph.load(elements).applyStyle('breadthfirst');
+            graph.load(elements).applyStyle('circle');
 
             var nodesObserver = Nodes.find({id_tipo_doc: id_tipo_doc}).observeChanges({
                 added: function (_id, newNode) {
@@ -70,6 +70,10 @@ Template.graphContainer.created = function(){
                     const node = graph.getNodeByData(target.data());
                     
                     let position = this.$("#"+node.data.id).position();
+
+                    if (typeof graph.visibleMenu !== 'undefined')
+                        graph.visibleMenu.updatePosition(position);
+
                     Nodes.update({_id: node._id}, { $set: {position: position}});
                     // Meteor.call('updateNodePosition', node, position);
                 }
@@ -109,6 +113,11 @@ Template.graphContainer.events({
 });
 
 // Template => fluxo
+Template.fluxo.helpers({
+    name: function(){
+        return CyGraphs.findOne({id_tipo_doc: this.id_tipo_doc}).name;
+    }
+});
 
 Template.fluxo.events({
     'click .save-graph': function(event, template){
