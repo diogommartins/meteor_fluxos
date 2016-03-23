@@ -18,6 +18,7 @@ check@1.1.0
 cwaring:modernizr@3.0.0_1
 cytoscape:cytoscape@2.6.6
 d3js:d3@3.5.8
+dburles:collection-helpers@1.0.4
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.2
