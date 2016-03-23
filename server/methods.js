@@ -16,8 +16,9 @@ Meteor.methods({
             // Meteor.call('saveGraph', id_tipo_doc, elements);
 
             Meteor.call('updateGraphDefinitions', graph);
-            const edges = Edges.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
-            const nodes = Nodes.find({id_tipo_doc: Number(id_tipo_doc)}).fetch();
+
+            const edges = Edges.find({id_tipo_doc: id_tipo_doc}).fetch();
+            const nodes = Nodes.find({id_tipo_doc: id_tipo_doc}).fetch();
 
             elements.push(...edges, ...nodes);
             return elements;
@@ -26,15 +27,21 @@ Meteor.methods({
             console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
         }
     },
-    updateGraphDefinitions: function(elements){
+    /**
+     * 
+     * @param graph: {{nodes:[], edges:[], name:String, id_tipo_doc:Number}}
+     */
+    updateGraphDefinitions: function(graph){
         var uniqueNodeCondition = function(node){
             return {id_tipo_doc: node.id_tipo_doc, 'data.id': node.data.id};
         };
         var uniqueEdgeCondition = function(edge){
             return {id_tipo_doc: edge.id_tipo_doc, 'data.source': edge.data.source, 'data.target': edge.data.target};
         };
-        elements.nodes.forEach(node => Nodes.upsert(uniqueNodeCondition(node), {$set: node}));
-        elements.edges.forEach(edge => Edges.upsert(uniqueEdgeCondition(edge), {$set: edge}));
+        graph.nodes.forEach(node => Nodes.upsert(uniqueNodeCondition(node), {$set: node}));
+        graph.edges.forEach(edge => Edges.upsert(uniqueEdgeCondition(edge), {$set: edge}));
+        
+        CyGraphs.upsert({id_tipo_doc: graph.id_tipo_doc}, {$set: {name: graph.name}});
     },
     /**
      * Remove nó no array de elements do grafo correspondente
