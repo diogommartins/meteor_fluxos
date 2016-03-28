@@ -19,7 +19,7 @@ class FluxosParser{
             data: {
                 id: String(name),
                 name: String(name),
-                tipo: fluxo.TIPO_DESTINO.toString() + fluxo.ID_DESTINO.toString(),
+                tipo: String(fluxo.TIPO_DESTINO) + String(fluxo.ID_DESTINO),
                 id_tipo_doc: this.id
             },
             group: 'nodes'
