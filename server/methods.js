@@ -81,5 +81,9 @@ Meteor.methods({
             { id_tipo_doc: id },
             { $set: {id_tipo_doc: id, elements:elements} });
         return result.numberAffected;
+    },
+    changeGraphLayout: function(id_tipo_doc, layout){
+        console.log("changeGraphLayout: Tem certeza que você queria estar me chamando?");
+        CyGraphs.update({id_tipo_doc: id_tipo_doc}, {$set:{layout: layout}});
     }
 });
