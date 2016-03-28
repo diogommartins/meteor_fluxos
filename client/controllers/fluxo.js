@@ -117,7 +117,9 @@ Template.graphContainer.created = function(){
                 const elements = event.layout.options.eles.nodes();
                 elements.map(function(element){
                     const node = graph.getNodeByData(element.data());
-                    Meteor.call('updateNodeData', node, {position: node.position});
+                    const newPosition = element.position();
+                    node.position = newPosition;
+                    Meteor.call('updateNodeData', node, {position: newPosition});
                 });
             });
             cy.on('zoom', function (event) {
