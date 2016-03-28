@@ -2,7 +2,7 @@
  * Created by diogomartins on 3/10/16.
  */
 class Graph{
-    constructor(id, layout='preset'){
+    constructor(id){
         this.id = id;
         this.edges = [];
         this.nodes = [];
@@ -14,7 +14,6 @@ class Graph{
         this.nodesMenu = new CircularMenu($('#nodes-menu')[0]);
         /** @type CircularMenu */
         this.visibleMenu = undefined;
-        this.layout = layout;
     }
 
     showMenu(type, ...args) {
@@ -48,6 +47,16 @@ class Graph{
         };
         if (!this.hasNode(node))
             this.nodes.push(node);
+    }
+
+    /**
+     * retorna se o nó está ou não sendo arrastado pelo usuário 
+     * @param node: Nodes
+     * @return boolean
+     */
+    isGrabbed(node){
+        const graphNode = this.cy.getElementById(node.data.id);
+        return graphNode.grabbed();
     }
 
     /**
@@ -144,8 +153,12 @@ class Graph{
         this.cy.add(elements);
         return this;
     }
+    
+    changeLayout(layout){
+        this.cy.makeLayout({name: layout}).run();
+    }
 
-    applyStyle(layout='preset'){
+    applyStyle(layout='circle'){
         this.cy.style(cytoscape.stylesheet()
             .selector('node')
             .css({
@@ -166,7 +179,8 @@ class Graph{
                 'line-width': 2,
                 'line-color': '#61bffc', // lightblue
                 'text-outline-color': '#fff',
-                'text-outline-width': 3
+                'text-outline-width': 2,
+                'target-arrow-color': '#61bffc'
             })
             .selector('.highlighted')
             .css({
