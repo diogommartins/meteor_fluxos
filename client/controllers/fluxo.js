@@ -1,6 +1,6 @@
 
 Template.graphContainer.created = function(){
-    const id_tipo_doc = Number(this.data.id_tipo_doc);
+    const id_tipo_doc = this.data.id_tipo_doc;
 
     //let cyGraph = CyGraphs.findOne({id_tipo_doc: id_tipo_doc});
 
