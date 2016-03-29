@@ -23,12 +23,9 @@ Template.graphContainer.created = function(){
                     const node = graph.getNodeById(nodeId);
                     if ((typeof data.position !== 'undefined') && (!graph.isGrabbed(node))){
                         const currentPosition = graph.cy.$("#" + node.data.id).position();
-                        if ((currentPosition.x !== data.position.x) ||
-                            (currentPosition.y !== data.position.y)){
+
+                        if (!_.isEqual(currentPosition, data.position.x)){
                             graph.cy.$("#" + node.data.id).position(data.position);
-                        }
-                        else{
-                            console.log('Nada mudou, a verificação foi util.');
                         }
                     }
                     else if (typeof data.data === 'object'){
