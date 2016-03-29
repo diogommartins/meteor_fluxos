@@ -77,19 +77,6 @@ class Graph{
         return this.nodes.find(ele => ele._id === id);
     }
 
-    _colorForNode(node){
-        if (!this.nodeColors.hasOwnProperty(node.data.tipo))
-            this.nodeColors[node.data.tipo] = randomColor({format: 'rgb'});
-        return this.nodeColors[node.data.tipo];
-    }
-
-    _addColorDataToNodes(){
-        for(let node of this.nodes){
-            if (typeof node.data.color === 'undefined')
-                node.data.color = this._colorForNode(node);
-        }
-    }
-
     _tempNode(){
         return {
             id_tipo_doc: this.id,
@@ -149,7 +136,6 @@ class Graph{
     
     load(elements){
         elements.forEach(element => this[element.group].push(element));
-        this._addColorDataToNodes();
         this.cy.add(elements);
         return this;
     }

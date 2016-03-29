@@ -24,8 +24,22 @@ class FluxosParser{
             },
             group: 'nodes'
         };
+        node.data.color = this._colorForNode(node); // eca !
+
         if (!this.hasNode(node))
             this._nodes.push(node);
+    }
+    // Todo: Essa classe deveria realizar esse tipo de acesso a dados ?
+    _colorForNode(node){
+        let nodeColor = NodeColors.findOne({key: node.data.tipo});
+        if (typeof nodeColor === 'undefined'){
+            nodeColor = {
+                key: node.data.tipo,
+                color: randomColor({format: 'rgb'})
+            };
+            NodeColors.insert(nodeColor);
+        }
+        return nodeColor.color;
     }
 
     parse() {
@@ -48,7 +62,7 @@ class FluxosParser{
         return { 
             id_tipo_doc: this.id,
             nodes: this._nodes, 
-            edges: this._edges, 
+            edges: this._edges,
             name: gambiDescricaoTipoDocumento 
         };
     }
