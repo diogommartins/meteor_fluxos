@@ -163,15 +163,16 @@ class Graph{
             .selector('node')
             .css({
                 'content': 'data(name)',
-                'background-color': 'data(color)'
+                'background-color': 'data(color)',
+                'width': '2em',
+                'height': '2em'
             })
             .selector('edge')
             .css({
-
                 'target-arrow-shape': 'triangle',
-                'width': 4,
-                'line-color': '#ddd',
-                'target-arrow-color': '#ddd'
+                'width': 2,
+                'line-color': '#777',
+                'target-arrow-color': '#666'
             })
             .selector(':selected')
             .css({
