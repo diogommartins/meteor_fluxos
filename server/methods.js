@@ -67,7 +67,8 @@ Meteor.methods({
      * @return newId: Number
      */
     insertEdge: function(edge){
-        return Edges.insert(edge);
+        console.log("Inserindo nova aresta");
+        //return Edges.insert(edge);
     },
     /**
      *

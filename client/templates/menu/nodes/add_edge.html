@@ -1,17 +1,3 @@
-<template name="nodesMenu">
-    <div class="component-circular-menu" id="nodes-menu">
-        <!--<button class="cn-button" id="cn-button">Menu</button>-->
-        <div class="cn-wrapper">
-            <ul>
-                {{#each items}}
-                    {{>menuItem}}
-                {{/each}}
-            </ul>
-        </div>
-    </div>
-</template>
-
-
 <template name="addEdge">
     <div class="modal fade">
         <div class="modal-dialog">
@@ -22,7 +8,12 @@
                 </div>
 
                 <div class="modal-body">
-                    {{> quickForm id="add-edge" collection="Edges" omitFields='id_tipo_doc'}}
+                    {{#autoForm id="addNewEdge" type="method" meteormethod="insertEdge" schema=Schemas.EdgeSchema}}
+                        {{> afQuickField name="data.name"}}
+                        {{> afQuickField name="data.source" readonly=true value=source}}
+                        {{> afFormGroup type="select" name="data.target" options=nodesOptions}}
+                        <button type="submit" class="btn btn-primary">Criar Aresta</button>
+                    {{/autoForm}}
                 </div>
 
                 <div class="modal-footer">

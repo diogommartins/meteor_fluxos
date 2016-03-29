@@ -12,7 +12,7 @@ Template.nodesMenu.helpers({
         }}
     ],
     /**
-     * 
+     *
      * @return Nodes
      */
     node: function(){
@@ -38,15 +38,45 @@ Template.exampleModal.helpers({
 });
 
 Template.exampleModal.events({
-   'keyup input': function(event, template){
-       const field = event.target.name;
-       /** @type Graph **/
-       const graph = window.graph;
-       const node = graph.nodesMenu.currentItem;
-       
-       let data = {};
-       data[field] = event.target.value;
-       
-       Meteor.call('updateNodeData', node, data);
+    'keyup input': function(event, template){
+        const field = event.target.name;
+        /** @type Graph **/
+        const graph = window.graph;
+        const node = graph.nodesMenu.currentItem;
+
+        let data = {};
+        data[field] = event.target.value;
+
+        Meteor.call('updateNodeData', node, data);
+    }
+});
+
+
+Template.addEdge.helpers({
+    source: function(){
+        /** @type Graph **/
+        const graph = window.graph;
+        /** @type Nodes **/
+        return graph.visibleMenu.currentItem;
+    },
+    nodesOptions: function(){
+        const id_tipo_doc = window.graph.id;
+        const nodes = Nodes.find({id_tipo_doc}).fetch();
+        return nodes.map( node => ({label: node.data.name, value: node.data.id}) );
+    }
+});
+
+AutoForm.addHooks('addNewEdge', {
+    before:{
+        method: function(doc){
+            doc.id_tipo_doc = window.graph.id;
+            console.log(doc);
+        }
+    }
+});
+
+Template.addEdge.events({
+   'submit': function(event, template){
+       console.log('Submit !!!!');
    }
 });
