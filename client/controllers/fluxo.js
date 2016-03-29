@@ -13,17 +13,6 @@ Template.graphContainer.created = function(){
 
             const nodes = Nodes.find({id_tipo_doc: id_tipo_doc});
 
-            var cyObserver = cyGraph.observeChanges({
-                changed: function(_id, data){
-                    if (typeof data.layout !== 'undefined' && data.layout !== 'preset') {
-                        // graph.changeLayout(data.layout);
-                        var layout = graph.cy.makeLayout({name: data.layout});
-                        layout.run();
-                        ;
-                    }
-                }
-            });
-
             var nodesObserver = nodes.observeChanges({
                 added: function (_id, newNode) {
                     if (!nodesObserver) return;
@@ -80,7 +69,7 @@ Template.graphContainer.created = function(){
                 let target = event.cyTarget;
                 if (target === cy) {
                     const position = graph.relativePosition(event.cyRenderedPosition);
-                    graph.insertNewTempNode(position);
+                    //graph.insertNewTempNode(position);
                 }
             });
             cy.on('drag', function(event){
@@ -129,6 +118,16 @@ Template.graphContainer.created = function(){
                 //menu.updatePosition()
                 //menu.resize(factor);
             });
+            cy.edges().on({
+                'mouseover': function(event){
+                    let target = event.cyTarget;
+                    target.css({'content': target.data().name});
+                },
+                'mouseout': function(event){
+                    let target = event.cyTarget;
+                    target.css({'content': ''});
+                }
+            })
         });
     });
 
