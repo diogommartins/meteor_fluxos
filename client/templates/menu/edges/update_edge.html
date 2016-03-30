@@ -4,7 +4,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title">Atualizar aresta</h4>
+                    <h4 class="modal-title">Atualizar aresta "{{edge.data.name}}"</h4>
                 </div>
                 <div class="modal-body">
                     {{#autoForm id="updateEdge" type="method-update" meteormethod="updateEdgeData" schema=Schemas.EdgeSchema doc=edge autosave=autoSaveMode}}

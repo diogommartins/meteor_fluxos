@@ -15,6 +15,12 @@ Template.graphContainer.created = function(){
                     newEdge._id = _id;
                     graph.addElement('edges', newEdge);
                 },
+                changed: function(_id, data){
+                    if (typeof data.data === 'object'){
+                        const updatedEdgeData = data.data;
+                        graph.cy.getElementById(updatedEdgeData.id).data(updatedEdgeData);
+                    }
+                },
                 removed: function(_id){
                     let node = graph.getElementById('edges', _id);
                     graph.removeElement('nodes', node);
