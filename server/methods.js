@@ -9,19 +9,14 @@ Meteor.methods({
         const result = HTTP.get(url);
         if (result.statusCode == 200){
             const fluxos = result.data.content;
-            const parser = new FluxosParser(id_tipo_doc, fluxos);
-            const graph = parser.parse();
-            
-            const elements = [];
-            // Meteor.call('saveGraph', id_tipo_doc, elements);
+            const graph = new FluxosParser(id_tipo_doc, fluxos).parse();
 
             Meteor.call('updateGraphDefinitions', graph);
 
             const edges = Edges.find({id_tipo_doc: id_tipo_doc}).fetch();
             const nodes = Nodes.find({id_tipo_doc: id_tipo_doc}).fetch();
 
-            elements.push(...edges, ...nodes);
-            return elements;
+            return edges.concat(nodes);
         }
         else{
             console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
@@ -67,8 +62,17 @@ Meteor.methods({
      * @return newId: Number
      */
     insertEdge: function(edge){
+        edge.id_tipo_doc = edge.data.id_tipo_doc;
+        edge.data.id = 'temp_' + Date.now().toString();
         console.log("Inserindo nova aresta");
-        //return Edges.insert(edge);
+        return Edges.insert(edge);
+    },
+    /**
+     * Remove aresta no array de elements do grafo correspondente
+     * @param node: Nodes
+     */
+    removeEdge: function(edge){
+        return Edges.remove({_id: edge._id});
     },
     /**
      *
@@ -86,5 +90,10 @@ Meteor.methods({
     changeGraphLayout: function(id_tipo_doc, layout){
         console.log("changeGraphLayout: Tem certeza que você queria estar me chamando?");
         CyGraphs.update({id_tipo_doc: id_tipo_doc}, {$set:{layout: layout}});
+    },
+    debugClear: function(){
+        Edges.remove({});
+        Nodes.remove({});
+        CyGraphs.remove({});
     }
 });
