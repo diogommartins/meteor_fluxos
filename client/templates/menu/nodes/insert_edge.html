@@ -6,11 +6,10 @@
                 <div class="modal-header">
                     <h4 class="modal-title">Criação de arestas</h4>
                 </div>
-
                 <div class="modal-body">
-                    {{#autoForm id="addNewEdge" type="method" meteormethod="insertEdge" schema=Schemas.EdgeSchema}}
+                    {{#autoForm id="addNewEdge" type="method" meteormethod="insertEdge" schema=Schemas.newEdgeSchema currentNode=source}}
                         {{> afQuickField name="data.name"}}
-                        {{> afQuickField name="data.source" readonly=true value=source}}
+                        {{> afQuickField name="data.source" readonly=true value=source.data.id}}
                         {{> afFormGroup type="select" name="data.target" options=nodesOptions}}
                         <button type="submit" class="btn btn-primary">Criar Aresta</button>
                     {{/autoForm}}

@@ -10,6 +10,7 @@ Template.updateEdge.helpers({
     },
     edge: function(){
         /** @type Edges */
-        return window.graph.edgesMenu.currentItem;
+        const edge = window.graph.edgesMenu.currentItem;
+        return Edges.findOne(edge._id);
     }
 });
