@@ -63,6 +63,7 @@
     -moz-transform: scale(0.1);
     transform: scale(0.1);
     overflow: hidden;
+    visibility: hidden;
 }
 
 /*cover to prevent extra space of anchors from being clickable*/
@@ -85,6 +86,7 @@
 .csstransforms .opened-nav {
     border-radius: 50%;
     opacity: 1;
+    visibility: visible;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     transition: all .3s ease;
