@@ -51,7 +51,7 @@ class FluxosParser{
                     id: String(fluxo.ID_FLUXO),
                     source: String(fluxo.SITUACAO_ATUAL),
                     target: String(fluxo.SITUACAO_FUTURA),
-                    name: String(fluxo.DESCR_FLUXO),
+                    name: String(fluxo.DESCR_FLUXO).trim(),
                     id_tipo_doc: this.id
                 },
                 group: 'edges'
