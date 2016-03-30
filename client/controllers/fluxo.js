@@ -6,21 +6,30 @@ Template.graphContainer.created = function(){
         const graph = new Graph(id_tipo_doc).renderGraph();
 
         graph.cy.ready(function () {
-            var cy = this;
-            var cyGraph = CyGraphs.find({id_tipo_doc: id_tipo_doc});
+            const layout = graph.collection.fetch()[0].layout;
+            graph.load(elements).applyStyle(layout);
 
-            graph.load(elements).applyStyle(cyGraph.fetch()[0].layout);
+            var edgesObserver = Edges.find({id_tipo_doc: id_tipo_doc}).observeChanges({
+                added: function(_id, newEdge){
+                    if (!edgesObserver) return;
+                    newEdge._id = _id;
+                    graph.addElement('edges', newEdge);
+                },
+                removed: function(_id){
+                    let node = graph.getElementById('edges', _id);
+                    graph.removeElement('nodes', node);
+                    graph.refresh();
+                }
+            });
 
-            const nodes = Nodes.find({id_tipo_doc: id_tipo_doc});
-
-            var nodesObserver = nodes.observeChanges({
+            var nodesObserver = Nodes.find({id_tipo_doc: id_tipo_doc}).observeChanges({
                 added: function (_id, newNode) {
                     if (!nodesObserver) return;
                     newNode._id = _id;
                     graph.addElement('nodes', newNode);
                 },
-                changed: function (nodeId, data) {
-                    const node = graph.getNodeById(nodeId);
+                changed: function (_id, data) {
+                    const node = graph.getElementById('nodes', _id);
                     if ((typeof data.position !== 'undefined') && (!graph.isGrabbed(node))){
                         const currentPosition = graph.cy.$("#" + node.data.id).position();
 
@@ -30,96 +39,17 @@ Template.graphContainer.created = function(){
                     }
                     else if (typeof data.data === 'object'){
                         const updatedNodeData = data.data;
-                        const node = graph.cy.getElementById(updatedNodeData.id);
-                        node.data(updatedNodeData);
+                        graph.cy.getElementById(updatedNodeData.id).data(updatedNodeData);
                     }
                 },
-                removed: function (nodeId) {
-                    console.log("Removed " + nodeId);
-                    let node = graph.getNodeById(nodeId);
+                removed: function (_id) {
+                    let node = graph.getElementById('nodes', _id);
                     graph.removeElement('nodes', node);
                     graph.refresh();
                 }
             });
-            cy.nodes().on({
-                'drag': function(event){
-                    const target = event.cyTarget;
-                    const node = graph.getNodeByData(target.data());
-                    const position = this.position();
-
-                    if (typeof graph.visibleMenu !== 'undefined')
-                        graph.visibleMenu.updatePosition(position);
-
-                    const currentCyGraph = cyGraph.fetch()[0];
-                    const layout = currentCyGraph.layout;
-                    if (typeof layout === 'undefined' || layout !== 'preset'){
-                        CyGraphs.update({_id:currentCyGraph._id}, {$set: {layout:'preset'} });
-                        console.log("Atualizei layout");
-                    }
-                    Meteor.call('updateNodeData', node, {position: position});
-                },
-                'tap': function(event){
-                    const target = event.cyTarget;
-                    const node = graph.getNodeByData(target.data());
-                    graph.showMenu('nodesMenu', event.originalEvent, node, event.cyRenderedPosition).changeBackgroundColor(node.data.color);
-                }
-            });
-            cy.on({
-                'tap': function(event){
-                    const target = event.cyTarget;
-                    if (target === this) {
-                        graph.hideMenu();
-                        if (event.originalEvent.ctrlKey) {
-                            const position = graph.relativePosition(event.cyRenderedPosition);
-                            graph.insertNewTempNode(position);
-                        }
-                    }
-                },
-                'pan': function (event) {
-                    const pan = event.cyTarget.pan();
-                    const zoom = event.cyTarget.zoom();
-
-                    if (typeof graph.visibleMenu !== 'undefined') {
-                        graph.visibleMenu.updatePosition({
-                            x: graph.visibleMenu.position.x * zoom + pan.x,
-                            y: graph.visibleMenu.position.y * zoom + pan.y
-                        });
-                    }
-                },
-                'layoutstop': function(event){
-                    const elements = event.layout.options.eles.nodes();
-                    elements.map(function(element){
-                        const node = graph.getNodeByData(element.data());
-                        const newPosition = element.position();
-                        node.position = newPosition;
-                        Meteor.call('updateNodeData', node, {position: newPosition});
-                    });
-                },
-                'zoom': function (event) {
-                    const zoom = event.cyTarget.zoom();
-                    console.log("Zoom " + zoom);
-
-                    //menu.updatePosition()
-                    //menu.resize(factor);
-                }
-            });
-            cy.edges().on({
-                'mouseover': function(event){
-                    let target = event.cyTarget;
-                    target.css({'content': target.data().name});
-                },
-                'mouseout': function(event){
-                    let target = event.cyTarget;
-                    target.css({'content': ''});
-                },
-                'tap': function(event){
-                    const edge = event.cyTarget.data();
-                    graph.showMenu('edgesMenu', event.originalEvent, edge, event.cyRenderedPosition);
-                }
-            })
         });
     });
-
 };
 
 
