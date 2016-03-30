@@ -3,13 +3,11 @@
  */
 Template.nodesMenu.helpers({
     items:[
-        {href:"#/", icon:"fa-long-arrow-up", content:"Adicionar aresta", action: node => Modal.show('addEdge')},
-        {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action: node => {console.log('Insert')}},
-        {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action: node => Modal.show('exampleModal') },
+        {href:"#/", icon:"fa-long-arrow-up", content:"Adicionar aresta", action: node => Modal.show('addEdge', {node: node})},
+        {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action: node => console.log('Insert ', {node: node})},
+        {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action: node => Modal.show('exampleModal', {node: node}) },
         {href:"#/", icon:"fa-trash-o", content:"Deletar", action: node => Meteor.call('removeNode', node)},
-        {href:"#/", icon:"fa-info", content:"Detalhes", action: node => {
-            console.log('Detalhes')
-        }}
+        {href:"#/", icon:"fa-info", content:"Detalhes", action: node => console.log('Detalhes ', {node: node})}
     ],
     /**
      *
@@ -54,13 +52,10 @@ Template.exampleModal.events({
 
 Template.addEdge.helpers({
     source: function(){
-        /** @type Graph **/
-        const graph = window.graph;
-        /** @type Nodes **/
-        return graph.visibleMenu.currentItem;
+        return this.node;
     },
     nodesOptions: function(){
-        const id_tipo_doc = window.graph.id;
+        const id_tipo_doc = this.node.data.id_tipo_doc;
         const nodes = Nodes.find({id_tipo_doc}).fetch();
         return nodes.map( node => ({label: node.data.name, value: node.data.id}) );
     }
@@ -69,14 +64,17 @@ Template.addEdge.helpers({
 AutoForm.addHooks('addNewEdge', {
     before:{
         method: function(doc){
-            doc.id_tipo_doc = window.graph.id;
-            console.log(doc);
+            /** @type Nodes **/
+            const node = this.template.data.currentNode;
+            doc.data.id_tipo_doc = node.data.id_tipo_doc;
+            
+            return doc;
         }
     }
 });
 
 Template.addEdge.events({
    'submit': function(event, template){
-       console.log('Submit !!!!');
+       Modal.hide('addEdge');
    }
 });

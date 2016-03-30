@@ -20,12 +20,6 @@ FluxoEventHandlers.edges = {
 };
 
 FluxoEventHandlers.nodes = {
-    'dragstart': function(event){
-        console.log("dragstart");
-    },
-    'dragend': function(event){
-        console.log("dragend");
-    },
     'drag': function(event){
         /**
          * todo: muita coisa acontecendo aqui. Isso pode ficar lento

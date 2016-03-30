@@ -3,12 +3,12 @@
  */
 Template.edgesMenu.helpers({
     items:[
-        {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action:function(){console.log('Insert')}},
-        {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action:function(){console.log('Edit')}},
-        {href:"#/", icon:"fa-trash-o", content:"Deletar", action:function(){console.log('Deletar')}},
-        {href:"#/", icon:"fa-info", content:"Detalhes", action:function(){console.log('Detalhes')}},
-        {href:"#/", icon:"fa-clone", content:"Copiar", action:function(){console.log('Copiar')}},
-        {href:"#/", icon:"fa-times", content:"Fechar", action:function(){console.log('Fechar')}}
+        {content:"Inserir", href:"#/", icon:"fa-plus-square-o", action:function(){console.log('Insert')}},
+        {content:"Editar", href:"#/", icon:"fa-pencil-square-o", action:function(){console.log('Edit')}},
+        {content:"Deletar", href:"#/", icon:"fa-trash-o", action: edge => Meteor.call('removeEdge', edge)},
+        {content:"Detalhes", href:"#/", icon:"fa-info", action:function(){console.log('Detalhes')}},
+        {content:"Copiar", href:"#/", icon:"fa-clone", action:function(){console.log('Copiar')}},
+        {content:"Fechar", href:"#/", icon:"fa-times", action:function(){console.log('Fechar')}}
     ]
 });
 
