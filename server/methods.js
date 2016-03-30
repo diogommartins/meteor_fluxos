@@ -67,9 +67,12 @@ Meteor.methods({
         console.log("Inserindo nova aresta");
         return Edges.insert(edge);
     },
+    updateEdgeData: function(modifier, _id){
+        return Edges.update({_id: _id}, modifier);
+    },
     /**
      * Remove aresta no array de elements do grafo correspondente
-     * @param node: Nodes
+     * @param edge: Edges
      */
     removeEdge: function(edge){
         return Edges.remove({_id: edge._id});
