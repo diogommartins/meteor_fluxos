@@ -48,10 +48,10 @@ class FluxosParser{
             this._edges.push({
                 id_tipo_doc: this.id,
                 data: {
-                    id: fluxo.ID_FLUXO,
-                    source: fluxo.SITUACAO_ATUAL,
-                    target: fluxo.SITUACAO_FUTURA,
-                    name: fluxo.DESCR_FLUXO,
+                    id: String(fluxo.ID_FLUXO),
+                    source: String(fluxo.SITUACAO_ATUAL),
+                    target: String(fluxo.SITUACAO_FUTURA),
+                    name: String(fluxo.DESCR_FLUXO),
                     id_tipo_doc: this.id
                 },
                 group: 'edges'
