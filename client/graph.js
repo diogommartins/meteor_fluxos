@@ -14,6 +14,7 @@ class Graph{
         this.nodesMenu = new CircularMenu($('#nodes-menu')[0]);
         /** @type CircularMenu */
         this.visibleMenu = undefined;
+        this.collection = CyGraphs.find({id_tipo_doc: this.id});
     }
 
     showMenu(type, ...args) {
@@ -64,8 +65,8 @@ class Graph{
      * @param data: Object
      * @return Nodes
      */
-    getNodeByData(data){
-        return this.nodes.find(ele => ele.data.id === data.id);
+    getElementByData(group, data){
+        return this[group].find(ele => ele.data.id === data.id);
     }
 
     /**
@@ -73,8 +74,8 @@ class Graph{
      * @param id: String identificador único na collection Nodes
      * @return Nodes
      */
-    getNodeById(id){
-        return this.nodes.find(ele => ele._id === id);
+    getElementById(group, id){
+        return this[group].find(ele => ele._id === id);
     }
 
     _tempNode(){
@@ -102,9 +103,15 @@ class Graph{
         });
     }
     
+    _registerEventHandlers(){
+        this.cy.on(FluxoEventHandlers.cytoscape);
+        this.cy.nodes().on(FluxoEventHandlers.nodes);
+        this.cy.edges().on(FluxoEventHandlers.edges);
+    }
+    
     addElement(group, element){
         this[group].push(element);
-        this.cy.add(element);
+        this.cy.add(element).on(FluxoEventHandlers[group]);
     }
 
     removeElement(group, element){
@@ -137,6 +144,7 @@ class Graph{
     load(elements){
         elements.forEach(element => this[element.group].push(element));
         this.cy.add(elements);
+        this._registerEventHandlers();
         return this;
     }
     
