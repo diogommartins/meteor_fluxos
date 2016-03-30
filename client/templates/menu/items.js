@@ -8,9 +8,10 @@ Template.menuItem.helpers({
 });
 
 Template.menuItem.events({
-    'click a': function(event, template){
-        const node = window.graph.nodesMenu.currentItem;
+    'click': function(event, template){
+        event.preventDefault();
+        const item = window.graph.nodesMenu.currentItem;
         const menuItem = template.data;
-        menuItem.action(node);
+        menuItem.action(item);
     }
 });
