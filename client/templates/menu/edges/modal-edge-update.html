@@ -7,7 +7,7 @@
                     <h4 class="modal-title">Atualizar aresta "{{edge.data.name}}"</h4>
                 </div>
                 <div class="modal-body">
-                    {{#autoForm id="updateEdge" type="method-update" meteormethod="updateEdgeData" schema=Schemas.EdgeSchema doc=edge autosave=autoSaveMode}}
+                    {{#autoForm id="updateEdge" type="method-update" meteormethod="updateEdgeData" schema=Schemas.EdgeSchema doc=edge autosave=autoSaveMode trimStrings=false autosaveOnKeyup=true}}
                         {{> afQuickField name="data.id" readonly=isAdmin}}
                         {{> afQuickField name="data.name"}}
                         {{> afQuickField name="data.source" readonly=isAdmin}}
