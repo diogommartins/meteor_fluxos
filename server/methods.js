@@ -1,26 +1,27 @@
 /**
  * Created by diogomartins on 3/10/16.
  */
+var apiClient = new Unirio.API(API_KEY, Unirio.APIServers.PRODUCTION);
+
 Meteor.methods({
     getFluxo: function(id_tipo_doc){
-        const url = "http://sistemas.unirio.br/api/V_FLUXOS?FORMAT=JSON&LMAX=100&ID_TIPO_DOC="+id_tipo_doc+"&IND_ATIVO=S&API_KEY=9287c7e89bc83bbce8f9a28e7d448fa7366ce23f163d2c385966464242e0b387e3a34d0e205cb775d769a44047995075&LMIN=1";
-        console.log("Consultando: " + url);
+        let fluxos = apiClient.get('V_FLUXOS', {
+            ID_TIPO_DOC: id_tipo_doc,
+            LMIN: 1,
+            LMAX: 1000
+        });
+        const graph = new FluxosParser(id_tipo_doc, fluxos.content).parse();
 
-        const result = HTTP.get(url);
-        if (result.statusCode == 200){
-            const fluxos = result.data.content;
-            const graph = new FluxosParser(id_tipo_doc, fluxos).parse();
+        Meteor.call('updateGraphDefinitions', graph);
 
-            Meteor.call('updateGraphDefinitions', graph);
+        const edges = Edges.find({id_tipo_doc: id_tipo_doc}).fetch();
+        const nodes = Nodes.find({id_tipo_doc: id_tipo_doc}).fetch();
 
-            const edges = Edges.find({id_tipo_doc: id_tipo_doc}).fetch();
-            const nodes = Nodes.find({id_tipo_doc: id_tipo_doc}).fetch();
-
-            return edges.concat(nodes);
-        }
-        else{
-            console.log("ERRO AO CONSULTAR TIPO " + id_tipo_doc);
-        }
+        return edges.concat(nodes);
+    },
+    searchFluxos: function(name){
+        let fluxos = apiClient.get('V_TIPOS_DOC', {DESCR_TIPO_DOC: name, LMIN: 1, LMAX: 100} )
+        return fluxos.content;
     },
     /**
      * 
@@ -57,6 +58,7 @@ Meteor.methods({
         return Nodes.update({_id: node._id}, {$set: data});
     },
     updateNodeData2: function(modifier, _id){
+        console.log(`Atualizou no ${_id}    metodo deve ser renomeado`);
         return Nodes.update({_id: _id}, modifier);
     },
     /**
