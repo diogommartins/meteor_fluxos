@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="modal-body">
-                    {{#autoForm id="updateNode" type="method-update" meteormethod="updateNodeData2" schema=Schemas.NodeSchema doc=node autosaveOnKeyup=true autosave=autoSaveMode}}
+                    {{#autoForm id="updateNode" type="method-update" meteormethod="updateNodeData2" schema=Schemas.NodeSchema doc=node autosaveOnKeyup=true}}
                         {{> afQuickField name="data.id" readonly=isAdmin}}
                         {{> afQuickField name="data.name"}}
                         {{> afQuickField name="data.tipo" readonly=isAdmin}}
