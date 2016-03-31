@@ -1,0 +1,24 @@
+<template name="graphControlls">
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default save-graph">
+            <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span> Salvar
+        </button>
+        <!-- layout selection -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle layout-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Mudar Layout <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                {{#each layouts}}
+                    <li><a href="#">{{name}}</a></li>
+                {{/each}}
+            </ul>
+        </div>
+        <!-- Autosave On/off -->
+        {{> autoSaveButton}}
+    </div>
+</template>
+
+<template name="autoSaveButton">
+    <button type="button" class="btn {{btnClass}} autosave-mode-toggler">{{btnContent}}</button>
+</template>
