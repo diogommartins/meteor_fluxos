@@ -1,0 +1,25 @@
+<template name="detailsNode">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Detalhes do nó</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="modal-title">Connected Edges</h4>
+                    <ul>
+                    {{#each connectedEdges}}
+                        <li>{{name}}</li>
+                    {{/each}}
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>

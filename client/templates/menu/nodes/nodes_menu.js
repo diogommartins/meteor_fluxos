@@ -7,7 +7,7 @@ Template.nodesMenu.helpers({
         {href:"#/", icon:"fa-plus-square-o", content:"Inserir", action: node => console.log('Insert ', {node: node})},
         {href:"#/", icon:"fa-pencil-square-o", content:"Editar", action: node => Modal.show('updateNode', {node: node}) },
         {href:"#/", icon:"fa-trash-o", content:"Deletar", action: node => Meteor.call('removeNode', node)},
-        {href:"#/", icon:"fa-info", content:"Detalhes", action: node => console.log('Detalhes ', {node: node})}
+        {href:"#/", icon:"fa-info", content:"Detalhes", action: node => Modal.show('detailsNode', node) }
     ]
 });
 
