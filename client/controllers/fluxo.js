@@ -22,9 +22,14 @@ Template.graphContainer.created = function(){
                     }
                 },
                 removed: function(_id){
-                    let node = graph.getElementById('edges', _id);
-                    graph.removeElement('nodes', node);
+                    let edge = graph.getElementById('edges', _id);
+                    graph.removeElement('edges', edge);
                     graph.refresh();
+                    if (typeof graph.visibleMenu !== 'undefined'){
+                        if (graph.visibleMenu.currentItem._id === edge._id){
+                            graph.hideMenu();
+                        }
+                    }
                 }
             });
 
