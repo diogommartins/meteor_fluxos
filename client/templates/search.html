@@ -1,0 +1,16 @@
+<template name="search">
+    <form id="processoSearchForm">
+        <input type="search" name="fluxo" placeholder="Digite o nome de um processo" />
+    </form>
+    <div>
+        <ul class="list-group">
+        {{#each searchResults}}
+            {{> searchResult}}
+        {{/each}}
+            </ul>
+    </div>
+</template>
+
+<template name="searchResult">
+    <li class="list-group-item"><a href="/fluxo/{{ID_TIPO_DOC}}">{{DESCR_TIPO_DOC}}</a></li>
+</template>
