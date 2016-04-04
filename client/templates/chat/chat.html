@@ -54,7 +54,8 @@
 
             <form action="#" class="new-message">
                 <div class="input-group">
-                    <input type="text" name="message" placeholder="Tava no fluxo..." class="form-control" {{disabledAttr}}>
+                    <input type="text" name="message" placeholder={{newMessagePlaceholder}}
+                        class="form-control" {{disabledAttr}}>
                   <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary btn-flat {{disabledAttr}}">Enviar</button>
                   </span>
@@ -68,7 +69,7 @@
 
 
 <template name="chatMessage">
-    <!-- Message. Default to the left -->
+    <!-- Message -->
     <div class="direct-chat-msg {{#if isRight}}right{{/if}}">
         <div class="direct-chat-info clearfix">
             <span class="direct-chat-name pull-left">{{username}}</span>

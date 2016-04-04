@@ -29,6 +29,10 @@ Template.chatBox.helpers({
     },
     disabledAttr: function(){
         return Meteor.user() ? '' : 'disabled';
+    },
+    newMessagePlaceholder: function(){
+        const user = Meteor.user();
+        return user ? `Comunique-se, ${user.username}!` : "Autentique-se para enviar mensagens"
     }
 });
 
@@ -43,9 +47,11 @@ Template.chatMessage.helpers({
 
 Template.chatBox.rendered = function(){
     Template.chatMessage.rendered = function(){
-        const FIXER_GAMBI = 50;
-        const $container = $(".direct-chat-messages");
+        if (Session.get("chat").autoScrollEnabled) {
+            const FIXER_GAMBI = 50;
+            const $container = $(".direct-chat-messages");
 
-        $container.scrollTop($container[0].scrollHeight + FIXER_GAMBI);
+            $container.scrollTop($container[0].scrollHeight + FIXER_GAMBI);
+        }
     };
 };
