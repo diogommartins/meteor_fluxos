@@ -5,16 +5,15 @@ Template.chatBox.events({
     'submit .new-message': function(event, template){
         event.preventDefault();
 
-        const form = event.target;
-        const newMessage = form.message.value;
+        const newMessage = event.target.message;
 
         Chats.insert({
             id_tipo_doc: this.id_tipo_doc,
-            content: newMessage,
+            content: newMessage.value,
             timestamp: new Date()
         });
 
-        form.message.value = "";
+        newMessage.value = "";
     }
 });
 
@@ -27,6 +26,9 @@ Template.chatBox.helpers({
             usernames: "Um e dois",
             count: 6
         }
+    },
+    disabledAttr: function(){
+        return Meteor.user() ? '' : 'disabled';
     }
 });
 
@@ -38,3 +40,12 @@ Template.chatMessage.helpers({
         return this.createdBy === Meteor.userId();
     }
 });
+
+Template.chatBox.rendered = function(){
+    Template.chatMessage.rendered = function(){
+        const FIXER_GAMBI = 50;
+        const $container = $(".direct-chat-messages");
+
+        $container.scrollTop($container[0].scrollHeight + FIXER_GAMBI);
+    };
+};

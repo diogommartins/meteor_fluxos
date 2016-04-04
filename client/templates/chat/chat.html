@@ -2,7 +2,7 @@
     <!-- DIRECT CHAT PRIMARY -->
     <div class="box box-primary direct-chat direct-chat-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Direct Chat</h3>
+            <h3 class="box-title">Chat</h3>
 
             <div class="box-tools pull-right">
                 <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="{{onlineUsers.usernames}}">{{onlineUsers.count}}</span>
@@ -16,7 +16,7 @@
         <!-- /.box-header -->
         <div class="box-body">
             <!-- Conversations are loaded here -->
-            <div class="direct-chat-messages">
+            <div class="direct-chat-messages" id="asdasg">
 
                 <!-- /.direct-chat-msg -->
                 {{#each messages}}
@@ -51,11 +51,12 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+
             <form action="#" class="new-message">
                 <div class="input-group">
-                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                    <input type="text" name="message" placeholder="Tava no fluxo..." class="form-control" {{disabledAttr}}>
                   <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary btn-flat">Send</button>
+                    <button type="submit" class="btn btn-primary btn-flat {{disabledAttr}}">Enviar</button>
                   </span>
                 </div>
             </form>
