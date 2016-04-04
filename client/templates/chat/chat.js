@@ -47,7 +47,7 @@ Template.chatMessage.helpers({
 
 Template.chatBox.rendered = function(){
     Template.chatMessage.rendered = function(){
-        if (Session.get("chat").autoScrollEnabled) {
+        if (Session.get("chatAutoScrollEnabled")) {
             const FIXER_GAMBI = 50;
             const $container = $(".direct-chat-messages");
 
