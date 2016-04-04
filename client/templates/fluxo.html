@@ -1,7 +1,17 @@
 <template name="fluxo">
     <h2>{{name}}</h2>
+    
     {{> graphControlls}}
-    {{> graphContainer}}
+
+    <div class="row">
+        <div class="col-sm-8">
+            {{> graphContainer}}
+        </div>
+        <div class="col-sm-4">
+            {{> chatBox}}
+        </div>
+    </div>
+
 </template>
 
 <template name="graphContainer">
