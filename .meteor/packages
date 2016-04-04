@@ -32,3 +32,5 @@ aldeed:collection2
 aldeed:simple-schema
 dburles:collection-helpers
 michalvalasek:autoform-bootstrap-colorpicker
+accounts-ui
+accounts-password
