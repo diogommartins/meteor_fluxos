@@ -1,9 +1,9 @@
 .box {
-    position: relative;
+    position: absolute;
     border-radius: 3px;
     background: #ffffff;
     border-top: 3px solid #d2d6de;
-    margin-bottom: 20px;
+    margin-bottom: 120px;
     width: 100%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
@@ -275,7 +275,7 @@
     -o-transform: translate(0,  0);
     transform: translate(0,  0);
     padding: 10px;
-    height: 250px;
+    height: 600px;
     overflow: auto;
 }
 .direct-chat-msg, .direct-chat-text {
