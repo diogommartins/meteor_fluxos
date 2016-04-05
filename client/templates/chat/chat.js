@@ -32,7 +32,7 @@ Template.chatBox.helpers({
     },
     newMessagePlaceholder: function(){
         const user = Meteor.user();
-        return user ? `Comunique-se, ${user.username}!` : "Autentique-se para enviar mensagens"
+        return (typeof user !== 'undefined') ? `Comunique-se, ${user.username}!` : "Autentique-se para enviar mensagens"
     }
 });
 

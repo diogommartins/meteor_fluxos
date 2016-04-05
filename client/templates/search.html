@@ -1,13 +1,40 @@
 <template name="search">
-    <form id="processoSearchForm">
-        <input type="search" name="fluxo" placeholder="Digite o nome de um processo" />
-    </form>
-    <div>
-        <ul class="list-group">
-        {{#each searchResults}}
-            {{> searchResult}}
-        {{/each}}
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Manipulador de fluxos</h1>
+
+            <div class="featurette">
+                <div class="featurette-inner text-center">
+                    <form role="form" class="search" id="fluxoSearchForm">
+                        <br>
+                        <div class="input-group input-group-lg">
+                            <input type="search" name="fluxo" placeholder="Busque pelo nome do fluxo!" class="form-control fluxo-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <a href="/fluxo/217" class="btn btn-dark btn-lg">Debug ?</a>
+        </div>
+    </header>
+    <div id="search-results">
+        {{#if searchResults}}
+            <ul class="list-group">
+                {{#each searchResults}}
+                    {{> searchResult}}
+                {{/each}}
             </ul>
+            {{else}}
+            {{#if lastSearch}}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        Nenhum fluxo encontrado para <strong>"{{lastSearch}}"</strong>
+                </div>
+            {{/if}}
+        {{/if}}
     </div>
 </template>
 

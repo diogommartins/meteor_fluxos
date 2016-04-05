@@ -27,16 +27,16 @@ Template.graphControlls.events({
 
 Template.autoSaveButton.helpers({
     'btnClass': function(){
-        return Session.get('autoSaveMode') ? 'btn-success' : 'btn-danger';
+        return Session.get('autoSave') ? 'btn-success' : 'btn-danger';
     },
     'btnContent': function(){
-        return Session.get('autoSaveMode') ? 'Autosave ligado' : 'Autosave desligado';
+        return Session.get('autoSave') ? 'Autosave ligado' : 'Autosave desligado';
     }
 });
 
 Template.autoSaveButton.events({
     'click': function(){
-        Session.set('autoSaveMode', !Session.get('autoSaveMode'));
-        console.log("Toggling autosave ", Session.get('autoSaveMode'));
+        Session.set('autoSave', !Session.get('autoSave'));
+        console.log("Toggling autosave ", Session.get('autoSave'));
     }
 });
