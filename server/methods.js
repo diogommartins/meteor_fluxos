@@ -7,6 +7,7 @@ Meteor.methods({
     getFluxo: function(id_tipo_doc){
         let fluxos = apiClient.get('V_FLUXOS', {
             ID_TIPO_DOC: id_tipo_doc,
+            IND_ATIVO: 'S',
             LMIN: 1,
             LMAX: 1000
         });
@@ -20,7 +21,12 @@ Meteor.methods({
         return edges.concat(nodes);
     },
     searchFluxos: function(name){
-        let fluxos = apiClient.get('V_TIPOS_DOC', {DESCR_TIPO_DOC: name, LMIN: 1, LMAX: 100} )
+        let fluxos = apiClient.get('V_TIPOS_DOC', {
+            DESCR_TIPO_DOC: name, 
+            LMIN: 1, 
+            LMAX: 100,
+            ORDERBY: 'DESCR_TIPO_DOC'
+        }, ['ID_TIPO_DOC', 'DESCR_TIPO_DOC'] );
         return fluxos.content;
     },
     /**
@@ -103,5 +109,6 @@ Meteor.methods({
         Edges.remove({});
         Nodes.remove({});
         CyGraphs.remove({});
+        Chats.remove({});
     }
 });
