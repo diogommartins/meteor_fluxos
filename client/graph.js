@@ -15,6 +15,14 @@ class Graph{
         /** @type CircularMenu */
         this.visibleMenu = undefined;
         this.collection = CyGraphs.find({id_tipo_doc: this.id});
+        this._plugins = {};
+    }
+    
+    registerPlugin(name, plugin){
+        plugin.graph = this;
+        this._plugins[name] = plugin;
+        
+        return this;
     }
 
     showMenu(type, ...args) {
@@ -107,6 +115,11 @@ class Graph{
         this.cy.on(FluxoEventHandlers.cytoscape);
         this.cy.nodes().on(FluxoEventHandlers.nodes);
         this.cy.edges().on(FluxoEventHandlers.edges);
+        
+        for(let p in this._plugins){
+            if (typeof this._plugins[p].eventHandlers === 'function')
+                this.cy.on(this._plugins[p].eventHandlers());
+        }
     }
     
     addElement(group, element){
