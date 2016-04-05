@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0ed89de-7268-4f61-be55-2aa3fb952dd7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/templates/menu/nodes/add_edge.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/menu/edges_menu.html" afterPath="$PROJECT_DIR$/client/templates/menu/edges/edges_menu.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/menu/edges_menu.js" afterPath="$PROJECT_DIR$/client/templates/menu/edges/edges_menu.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/menu/nodes_menu.html" afterPath="$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/templates/menu/nodes_menu.js" afterPath="$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js" />
+    <list default="true" id="a0ed89de-7268-4f61-be55-2aa3fb952dd7" name="Default" comment="Configurações rela">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/packages/unirio-api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_npm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sie_fluxos.iml" afterPath="$PROJECT_DIR$/.idea/sie_fluxos.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/methods.js" afterPath="$PROJECT_DIR$/server/methods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
     </list>
     <ignored path="sie_fluxos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,12 +29,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="methods.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="methods.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/methods.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8036649">
-              <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+            <state relative-caret-position="150">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="private-constants.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/lib/private-constants.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+              <folding>
+                <element signature="e#0#46#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/templates/search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controlls.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/controlls.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#46#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -42,39 +76,21 @@
       <file leaf-file-name="fluxo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/controllers/fluxo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-66.666664">
-              <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="27" />
+            <state relative-caret-position="90">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nodes_menu.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js">
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/templates/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-32.77778">
-              <caret line="59" column="44" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_edge.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/add_edge.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="12" column="88" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edges_menu.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/templates/menu/edges/edges_menu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.125">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="420">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#46#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,9 +100,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="tsconfig.json" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="tsconfig.json" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -97,54 +113,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/fluxos.css" />
-        <option value="localhost:3000/app/client/fluxos_nodes.js?c9fe5d5cb2fc872cd35436ddbcc993669e04dab0" />
-        <option value="$PROJECT_DIR$/client/stylesheets/cirtular_menu.css" />
-        <option value="$PROJECT_DIR$/fluxos.js" />
-        <option value="localhost:3000/app/client/templates/circular_menu.js?68e6228b6d0dfdbc99b28e216cf95daa7d973987" />
-        <option value="$PROJECT_DIR$/config/config.modernizr.json" />
-        <option value="$PROJECT_DIR$/client/templates/modernizr.js" />
-        <option value="$PROJECT_DIR$/client/templates/config.modernizr.json" />
-        <option value="localhost:3000/app/client/templates/circular_menu.js?1a1fd21a11689edd93dbce6ea5ed37a82e9a5a59" />
-        <option value="$PROJECT_DIR$/fluxos.html" />
-        <option value="$PROJECT_DIR$/client/stylesheets/circular_menu.css" />
-        <option value="$PROJECT_DIR$/client/templates/circular_menu.html" />
-        <option value="localhost:3000/app/client/fluxos_nodes.js?3e2ca9df21cf0331b1760faf28680dddf31a400e" />
-        <option value="localhost:3000/app/client/graph_menu.js?3f9537714e5a42fe047a0aca9517674e2af45ef9" />
-        <option value="$PROJECT_DIR$/client/templates/circular_menu.js" />
-        <option value="$PROJECT_DIR$/client/fluxos_nodes.js" />
-        <option value="$PROJECT_DIR$/lib/schemas/graph.js" />
-        <option value="$PROJECT_DIR$/lib/schemas.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/edges/edges_menu.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/edges/update_edge.html" />
+        <option value="$PROJECT_DIR$/lib/collections.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/edges/update_edge.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/nodes/update_node.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/nodes/update_node.html" />
+        <option value="$PROJECT_DIR$/client/templates/menu/edges/modal-edge-update.html" />
+        <option value="$PROJECT_DIR$/client/templates/menu/nodes/modal-node-update.js" />
         <option value="$PROJECT_DIR$/.meteor/packages" />
-        <option value="localhost:3000/app/lib/collections.js?870efcab7df15d0f2d90455ce337d2c161a0b493" />
-        <option value="localhost:3000/app/client/templates/fluxo.js?19e503508f330b88ddbbac1941a1768c3fe429b4" />
-        <option value="localhost:3000/app/client/graph.js?dd64f9d085590959d79481a13ce2fb2edb577c89" />
-        <option value="localhost:3000/app/client/graph.js?c78e3531fcaf8d21b361ca31773084b2dcdebaf0" />
-        <option value="localhost:3000/app/client/templates/menu/items.js?2c289a1c8a35154bffab12768a298923266e392b" />
-        <option value="$PROJECT_DIR$/client/templates/menu/items.js" />
-        <option value="localhost:3000/app/client/templates/fluxo.js?14844d22444b44c98cce283f3047763d757ed2e9" />
-        <option value="localhost:3000/app/client/graph.js?e86b6d2e3ac6a242ddc98c90c9c5b4523a99d5e3" />
-        <option value="localhost:3000/app/client/graph.js?d8201adbe49a974e3e5356b9a96e0c9bee703dfd" />
-        <option value="localhost:3000/app/client/templates/fluxo.js?7338f7fe38ba7d016936a283fead9b714fc47619" />
-        <option value="localhost:3000/app/client/templates/fluxo.js?18a526a094aa9e598f7a70ff564f7e033830094f" />
-        <option value="localhost:3000/app/client/templates/fluxo.js?ac42756673cb35ad32dc2e30f11b4403493ba165" />
-        <option value="$PROJECT_DIR$/client/templates/fluxo.js" />
+        <option value="$PROJECT_DIR$/client/templates/button-autosave.js" />
+        <option value="$PROJECT_DIR$/client/templates/button-autosave.html" />
+        <option value="$PROJECT_DIR$/server/packages/unirio-api.js" />
+        <option value="$PROJECT_DIR$/server/private/constants.js" />
+        <option value="$PROJECT_DIR$/server/private-constants.js" />
+        <option value="$PROJECT_DIR$/client/templates/menu/nodes/modal-node-update.html" />
+        <option value="$PROJECT_DIR$/packages/api/package.js" />
+        <option value="$PROJECT_DIR$/.meteor/local/build/programs/server/app/server/startup/accounts-ldap.js" />
+        <option value="$PROJECT_DIR$/server/startup/accounts-ldap.js" />
+        <option value="$PROJECT_DIR$/client/startup/accounts-config.js" />
+        <option value="localhost:3000/app/client/templates/login/login.js?50244196431e80d575784cb0848c71d248aae2b7" />
+        <option value="$PROJECT_DIR$/client/stylesheets/login.css" />
         <option value="$PROJECT_DIR$/lib/routes.js" />
+        <option value="$PROJECT_DIR$/client/templates/login/form.js" />
+        <option value="$PROJECT_DIR$/client/templates/login/login.js" />
+        <option value="$PROJECT_DIR$/client/templates/login/login.html" />
+        <option value="$PROJECT_DIR$/client/templates/main.html" />
+        <option value="$PROJECT_DIR$/client/templates/navbar/navbar.js" />
+        <option value="$PROJECT_DIR$/client/templates/controlls.html" />
         <option value="$PROJECT_DIR$/client/templates/fluxo.html" />
         <option value="$PROJECT_DIR$/client/stylesheets/fluxos.css" />
-        <option value="$PROJECT_DIR$/client/graph.js" />
-        <option value="$PROJECT_DIR$/server/lib/parsers.js" />
-        <option value="$PROJECT_DIR$/client/templates/menu/modals.html" />
-        <option value="$PROJECT_DIR$/client/templates/menu/nodes_menu.html" />
-        <option value="$PROJECT_DIR$/client/templates/menu/nodes_menu.js" />
-        <option value="$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.html" />
-        <option value="localhost:3000/app/client/templates/menu/nodes/nodes_menu.js?e1edc42d6ec4ab380227a223a1d7923049b1dad1" />
-        <option value="$PROJECT_DIR$/lib/collections.js" />
-        <option value="$PROJECT_DIR$/client/controllers/fluxo.js" />
+        <option value="$PROJECT_DIR$/client/templates/chat/chat.html" />
         <option value="$PROJECT_DIR$/server/methods.js" />
-        <option value="$PROJECT_DIR$/client/graph_menu.js" />
-        <option value="$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js" />
-        <option value="$PROJECT_DIR$/client/templates/menu/nodes/add_edge.html" />
+        <option value="$PROJECT_DIR$/client/constants/constants.js" />
+        <option value="$PROJECT_DIR$/client/templates/search.js" />
+        <option value="$PROJECT_DIR$/client/stylesheets/landing.css" />
+        <option value="$PROJECT_DIR$/client/stylesheets/chat.css" />
+        <option value="$PROJECT_DIR$/client/templates/chat/chat.js" />
+        <option value="$PROJECT_DIR$/client/templates/controlls.js" />
+        <option value="localhost:3000/app/client/controllers/event_handlers.js?0b03cf8b7ad20bd7406871fbd3f55cd7becaab87" />
+        <option value="localhost:3000/app/client/controllers/event_handlers.js?add1a1794e83ec0cedb567dd1319cf8f020bdc66" />
+        <option value="$PROJECT_DIR$/client/controllers/event_handlers.js" />
+        <option value="$PROJECT_DIR$/client/draw.js" />
+        <option value="$PROJECT_DIR$/client/startup/helpers.js" />
+        <option value="$PROJECT_DIR$/client/graph.js" />
+        <option value="localhost:3000/app/client/graph.js?4a333e3e011c5d2c5c8b3fe8226529f095de1264" />
+        <option value="$PROJECT_DIR$/lib/position.js" />
+        <option value="$PROJECT_DIR$/client/sketcher.js" />
+        <option value="$PROJECT_DIR$/client/controllers/fluxo.js" />
+        <option value="$PROJECT_DIR$/client/templates/navbar/navbar.html" />
+        <option value="$PROJECT_DIR$/client/templates/search.html" />
       </list>
     </option>
   </component>
@@ -155,8 +174,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="725" />
+    <option name="width" value="1920" />
+    <option name="height" value="1005" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -209,12 +228,11 @@
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
-      <sortByType />
+      <sortByType ProjectPane="true" />
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,6 +273,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="startup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -269,6 +323,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -323,59 +413,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sie_fluxos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sie_fluxos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nodes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sie_fluxos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sie_fluxos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edges" />
+              <option name="myItemId" value="navbar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,7 +449,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="startup" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sie_fluxos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="constants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,6 +501,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -442,14 +517,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="js.last.introduce.type" value="VAR" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/client/templates/menu/nodes" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/server/lib" />
+      <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/client/templates/menu/edges" />
-      <recent name="$PROJECT_DIR$/client/controllers" />
-      <recent name="$PROJECT_DIR$/lib" />
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client/templates/menu/nodes" />
     </key>
   </component>
   <component name="RunManager" selected="Meteor.Run Meteor">
@@ -459,7 +535,9 @@
     <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
@@ -476,6 +554,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
@@ -486,6 +565,7 @@
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run-script" />
       <scripts />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
@@ -502,6 +582,7 @@
       <method />
     </configuration>
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>/usr/local/bin/node</node-interpreter>
       <node-options />
       <working-directory>$PROJECT_DIR$</working-directory>
       <pass-parent-env>true</pass-parent-env>
@@ -533,9 +614,11 @@
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Run Meteor JavaScript" />
     </list>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="StructureViewFactory">
-    <option name="ACTIVE_ACTIONS" value=",HIDE_INHERITED" />
+    <option name="ACTIVE_ACTIONS" value=",HIDE_INHERITED,ALPHA_COMPARATOR,SHOW_CLASSES" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -545,252 +628,385 @@
       <changelist id="a0ed89de-7268-4f61-be55-2aa3fb952dd7" name="Default" comment="" />
       <created>1457474765751</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1457474765751</updated>
       <workItem from="1458557324006" duration="63343000" />
       <workItem from="1458756363765" duration="6326000" />
       <workItem from="1459173233721" duration="1262000" />
-    </task>
-    <task id="LOCAL-00001" summary="Adicionado menu circular funcional mas ainda sem ligação direta com os edges">
-      <created>1457664581996</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1457664581997</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Refatoração">
-      <created>1457664599059</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1457664599059</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Consertando referencias incorretas">
-      <created>1458529932361</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1458529932361</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Pequena refatoração">
-      <created>1458537574458</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1458537574458</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Substituindo var self = this por notação arrow">
-      <created>1458561963448</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1458561963448</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Adicionado botão de salvar gráfico">
-      <created>1458592792570</created>
-      <option name="number" value="00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1458592792570</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Refatoração em métodos e adição de m'etodos para remoção de nó e salvar gráfo">
-      <created>1458595504714</created>
-      <option name="number" value="00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1458595504714</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Adicionadas coleções para nos, arestas e grafo completo&#10;">
-      <created>1458597776065</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1458597776065</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Adicionadas funcionalidades ao menu de nodes">
-      <created>1458599305756</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599305756</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Refatoração">
-      <created>1458599321534</created>
-      <option name="number" value="00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599321534</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Adicionado template para botão de salvar grafo">
-      <created>1458599339657</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599339657</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Controller de fluxo quebrado">
-      <created>1458599364535</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599364535</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Adicionado método para load de cyGraph e refatoração na estrutura da classe Graph">
-      <created>1458599395647</created>
-      <option name="number" value="00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599395647</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Refatoração do parser para garantir os tipos corretos">
-      <created>1458599431826</created>
-      <option name="number" value="00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599431826</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Adicionados novos pacotes ao meteor">
-      <created>1458599475122</created>
-      <option name="number" value="00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1458599475122</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Estrutura estável de adição e remoção de nós">
-      <created>1458681018528</created>
-      <option name="number" value="00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1458681018528</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Atualização  no tipo de position para suportar valores float">
-      <created>1458684921684</created>
-      <option name="number" value="00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1458684921684</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Atualizações em um node são refletidas a todos os clients">
-      <created>1458692478826</created>
-      <option name="number" value="00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1458692478826</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Correção no tipo de id_tipo_doc para que sempre seja Number">
-      <created>1458762948531</created>
-      <option name="number" value="00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1458762948531</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Adicionada collection e helpers para CyGraphs">
-      <created>1458762966630</created>
-      <option name="number" value="00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1458762966630</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Adicionado helper para exibição de nome do fluxo e visibleMenu agora acompanha eventos de drag de nodes">
-      <created>1458763506444</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1458763506444</updated>
+      <workItem from="1459336101430" duration="26137000" />
+      <workItem from="1459368681396" duration="8319000" />
+      <workItem from="1459430806648" duration="20500000" />
+      <workItem from="1459766314815" duration="46988000" />
     </task>
     <task id="LOCAL-00022" summary="Adicionado name ao template de fluxo">
       <created>1458763606564</created>
       <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
       <updated>1458763606564</updated>
     </task>
     <task id="LOCAL-00023" summary="Adicionado campo layout a CyGraph">
       <created>1458763785461</created>
       <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
       <updated>1458763785461</updated>
     </task>
     <task id="LOCAL-00024" summary="updateGraphDefinitions atualiza definições de CyGraph">
       <created>1458763866149</created>
       <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
       <updated>1458763866149</updated>
     </task>
     <task id="LOCAL-00025" summary="Refatoração">
       <created>1458763912906</created>
       <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
       <updated>1458763912906</updated>
     </task>
     <task id="LOCAL-00026" summary="Adição de pacote para helpers de collections">
       <created>1458763943921</created>
       <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
       <updated>1458763943921</updated>
     </task>
     <task id="LOCAL-00027" summary="Label de edges são exibidos em mouseover">
       <created>1459226945198</created>
       <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
       <option name="project" value="LOCAL" />
       <updated>1459226945198</updated>
     </task>
     <task id="LOCAL-00028" summary="Refatoração na estética do código">
       <created>1459229211558</created>
       <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
       <updated>1459229211558</updated>
     </task>
     <task id="LOCAL-00029" summary="Modificações na folha de estilo do grafo">
       <created>1459229255806</created>
       <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
       <updated>1459229255806</updated>
     </task>
     <task id="LOCAL-00030" summary="Correção no container de cy">
       <created>1459270484555</created>
       <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
       <updated>1459270484555</updated>
     </task>
     <task id="LOCAL-00031" summary="Correção na forma como as cores são geradas para os nós. As cores são mantidas ao longo de novas consultas e por todos os clientes">
       <created>1459275298714</created>
       <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
       <updated>1459275298714</updated>
     </task>
     <task id="LOCAL-00032" summary="Pequena refatoração">
       <created>1459279403906</created>
       <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
       <updated>1459279403906</updated>
     </task>
     <task id="LOCAL-00033" summary="Pequena refatoração">
       <created>1459279418281</created>
       <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
       <updated>1459279418281</updated>
     </task>
     <task id="LOCAL-00034" summary="correção de erros e debug mode on">
       <created>1459285659337</created>
       <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
       <updated>1459285659337</updated>
     </task>
     <task id="LOCAL-00035" summary="Pequenas mudanças estéticas">
       <created>1459285692561</created>
       <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
       <updated>1459285692561</updated>
     </task>
     <task id="LOCAL-00036" summary="Refatoração">
       <created>1459285848772</created>
       <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
       <updated>1459285848772</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Pequena refatoração. Itens correspondem a nodes ou edges">
+      <created>1459339178453</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1459339178453</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Correção de tipos de atributos de objetos edges">
+      <created>1459340738593</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1459340738593</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Correção da exibição dos menus para corrigir ordem de disparo de eventos">
+      <created>1459363277147</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1459363277147</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Refatoração para melhor modularização de eventhandlers do grafo">
+      <created>1459369751300</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1459369751300</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Pequenas refatorações">
+      <created>1459369880657</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1459369880657</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Refatorações em métodos para uso mais genérico">
+      <created>1459371791715</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1459371791715</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Remoção dos event handlers do controller e adição de edgesObserver e funcionalidades">
+      <created>1459371882699</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1459371882699</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Adição dos métodos insert e remove para edges e pequenas refatorações">
+      <created>1459371983983</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1459371983983</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Adicionado método para atualizar arestas">
+      <created>1459375002967</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1459375002967</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Adicionada atualização de dado de aresta">
+      <created>1459375364984</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1459375364984</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Adição de método temporário para atualziar node e pequenas refatorações">
+      <created>1459377688715</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1459377688715</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Refatoração nos nomes de arquivos e adição de novos forms">
+      <created>1459377720339</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1459377720339</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Adicionadas novas labels">
+      <created>1459377740568</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1459377740568</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Refatoração no nome dos arquivos">
+      <created>1459431929115</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1459431929131</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Adicionado autosave de forms de atualização">
+      <created>1459437288226</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1459437288227</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Refatoração na estrutura do projeto">
+      <created>1459439753756</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1459439753756</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Adicionada rota de busca de fluxos">
+      <created>1459446131783</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1459446131783</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Adicionado componente de colorPicker">
+      <created>1459453000672</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1459453000672</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Refatoração para utilizar a classe Unirio.Api">
+      <created>1459453066246</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1459453066246</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Adicionada função de busca na página principal">
+      <created>1459454765961</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1459454765961</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Refatoração em chat e desabilitando form quando usuário não estiver logado">
+      <created>1459785949371</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1459785949383</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Adicionado estilo a página inicial">
+      <created>1459794527453</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1459794527453</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Refatoração">
+      <created>1459794588074</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1459794588074</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Refatoração">
+      <created>1459800037743</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1459800037743</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Sem sucesso no estilo do chat">
+      <created>1459803162183</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1459803162183</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Adicionado helper para logo">
+      <created>1459812901721</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1459812901721</updated>
+    </task>
+    <task id="LOCAL-00063" summary="adicionada possibilidade de se adicionar plugins a Graph">
+      <created>1459815874841</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1459815874841</updated>
+    </task>
+    <task id="LOCAL-00064" summary="perfumaria css">
+      <created>1459815894342</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1459815894342</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Configurações relativas ao accounts-ldap da unirio">
+      <created>1459815927686</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1459815927686</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Refatoração de métodos para trazer somente o necessário nas consultas">
+      <created>1459815971319</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1459815971319</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Mudanças estéticas relacionadas a layout e ferramenta de busca de fluxos">
+      <created>1459816149536</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1459816149536</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Adicionado registro do plugin ao controller /fluxo">
+      <created>1459816708015</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1459816708015</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Comentando links que não existem">
+      <created>1459816867980</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1459816867980</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Adicioando botão para criação de fluxos">
+      <created>1459817372261</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1459817372261</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70931000" />
+    <option name="totallyTimeSpent" value="172875000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="725" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="1005" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.190625" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19062833" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858709" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19140625" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18423855" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33384147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33406353" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -807,390 +1023,445 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Adicionadas funcionalidades ao menu de nodes" />
-    <MESSAGE value="Adicionado template para botão de salvar grafo" />
-    <MESSAGE value="Controller de fluxo quebrado" />
-    <MESSAGE value="Adicionado método para load de cyGraph e refatoração na estrutura da classe Graph" />
-    <MESSAGE value="Refatoração do parser para garantir os tipos corretos" />
-    <MESSAGE value="Adicionados novos pacotes ao meteor" />
-    <MESSAGE value="Estrutura estável de adição e remoção de nós" />
-    <MESSAGE value="Atualização  no tipo de position para suportar valores float" />
-    <MESSAGE value="Atualizações em um node são refletidas a todos os clients" />
-    <MESSAGE value="Correção no tipo de id_tipo_doc para que sempre seja Number" />
-    <MESSAGE value="Adicionada collection e helpers para CyGraphs" />
-    <MESSAGE value="Adicionado helper para exibição de nome do fluxo e visibleMenu agora acompanha eventos de drag de nodes" />
-    <MESSAGE value="Adicionado name ao template de fluxo" />
-    <MESSAGE value="Adicionado campo layout a CyGraph" />
-    <MESSAGE value="updateGraphDefinitions atualiza definições de CyGraph" />
-    <MESSAGE value="Adição de pacote para helpers de collections" />
-    <MESSAGE value="Label de edges são exibidos em mouseover" />
-    <MESSAGE value="Refatoração na estética do código" />
-    <MESSAGE value="Modificações na folha de estilo do grafo" />
-    <MESSAGE value="Correção no container de cy" />
-    <MESSAGE value="Correção na forma como as cores são geradas para os nós. As cores são mantidas ao longo de novas consultas e por todos os clientes" />
-    <MESSAGE value="Pequena refatoração" />
-    <MESSAGE value="correção de erros e debug mode on" />
-    <MESSAGE value="Pequenas mudanças estéticas" />
+    <MESSAGE value="Adicionado método para atualizar arestas" />
+    <MESSAGE value="Adicionada atualização de dado de aresta" />
+    <MESSAGE value="Adição de método temporário para atualziar node e pequenas refatorações" />
+    <MESSAGE value="Refatoração nos nomes de arquivos e adição de novos forms" />
+    <MESSAGE value="Adicionadas novas labels" />
+    <MESSAGE value="Refatoração no nome dos arquivos" />
+    <MESSAGE value="Adicionado autosave de forms de atualização" />
+    <MESSAGE value="Refatoração na estrutura do projeto" />
+    <MESSAGE value="Adicionada rota de busca de fluxos" />
+    <MESSAGE value="Adicionado componente de colorPicker" />
+    <MESSAGE value="Refatoração para utilizar a classe Unirio.Api" />
+    <MESSAGE value="Adicionada função de busca na página principal" />
+    <MESSAGE value="Refatoração em chat e desabilitando form quando usuário não estiver logado" />
+    <MESSAGE value="Adicionado estilo a página inicial" />
     <MESSAGE value="Refatoração" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatoração" />
+    <MESSAGE value="Sem sucesso no estilo do chat" />
+    <MESSAGE value="Adicionado helper para logo" />
+    <MESSAGE value="adicionada possibilidade de se adicionar plugins a Graph" />
+    <MESSAGE value="perfumaria css" />
+    <MESSAGE value="Configurações relativas ao accounts-ldap da unirio" />
+    <MESSAGE value="Refatoração de métodos para trazer somente o necessário nas consultas" />
+    <MESSAGE value="Mudanças estéticas relacionadas a layout e ferramenta de busca de fluxos" />
+    <MESSAGE value="Adicionado registro do plugin ao controller /fluxo" />
+    <MESSAGE value="Comentando links que não existem" />
+    <MESSAGE value="Adicioando botão para criação de fluxos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicioando botão para criação de fluxos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/methods.js</url>
-          <line>69</line>
-          <option name="timeStamp" value="401" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js</url>
-          <line>59</line>
-          <option name="timeStamp" value="403" />
+          <url>file://$PROJECT_DIR$/client/templates/login/login.js</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="560" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="404" />
+      <option name="time" value="629" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="JavascriptDebugType">
+        <watch expression="arguments" language="JavaScript" />
+        <watch expression="event.originalEvent.x" language="JavaScript" />
+        <watch expression="event.originalEvent.y" language="JavaScript" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/graph_menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/stylesheets/circular_menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/graph_menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/graph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/stylesheets/fluxos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/stylesheets/fluxos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/fluxos_nodes.js?c9fe5d5cb2fc872cd35436ddbcc993669e04dab0">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.meteor/packages/jquery/1.11.4/web.browser/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/circular_menu.js?68e6228b6d0dfdbc99b28e216cf95daa7d973987">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/circular_menu.js?1a1fd21a11689edd93dbce6ea5ed37a82e9a5a59">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/fluxos_nodes.js?3e2ca9df21cf0331b1760faf28680dddf31a400e">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/graph_menu.js?3f9537714e5a42fe047a0aca9517674e2af45ef9">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/stylesheets/circular_menu.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/packages">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="490">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="http://localhost:3000/app/lib/collections.js?870efcab7df15d0f2d90455ce337d2c161a0b493">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/fluxo.js?19e503508f330b88ddbbac1941a1768c3fe429b4">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/graph.js?dd64f9d085590959d79481a13ce2fb2edb577c89">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/graph.js?c78e3531fcaf8d21b361ca31773084b2dcdebaf0">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/menu/items.js?2c289a1c8a35154bffab12768a298923266e392b">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/fluxo.js?14844d22444b44c98cce283f3047763d757ed2e9">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.meteor/packages/cytoscape_cytoscape/2.6.6/web.browser/dist/cytoscape.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/menu/edges/modal-edge-update.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4281" column="23" selection-start-line="4281" selection-start-column="23" selection-end-line="4281" selection-end-column="23" />
+        <state relative-caret-position="135">
+          <caret line="9" column="194" selection-start-line="9" selection-start-column="194" selection-end-line="9" selection-end-column="194" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.meteor/packages/cytoscape_cytoscape/2.6.6/web.browser/export.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/modal-node-update.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="135">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/menu/edges/modal-edge-update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/button-autosave.html" />
+    <entry file="file://$PROJECT_DIR$/client/templates/button-autosave.js" />
     <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/server/methods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        <state relative-caret-position="475">
+          <caret line="118" column="3" selection-start-line="118" selection-start-column="3" selection-end-line="118" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="http://localhost:3000/app/client/graph.js?e86b6d2e3ac6a242ddc98c90c9c5b4523a99d5e3">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/graph.js?d8201adbe49a974e3e5356b9a96e0c9bee703dfd">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/lib/collections.js">
+    <entry file="file://$PROJECT_DIR$/packages/api/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+        <state relative-caret-position="15">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/items.html">
+    <entry file="file://$PROJECT_DIR$/packages/api/package.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="51" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/fluxo.js?7338f7fe38ba7d016936a283fead9b714fc47619">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/fluxo.js?18a526a094aa9e598f7a70ff564f7e033830094f">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/fluxo.js?ac42756673cb35ad32dc2e30f11b4403493ba165">
-      <provider selected="true" editor-type-id="httpFileEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/stylesheets/fluxos.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53246754">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/server/lib/parsers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/graph.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32394367">
-          <caret line="170" column="14" selection-start-line="170" selection-start-column="14" selection-end-line="170" selection-end-column="14" />
+        <state relative-caret-position="150">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/lib/parsers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7251309">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state relative-caret-position="130">
+          <caret line="21" column="74" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.html">
+    <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/modal-node-update.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42857143">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state relative-caret-position="210">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/edges/edges_menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5104712">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/items.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43193716">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/edges/edges_menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.125">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="http://localhost:3000/app/client/templates/menu/nodes/nodes_menu.js?e1edc42d6ec4ab380227a223a1d7923049b1dad1">
+    <entry file="http://localhost:3000/app/client/templates/search.js?8edb6687a379ea9d2b3ace88ac80fc59fe095e1b">
       <provider selected="true" editor-type-id="httpFileEditor">
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/circular_menu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="65" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/packages/unirio-api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/local/build/programs/server/app/server/startup/accounts-ldap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/Meteor/lib/Meteor.jar!/tsMeteorStubs/meteor-v1.2.0.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="251" column="28" selection-start-line="251" selection-start-column="28" selection-end-line="251" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.1.8/web.browser/login_buttons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/app/client/templates/login/login.js?50244196431e80d575784cb0848c71d248aae2b7">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/login/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/controlls.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/fluxos.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/templates/fluxo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54545456">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/modals.html">
+    <entry file="file://$PROJECT_DIR$/client/startup/accounts-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77922076">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/collections.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/navbar/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07853403">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
+        <state relative-caret-position="30">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/chat.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/constants/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/app/client/controllers/event_handlers.js?0b03cf8b7ad20bd7406871fbd3f55cd7becaab87">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/app/client/controllers/event_handlers.js?add1a1794e83ec0cedb567dd1319cf8f020bdc66">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/chat/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="721">
+          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/startup/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="http://localhost:3000/app/client/graph.js?4a333e3e011c5d2c5c8b3fe8226529f095de1264">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/chat/chat.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-222">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/controllers/event_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/graph_menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31675392">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        <state relative-caret-position="313">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/add_edge.html">
+    <entry file="file://$PROJECT_DIR$/lib/position.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="12" column="88" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
+        <state relative-caret-position="90">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/templates/menu/nodes/nodes_menu.js">
+    <entry file="file://$PROJECT_DIR$/client/sketcher.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-32.77778">
-          <caret line="59" column="44" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="44" />
+        <state relative-caret-position="148">
+          <caret line="69" column="20" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/graph.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/startup/accounts-ldap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/lib/private-constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/controlls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/navbar/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/stylesheets/landing.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/controllers/fluxo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-66.666664">
-          <caret line="134" column="8" selection-start-line="134" selection-start-column="8" selection-end-line="134" selection-end-column="27" />
+        <state relative-caret-position="90">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/methods.js">
+    <entry file="file://$PROJECT_DIR$/client/templates/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8036649">
-          <caret line="69" column="45" selection-start-line="69" selection-start-column="45" selection-end-line="69" selection-end-column="45" />
+        <state relative-caret-position="420">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#46#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/templates/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
