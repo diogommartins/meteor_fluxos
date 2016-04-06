@@ -17,8 +17,7 @@ Meteor.methods({
 
 
 Accounts.onLogin(function(info){
-    if (info.methodName === "login"){
-        console.log("Logging in!");
+    if ((info.methodName === "login") && (info.type !== "resume")){
         const user = info.user;
 
         const result = apiClient.get('V_PESSOAS_FOTO', {
