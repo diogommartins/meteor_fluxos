@@ -1,28 +1,37 @@
 class CanvasSketcher{
     /**
      * 
-     * @param $canvas: jQuery
+     * @param canvasContainer: jQuery
      * @param color: String
      * @param lineWidth: Number
      */
-    constructor($canvas, color="black", lineWidth=2){
-        this.$canvas = $canvas;
-        this.canvas = this.$canvas[0];
+    constructor(canvasContainer, color="black", lineWidth=2){
+        this.canvasContainer = canvasContainer;
         
+        this.$canvas = this._makeCanvas(); 
+        this.canvas = this.$canvas[0];
         
         this.ctx = this.canvas.getContext("2d");
         this.color = color;
         this.lineWidth = lineWidth;
 
-        this.canvasWidth = this.canvas.width;
-        this.canvasheight = this.canvas.height;
-
-        this._isInitialDot = true;
-
         this.previousPosition = this._emptyPosition();
         this.currentPosition = this._emptyPosition();
         /** @type Graph **/
         this.graph = undefined;
+    }
+
+    _makeCanvas(){
+        const cyLayer = this.canvasContainer.children('canvas:first');
+        let newCanvas = $('<canvas/>',{
+            'class':'sketcher-canvas',
+            id: 'sketcher-canvas'
+        }).prop({
+            width: cyLayer.width(),
+            height: cyLayer.height()
+        });
+        this.canvasContainer.append(newCanvas);
+        return newCanvas;
     }
 
     _emptyPosition(){
@@ -31,14 +40,14 @@ class CanvasSketcher{
 
     /**
      * 
-     * @param event: MouseEvent
+     * @param position: {{x:Number, y:Number}}
      * @private
      */
-    _updatePositions(event){
+    _updatePositions(position){
         this.previousPosition.x = this.currentPosition.x;
         this.previousPosition.y = this.currentPosition.y;
 
-        this.currentPosition = this.graph.relativePosition(event.cyRenderedPosition);
+        this.currentPosition = this.graph.relativePosition(position);
     }
 
     drawToContext() {
@@ -59,12 +68,7 @@ class CanvasSketcher{
     }
 
     clearContextArea(){
-        this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasheight);
-    }
-
-    registerEventHandlers(){
-        this.$canvas.on(this.eventHandlers());
-        return this;
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     eventHandlers(){
@@ -72,7 +76,7 @@ class CanvasSketcher{
         return {
             'mousemove': function(event){
                 if (event.originalEvent.shiftKey){
-                    self._updatePositions(event);
+                    self._updatePositions(event.cyRenderedPosition);
                     self.drawToContext()
                 } else if(typeof self.currentPosition.x !== 'undefined'){
                     self.currentPosition = self._emptyPosition();

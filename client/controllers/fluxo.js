@@ -6,8 +6,8 @@ Template.graphContainer.created = function(){
         const graph = new Graph(id_tipo_doc).renderGraph();
 
         graph.cy.ready(function () {
-            const $canvas = $("canvas[data-id=layer0-selectbox]");
-            graph.registerPlugin('canvasSketcher', new CanvasSketcher($canvas));
+            const graphCanvasContainer = $(graph.container).children('div');
+            graph.registerPlugin('canvasSketcher', new CanvasSketcher(graphCanvasContainer));
             
             const layout = graph.collection.fetch()[0].layout;
             graph.load(elements).applyStyle(layout);
