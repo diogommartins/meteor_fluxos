@@ -2,8 +2,9 @@
  * Created by diogomartins on 3/10/16.
  */
 class Graph{
-    constructor(id){
+    constructor(id, containerId='cy'){
         this.id = id;
+        this.container = document.getElementById(containerId);
         this.edges = [];
         this.nodes = [];
         this.nodeColors = {};
@@ -210,7 +211,7 @@ class Graph{
     renderGraph(){
         var self = this;
         this.cy = cytoscape({
-            container: document.getElementById('cy'),
+            container: this.container,
 
             zoom: 1,
             zoomingEnabled: false,
