@@ -21,8 +21,3 @@ Template.modalLogin.events({
     }
 });
 
-Template.modalLogin.helpers({
-    merda: function(){
-        return currentUser;
-    }    
-});

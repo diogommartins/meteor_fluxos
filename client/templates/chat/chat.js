@@ -32,16 +32,23 @@ Template.chatBox.helpers({
     },
     newMessagePlaceholder: function(){
         const user = Meteor.user();
-        return (typeof user !== 'undefined') ? `Comunique-se, ${user.username}!` : "Autentique-se para enviar mensagens"
+        return (typeof user !== 'undefined') ? `Comunique-se, ${user.firstname()}!` : "Autentique-se para enviar mensagens"
     }
 });
 
 Template.chatMessage.helpers({
     username: function(){
-        return this.creator().username;
+        return this.creator().shortname();
     },
     isRight: function(){
         return this.createdBy === Meteor.userId();
+    },
+    avatar: function(){
+        const user = this.creator();
+        if (typeof user.profile.avatar === 'string'){
+            return user.profile.avatar;
+        }
+        return "http://bootdey.com/img/Content/user_1.jpg" 
     }
 });
 
