@@ -14,6 +14,12 @@ Template.chatBox.events({
         });
 
         newMessage.value = "";
+    },
+    "click [data-widget='remove']": function(event, template){
+        $(event.delegateTarget).hide();
+    },
+    "click [data-widget='collapse']": function(event, template){
+        $(event.delegateTarget).find('.box-body').slideToggle('slow');
     }
 });
 
