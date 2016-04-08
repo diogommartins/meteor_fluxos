@@ -7,6 +7,8 @@ class FluxosParser{
         this.fluxos = fluxos;
         this._edges = [];
         this._nodes = [];
+        this._nodesPrefrix = 'node_';
+        this._edgesPrefrix = 'edge_'
     }
 
     hasNode(node){
@@ -17,7 +19,7 @@ class FluxosParser{
         const node = {
             id_tipo_doc: this.id,
             data: {
-                id: String(name),
+                id: 'node_' + String(name),
                 name: String(name),
                 tipo: String(fluxo.TIPO_DESTINO) + String(fluxo.ID_DESTINO),
                 id_tipo_doc: this.id
@@ -48,9 +50,9 @@ class FluxosParser{
             this._edges.push({
                 id_tipo_doc: this.id,
                 data: {
-                    id: String(fluxo.ID_FLUXO),
-                    source: String(fluxo.SITUACAO_ATUAL),
-                    target: String(fluxo.SITUACAO_FUTURA),
+                    id: this._edgesPrefrix + String(fluxo.ID_FLUXO),
+                    source: this._nodesPrefrix + String(fluxo.SITUACAO_ATUAL),
+                    target: this._nodesPrefrix + String(fluxo.SITUACAO_FUTURA),
                     name: String(fluxo.DESCR_FLUXO).trim(),
                     id_tipo_doc: this.id
                 },
