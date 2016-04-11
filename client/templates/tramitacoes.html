@@ -1,0 +1,71 @@
+<template name="tramitacoes">
+    <div class="container">
+    <h2>Número do Processo</h2>
+        <div class="row">
+            {{#unless isGraphRendered}}
+                {{> spinner}}
+            {{/unless}}
+            <div class="col-md-6">
+                <!-- Animation controls -->
+                {{#if isGraphRendered}}
+
+
+                    <ul class="timeline">
+                        {{#each items}}
+                            {{> tramitacaoTimelineItem}}
+                        {{/each}}
+                    </ul>
+
+                {{/if}}
+            </div>
+
+            <div class="col-md-6">
+                <div id="graph-column" data-spy="affix" data-offset-top="100">
+                    {{#if isGraphRendered}}
+                        <button type="button" class="btn btn-default btn-lg play-animation" data-loading-text="Em uso...">
+                            Play
+                        </button>
+                        {{> tramitacoesSlider}}
+                    {{/if}}
+                    <div id="cy"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Fim tramitaçÕes-->
+
+<template name="tramitacaoItem">
+    <a href="#" class="list-group-item {{active}}">
+        <div class="tramitacao-item-de">Enviado por: {{ORIGEM}}</div>
+        <div class="tramitacao-item-de">Recebido por: {{recebido}}</div>
+
+        <p class="list-group-item-text">{{description}}</p>
+    </a>
+</template>
+
+
+<template name="tramitacoesSlider">
+    <div id="slider"></div>
+</template>
+
+
+
+<template name="tramitacaoTimelineItem">
+    <li class="{{cls}}">
+        <div class="timeline-badge {{#if active}}primary{{/if}} {{#if passed}}success{{/if}}">
+            {{#if passed}}<i class="glyphicon glyphicon-check"></i>{{/if}} {{SEQUENCIA}}
+        </div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <!--<h4 class="timeline-title"></h4> -->
+                {{DESCR_FLUXO}}
+                <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <a href="#" data-toggle="tooltip" title={{dtDespacho.calendar}}>{{dtDespacho.relative}}</a></small></p>
+            </div>
+            <div class="timeline-body">
+                <p><strong>{{ORIGEM}}</strong> enviou para {{DESTINO}} {{dtDespacho.relative}} e foi recebido por <strong>{{RECEBIDO}}</strong> {{dtRecebimento.relative}}.</p>
+            </div>
+        </div>
+    </li>
+</template>
