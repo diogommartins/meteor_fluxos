@@ -7,7 +7,6 @@ class Graph{
         this.container = document.getElementById(containerId);
         this.edges = [];
         this.nodes = [];
-        this.nodeColors = {};
         //this._makeGraph();
         /** @type cytoscape */
         this.cy = undefined;
@@ -20,7 +19,7 @@ class Graph{
     }
     
     registerPlugin(name, plugin){
-        plugin.graph = this;
+        plugin.graphRendered = this;
         this._plugins[name] = plugin;
         
         return this;
@@ -193,15 +192,23 @@ class Graph{
             })
             .selector('.highlighted')
             .css({
-                'background-color': '#61bffc',
-                'line-color': '#61bffc',
-                'target-arrow-color': '#61bffc'
+                'background-color': '#2e6da4',
+                'line-color': '#2e6da4',
+                'target-arrow-color': '#2e6da4',
+                'line-width': 4
+            })
+            .selector('.walkedby')
+            .css({
+                'background-color': '#3f903f',
+                'line-color': '#3f903f',
+                'target-arrow-color': '#3f903f',
+                'line-width': 2
             })
         );
         this.cy.layout({
             name: layout,
             //fit: true,
-            padding: 30,
+            padding: 10,
             directed: true,
             roots: "#1"
         });
@@ -218,9 +225,55 @@ class Graph{
 
             ready: function(){
                 window.graph = self;
+                // todo: deveria escutar outro evento ou esse custom é aceitavel?
+                $(self.container).trigger('graph.didRender', self);
             }
         });
         return this;
+    }
+    clearHighlightedElements(){
+        this.cy.elements().removeClass('highlighted walkedby');
+        return this;
+    }
+
+    /**
+     * 
+     * @param steps: Array
+     * @param interval: Number
+     * @param callback: function
+     */
+    playAnimation(steps, interval=1000, callback){
+        var i = 0;
+        const $source = $(this.container);
+
+        this.clearHighlightedElements();
+        
+        var animateElement = ($previousElement) => {
+            if ( i < steps.length){
+                const step = steps[i];
+                let $elem = this.cy.$("#" + step.elementId);
+
+                $source.trigger('graph.willAnimateElement', [step, $elem]);
+
+                if ((typeof $previousElement !== 'undefined') && ($previousElement.id() !== $elem.id())){
+                    $previousElement.removeClass('highlighted');
+                    $previousElement.addClass('walkedby');
+                }
+
+                $elem.removeClass('walkedby');
+                $elem.addClass('highlighted');
+
+                $source.trigger('graph.didAnimateElement', [step, $elem]);
+                
+                i++;
+                setTimeout(()=>{ animateElement($elem) }, interval);
+            }
+            else{
+                $source.trigger('graph.didFinishAnimation');
+                callback();
+            }
+        };
+        animateElement();
     }
 }
 
