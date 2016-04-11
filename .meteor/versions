@@ -64,6 +64,8 @@ meteor-base@1.0.1
 michalvalasek:autoform-bootstrap-colorpicker@0.1.0
 minifiers@1.1.7
 minimongo@1.0.10
+mizzao:build-fetcher@0.2.0
+mizzao:jquery-ui@1.11.4
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 momentjs:moment@2.10.6
@@ -82,6 +84,8 @@ reactive-var@1.0.6
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
+rzymek:moment-locale-pt-br@2.9.0
+sacha:spin@2.3.1
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4

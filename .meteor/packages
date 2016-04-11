@@ -36,3 +36,7 @@ accounts-ui
 accounts-password
 typ:accounts-ldap
 momentjs:moment
+mizzao:jquery-ui
+reactive-var
+sacha:spin
+rzymek:moment-locale-pt-br
