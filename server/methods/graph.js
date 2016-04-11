@@ -102,5 +102,18 @@ Meteor.methods({
     changeGraphLayout: function(id_tipo_doc, layout){
         console.log("changeGraphLayout: Tem certeza que você queria estar me chamando?");
         CyGraphs.update({id_tipo_doc: id_tipo_doc}, {$set:{layout: layout}});
+    },
+    updateTramitacoes: function(id_documento){
+        const tramitacoes = apiClient.call_procedure('TramitacoesComoGrafo', [{
+            ID_DOCUMENTO: id_documento, 
+            COD_OPERADOR: 9999
+        }]);
+        
+        var uniqueCondition = tramitacao => ({ID_DOCUMENTO: tramitacao.ID_DOCUMENTO, SEQUENCIA: tramitacao.SEQUENCIA});
+        
+        tramitacoes.items.forEach(tramitacao => Tramitacoes.upsert(uniqueCondition(tramitacao.data), {$set: tramitacao.data}));
+        Documentos.upsert({ID_DOCUMENTO: id_documento}, {$set: {ID_DOCUMENTO:id_documento, ID_TIPO_DOC: tramitacoes.id_tipo_doc}});
+        
+        return tramitacoes.id_tipo_doc;
     }
 });
