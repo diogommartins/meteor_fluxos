@@ -19,12 +19,40 @@ class API{
     _url_with_path(path){
         return `${this._protocol}://${this.server}/${path}`;
     }
-    get(path, params={}, fields=[]){
+    get(path, params={}, fields=[], callback){
         const url = this._url_with_path(path);
         const payload = this._parsePayload(params, fields);
-        const result = HTTP.get(url, {data: payload});
-        if (result.statusCode == 200) {
-            return result.data;
+
+        if (typeof callback === 'function'){
+            HTTP.get(url, {data: payload}, callback);
+        }
+        else{
+            const result = HTTP.get(url, {data: payload});
+            if (result.statusCode == 200) {
+                return result.data;
+            }
+        }
+
+    }
+    call_procedure(name, data, fields=[], callback){
+        const url = this._url_with_path('procedure/' + name);
+
+        const params = {
+            data: data,
+            async: false,
+            fields: fields,
+            API_KEY: this._key
+        };
+        
+        if (typeof callback==='function'){
+            HTTP.post(url, {data: params} , callback);
+        }
+        else{
+            const result = HTTP.post(url, {data: params});
+            if (result.statusCode === 201){
+                // todo: Tem que mudar. Nem todas as procedures criam alguma coisa
+                return JSON.parse(result.content);    
+            }
         }
     }
     _parsePayload(params, fields){
