@@ -16,7 +16,7 @@ Template.graphControlls.events({
         const layout = this.name;
         /** @type Graph **/
         const graph = window.graph;
-        // Meteor.call('changeGraphLayout', graph.id, layout);
+        // Meteor.call('changeGraphLayout', graphRendered.id, layout);
         graph.changeLayout(layout);
     }
 });
