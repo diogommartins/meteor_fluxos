@@ -15,12 +15,12 @@ class Graph{
         /** @type CircularMenu */
         this.visibleMenu = undefined;
         this.collection = CyGraphs.find({id_tipo_doc: this.id});
-        this._plugins = {};
+        this.plugins = {};
     }
     
     registerPlugin(name, plugin){
         plugin.graphRendered = this;
-        this._plugins[name] = plugin;
+        this.plugins[name] = plugin;
         
         return this;
     }
@@ -116,9 +116,9 @@ class Graph{
         this.cy.nodes().on(FluxoEventHandlers.nodes);
         this.cy.edges().on(FluxoEventHandlers.edges);
         
-        for(let p in this._plugins){
-            if (typeof this._plugins[p].eventHandlers === 'function')
-                this.cy.on(this._plugins[p].eventHandlers());
+        for(let p in this.plugins){
+            if (typeof this.plugins[p].eventHandlers === 'function')
+                this.cy.on(this.plugins[p].eventHandlers());
         }
     }
     
@@ -184,7 +184,7 @@ class Graph{
             .selector(':selected')
             .css({
                 'content': 'data(name)',
-                'line-width': 2,
+                'width': 3,
                 'line-color': '#61bffc', // lightblue
                 'text-outline-color': '#fff',
                 'text-outline-width': 2,
@@ -195,7 +195,7 @@ class Graph{
                 'background-color': '#2e6da4',
                 'line-color': '#2e6da4',
                 'target-arrow-color': '#2e6da4',
-                'line-width': 4
+                'width': 4
             })
             .selector('.walkedby')
             .css({
@@ -210,7 +210,7 @@ class Graph{
             //fit: true,
             padding: 10,
             directed: true,
-            roots: "#1"
+            roots: "#node_1"
         });
         return this;
     }
