@@ -231,50 +231,6 @@ class Graph{
         });
         return this;
     }
-    clearHighlightedElements(){
-        this.cy.elements().removeClass('highlighted walkedby');
-        return this;
-    }
-
-    /**
-     * 
-     * @param steps: Array
-     * @param interval: Number
-     * @param callback: function
-     */
-    playAnimation(steps, interval=1000, callback){
-        var i = 0;
-        const $source = $(this.container);
-
-        this.clearHighlightedElements();
-        
-        var animateElement = ($previousElement) => {
-            if ( i < steps.length){
-                const step = steps[i];
-                let $elem = this.cy.$("#" + step.elementId);
-
-                $source.trigger('graph.willAnimateElement', [step, $elem]);
-
-                if ((typeof $previousElement !== 'undefined') && ($previousElement.id() !== $elem.id())){
-                    $previousElement.removeClass('highlighted');
-                    $previousElement.addClass('walkedby');
-                }
-
-                $elem.removeClass('walkedby');
-                $elem.addClass('highlighted');
-
-                $source.trigger('graph.didAnimateElement', [step, $elem]);
-                
-                i++;
-                setTimeout(()=>{ animateElement($elem) }, interval);
-            }
-            else{
-                $source.trigger('graph.didFinishAnimation');
-                callback();
-            }
-        };
-        animateElement();
-    }
 }
 
 this.Graph = Graph;
