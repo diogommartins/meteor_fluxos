@@ -1,14 +1,18 @@
 /**
  * Created by diogomartins on 4/7/16.
  */
-Session.setDefault('currentTramitacoes', []);
-
 Template.tramitacoes.helpers({
+    title: function(){
+        return Documentos.findOne({ID_DOCUMENTO: this.id_documento}).NUM_PROCESSO;
+    },
     items: function(){
         return Tramitacoes.find({ID_DOCUMENTO: this.id_documento});
     },
     isGraphRendered: function () {
         return this.isGraphRendered.get();
+    },
+    currentSequencia: function(){
+        return this.currentSequencia.get();
     }
 });
 
@@ -16,10 +20,20 @@ Template.tramitacoes.events({
     'click .play-animation': function(event, template){
         const graph = window.graph;
         const steps = template.data.tramitacoes.fetch();
-        const btn = $(event.currentTarget).button('loading');
-        graph.playAnimation(steps, 1000, () => {
-            btn.button('reset');
+        const $btn = $(event.currentTarget).button('loading');
+
+        const animation = template.data.animation = new GraphAnimation(graph, steps);
+
+        animation.playAnimation(1000, ()=>{
+            $btn.button('reset');
+            template.data.animation = null;
         });
+    },
+    'click .stop-animation': function(event, template){
+        /** @type: GraphAnimation **/
+        const animation = template.data.animation;
+        if (animation)
+            animation.stopAnimation();
     },
     'graph.didRender': function(event, template, graph){
         this.isGraphRendered.set(true);
@@ -32,8 +46,8 @@ Template.tramitacoes.events({
     'graph.willAnimateElement': function(event, template, step, $elem){
         this.currentSequencia.set(step.SEQUENCIA);
         this.$slider.slider('value', step.SEQUENCIA);
-        
-        $('.timeline').find('.primary').next().scrollintoview({ duration: "normal" });
+
+        $('ul.timeline').find('li.active-item').next().scrollintoview({ duration: "normal" });
         
     },
     'graph.didAnimateElement': function(event, template, step, $elem){
@@ -57,14 +71,15 @@ Template.tramitacoes.onCreated(function(){
                 const layout = graph.collection.fetch()[0].layout;
                 graph.load(elements).applyStyle(layout);
             });
-        })
+        });
     });
 });
 
 
 Template.tramitacoesSlider.events({
-    'userslide #slider': function(event, template){
+    'slider.userslide': function(event, template){
         template.data.currentSequencia.set(event.ui.value);
+        $('ul.timeline').find('li.active-item').scrollintoview({ duration: "fast" });
     }
 });
 
@@ -75,33 +90,33 @@ Template.tramitacoesSlider.onRendered(function(){
         step: 1,
         value: 1,
         slide: function(event, ui){
-            $(this).trigger($.Event('userslide', {event:event, ui:ui}));
+            $(this).trigger($.Event('slider.userslide', {event:event, ui:ui}));
         }
     });
     $('[data-toggle="tooltip"]').tooltip({html: true});
 });
-
 
 Template.tramitacaoTimelineItem.helpers({
     cls: function(){
         return (this.SEQUENCIA % 2) ? '' : 'timeline-inverted';
     },
     dtDespacho: function(){
-        const date = moment(this.DT_DESPACHO + " " + this.HR_DESPACHO);
+        const date = this.momentDespacho();
         return {
             relative: date.fromNow(),
             calendar: date.format("MMM DD hh:mm:ss")
         };
     },
-    dtRecebimento: function(){
-        const date = moment(this.DT_RECEBIMENTO + " " + this.HR_RECEBIMENTO);
+    dtRecebimento: function() {
+        const date = this.momentRecebimento();
         return {
             relative: date.fromNow(),
             calendar: date.format("MMM DD hh:mm:ss")
-        };
+        }
     },
     dateDiff: function(){
-        return moment.duration(this.momentDiff()).humanize();
+        const diff = this.momentDiff();
+        return moment.duration(diff).humanize();
     },
     active: function(){
         const parent = Template.parentData();
