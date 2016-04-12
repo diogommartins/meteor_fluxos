@@ -1,24 +1,21 @@
 <template name="modalLogin">
-    <div class="container">
-        <div class="row">
-            {{#unless currentUser}}
-                <button type="button" class="btn btn-primary navbar-btn navbar-right login-button " data-toggle="modal" data-target="#login-modal">Login</button>
-            {{else}}
-                <div class="dropdown">
-                    <button class="btn btn-primary navbar-btn navbar-right dropdown-toggle" type="button" id="dropdownMenuLoggedIn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        {{currentUser.shortname}}
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-                        <li><a href="#" class="logout-button">Editar perfil</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#" class="logout-button">Logout</a></li>
-                    </ul>
-                </div>
-            {{/unless}}
-
-        </div>
-    </div>
+    {{#unless currentUser}}
+        <li>
+            <button type="button" class="btn btn-primary navbar-btn navbar-right login-button " data-toggle="modal" data-target="#login-modal">Login</button>
+        </li>
+    {{else}}
+        <li class="dropdown">
+            <button class="btn btn-primary navbar-btn navbar-right dropdown-toggle" type="button" id="dropdownMenuLoggedIn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{currentUser.shortname}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+                <li><a href="#" class="logout-button">Editar perfil</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#" class="logout-button">Logout</a></li>
+            </ul>
+        </li>
+    {{/unless}}
     <!-- END # BOOTSNIP INFO -->
 
     <!-- BEGIN # MODAL LOGIN -->
