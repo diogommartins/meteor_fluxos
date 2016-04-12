@@ -19,12 +19,19 @@
             <div class="col-md-6">
                 <div id="graph-column" data-spy="affix" data-offset-top="100">
                     {{#if isGraphRendered}}
+                        <button type="button" class="btn btn-default scroll-top">
+                            <i class="glyphicon glyphicon-arrow-up"></i>
+                        </button>
                         <button type="button" class="btn btn-default play-animation" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>">
                             <i class="glyphicon glyphicon-play"></i>
                         </button>
                         <button type="button" class="btn btn-default stop-animation">
                             <i class="glyphicon glyphicon-stop"></i>
                         </button>
+                        <button type="button" class="btn btn-default scroll-bottom">
+                            <i class="glyphicon glyphicon-arrow-down"></i>
+                        </button>
+
                         {{currentSequencia}} de {{items.count}}
                         {{> tramitacoesSlider}}
                     {{/if}}

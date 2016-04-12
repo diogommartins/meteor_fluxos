@@ -21,9 +21,24 @@ class GraphAnimation{
         return this;
     }
 
+    /**
+     * Dado um número de sequência, o método retorna o document Tramitacoes correspondente se estiver
+     * na lista de steps da animaçào
+     *
+     * @param sequencia: Number
+     * @returns {Tramitacoes}
+     */
+    getStepFromSequencia(sequencia){
+        for(let step of this.steps){
+            if (step.SEQUENCIA === sequencia)
+                return step;
+        }
+    }
+
     stopAnimation(){
         this.$graphContainer.trigger('graph.willStopAnimation');
         this.__shouldAnimate = false;
+        return this;
     }
     /**
      *
@@ -38,18 +53,14 @@ class GraphAnimation{
         var animateElement = ($previousElement) => {
             if (( i < this.steps.length) && (this.__shouldAnimate)){
                 const step = this.steps[i];
-                let $elem = this.graph.cy.$("#" + step.elementId);
+                let $elem = this.graph.cy.getElementById(step.elementId);
 
                 this.$graphContainer.trigger('graph.willAnimateElement', [step, $elem]);
 
                 if ((typeof $previousElement !== 'undefined') && ($previousElement.id() !== $elem.id())){
-                    $previousElement.removeClass('highlighted');
-                    $previousElement.addClass('walkedby');
+                    GraphAnimation.markElementAsWalked($previousElement);
                 }
-
-                $elem.removeClass('walkedby');
-                $elem.addClass('highlighted');
-
+                GraphAnimation.highlightElement($elem);
                 this.$graphContainer.trigger('graph.didAnimateElement', [step, $elem]);
 
                 i++;
@@ -62,6 +73,15 @@ class GraphAnimation{
         };
         this.__shouldAnimate = true;
         animateElement();
+    }
+
+    static highlightElement($elem){
+        $elem.removeClass('walkedby');
+        $elem.addClass('highlighted');
+    }
+    static markElementAsWalked($elem) {
+        $elem.removeClass('highlighted');
+        $elem.addClass('walkedby');
     }
 }
 
