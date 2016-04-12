@@ -19,6 +19,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 http
+mizzao:jquery-ui
 cytoscape:cytoscape
 d3js:d3
 kburts:randomcolor
@@ -35,8 +36,7 @@ michalvalasek:autoform-bootstrap-colorpicker
 accounts-ui
 accounts-password
 typ:accounts-ldap
-momentjs:moment
-mizzao:jquery-ui
 reactive-var
 sacha:spin
+momentjs:moment
 rzymek:moment-locale-pt-br

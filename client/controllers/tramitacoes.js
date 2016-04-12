@@ -7,13 +7,6 @@ Template.tramitacoes.helpers({
     items: function(){
         return Tramitacoes.find({ID_DOCUMENTO: this.id_documento});
     },
-    currentTramitacao: function(){
-        const template = Template.instance();
-        return Tramitacoes.findOne({
-            ID_DOCUMENTO: this.id_documento,
-            SEQUENCIA: template.data.currentSequencia.get()
-        });
-    },
     isGraphRendered: function () {
         return this.isGraphRendered.get();
     }
@@ -23,9 +16,9 @@ Template.tramitacoes.events({
     'click .play-animation': function(event, template){
         const graph = window.graph;
         const steps = template.data.tramitacoes.fetch();
-        // var button = $(event.currentTarget).button('loading');
+        const btn = $(event.currentTarget).button('loading');
         graph.playAnimation(steps, 1000, () => {
-            // $(event.currentTarget).button('reset');
+            btn.button('reset');
         });
     },
     'graph.didRender': function(event, template, graph){
@@ -85,22 +78,8 @@ Template.tramitacoesSlider.onRendered(function(){
             $(this).trigger($.Event('userslide', {event:event, ui:ui}));
         }
     });
-    ;
+    $('[data-toggle="tooltip"]').tooltip({html: true});
 });
-
-Template.tramitacaoItem.helpers({
-    active: function(){
-        const parent = Template.parentData();
-        return (parent.currentSequencia.get() === this.SEQUENCIA) ? 'active' : '';
-    },
-    recebido: function(){
-        return (this.RECEBIDO.length > 0) ? this.RECEBIDO : '---';
-    },
-    description: function(){
-        return this.DESPACHO;
-    }
-});
-
 
 
 Template.tramitacaoTimelineItem.helpers({
@@ -111,15 +90,18 @@ Template.tramitacaoTimelineItem.helpers({
         const date = moment(this.DT_DESPACHO + " " + this.HR_DESPACHO);
         return {
             relative: date.fromNow(),
-            calendar: date.calendar()
+            calendar: date.format("MMM DD hh:mm:ss")
         };
     },
     dtRecebimento: function(){
         const date = moment(this.DT_RECEBIMENTO + " " + this.HR_RECEBIMENTO);
         return {
             relative: date.fromNow(),
-            calendar: date.calendar()
+            calendar: date.format("MMM DD hh:mm:ss")
         };
+    },
+    dateDiff: function(){
+        return moment.duration(this.momentDiff()).humanize();
     },
     active: function(){
         const parent = Template.parentData();
