@@ -132,14 +132,14 @@ Template.tramitacaoTimelineItem.helpers({
         const date = this.momentDespacho();
         return {
             relative: date.fromNow(),
-            calendar: date.format("MMM DD hh:mm:ss")
+            calendar: date.format("DD MMM hh:mm:ss")
         };
     },
     dtRecebimento: function() {
         const date = this.momentRecebimento();
         return {
             relative: date.fromNow(),
-            calendar: date.format("MMM DD hh:mm:ss")
+            calendar: date.format("DD MMM hh:mm:ss")
         }
     },
     dateDiff: function(){
