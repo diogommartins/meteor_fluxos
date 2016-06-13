@@ -1,0 +1,26 @@
+<template name="whiteboard">
+    <h2>Whiteboard</h2>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        </div>
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{>graphControlls}}
+                        {{>whiteboardContainer}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<template name="whiteboardContainer">
+    {{> edgesMenu}}
+    {{> nodesMenu}}
+    <div id="cy"></div>
+</template>

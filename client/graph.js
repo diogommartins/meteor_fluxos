@@ -165,26 +165,25 @@ class Graph{
         this.cy.makeLayout({name: layout}).run();
     }
 
-    applyStyle(layout='circle'){
+    applyStyle(layout='circle', directed=false){
         this.cy.style(cytoscape.stylesheet()
             .selector('node')
             .css({
                 'content': 'data(name)',
+                'text-valign': 'center',
+                'text-halign': 'center',
                 'background-color': 'data(color)',
                 'width': '2em',
                 'height': '2em'
             })
             .selector('edge')
             .css({
-                'target-arrow-shape': 'triangle',
                 'width': 2,
-                'line-color': '#777',
-                'target-arrow-color': '#666'
+                'line-color': '#777'
             })
             .selector(':selected')
             .css({
                 'content': 'data(name)',
-                'width': 3,
                 'line-color': '#61bffc', // lightblue
                 'text-outline-color': '#fff',
                 'text-outline-width': 2,
@@ -195,7 +194,6 @@ class Graph{
                 'background-color': '#2e6da4',
                 'line-color': '#2e6da4',
                 'target-arrow-color': '#2e6da4',
-                'width': 4
             })
             .selector('.walkedby')
             .css({
@@ -209,7 +207,7 @@ class Graph{
             name: layout,
             //fit: true,
             padding: 10,
-            directed: true,
+            directed: false,
             roots: "#node_1"
         });
         return this;
