@@ -25,6 +25,7 @@ d3js:d3
 kburts:randomcolor
 cwaring:modernizr
 fortawesome:fontawesome
+iron:middleware-stack@1.1.0
 iron:router
 twbs:bootstrap
 peppelg:bootstrap-3-modal
