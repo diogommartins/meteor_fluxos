@@ -2,7 +2,7 @@
  * Created by diogomartins on 3/10/16.
  */
 
-class CircularMenu{
+export class CircularMenu{
     constructor(element){
         this.element = element;
         this.wrapper = $(this.element).find('.cn-wrapper')[0];

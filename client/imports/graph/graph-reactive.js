@@ -1,7 +1,9 @@
 /**
  * Created by diogomartins on 6/14/16.
  */
-class ReactiveGraph extends Graph{
+import {Graph} from './graph.js';
+
+export class ReactiveGraph extends Graph{
     constructor(id, containerId='cy'){
         super(id, containerId);
         this.edgesObserver = undefined;
@@ -73,6 +75,12 @@ class ReactiveGraph extends Graph{
     __observeChanges(){
         this.edgesObserver = Edges.find({id_tipo_doc: this.id}).observeChanges(this.edgesObserverHandler());
         this.nodesObserver = Nodes.find({id_tipo_doc: this.id}).observeChanges(this.nodesObserverHandler());
+    }
+
+    renderGraph(){
+        super.renderGraph();
+        this.cy.ready(() => this.__observeChanges());
+        return this;
     }
 }
 

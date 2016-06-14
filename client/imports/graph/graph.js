@@ -1,7 +1,10 @@
 /**
  * Created by diogomartins on 3/10/16.
  */
-class Graph{
+import {CircularMenu} from './graph-menu';
+
+
+export class Graph{
     constructor(id, containerId='cy'){
         this.id = id;
         this.container = document.getElementById(containerId);
