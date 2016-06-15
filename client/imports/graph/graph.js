@@ -5,8 +5,8 @@ import {CircularMenu} from './graph-menu';
 
 
 export class Graph{
-    constructor(id, containerId='cy'){
-        this.id = id;
+    constructor(cyGraph, containerId='cy'){
+        this.id = cyGraph._id;
         this.container = document.getElementById(containerId);
         this.edges = [];
         this.nodes = [];
@@ -17,7 +17,7 @@ export class Graph{
         this.nodesMenu = new CircularMenu($('#nodes-menu')[0]);
         /** @type CircularMenu */
         this.visibleMenu = undefined;
-        this.collection = CyGraphs.find({id_tipo_doc: this.id});
+        this.document = cyGraph;
         this.plugins = {};
     }
     
@@ -91,11 +91,11 @@ export class Graph{
 
     _tempNode(){
         return {
-            id_tipo_doc: this.id,
+            graphId: this.id,
             group: 'nodes',
             data: {
                 id: Date.now().toString(),
-                id_tipo_doc: this.id,
+                graphId: this.id,
                 name: 'Clique para editar',
                 color:'rgb(100, 100, 100)'
             }
