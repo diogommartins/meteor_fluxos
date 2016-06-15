@@ -13,8 +13,8 @@ Meteor.methods({
 
         Meteor.call('updateGraphDefinitions', graph);
 
-        const edges = Edges.find({id_tipo_doc: id_tipo_doc}).fetch();
-        const nodes = Nodes.find({id_tipo_doc: id_tipo_doc}).fetch();
+        const edges = Edges.find({graphId: id_tipo_doc}).fetch();
+        const nodes = Nodes.find({graphId: id_tipo_doc}).fetch();
 
         return edges.concat(nodes);
     },
@@ -29,19 +29,19 @@ Meteor.methods({
     },
     /**
      *
-     * @param graph: {{nodes:[], edges:[], name:String, id_tipo_doc:Number}}
+     * @param graph: {{nodes:[], edges:[], name:String, graphId:Number}}
      */
     updateGraphDefinitions: function(graph){
         var uniqueNodeCondition = function(node){
-            return {id_tipo_doc: node.id_tipo_doc, 'data.id': node.data.id};
+            return {graphId: node.id_tipo_doc, 'data.id': node.data.id};
         };
         var uniqueEdgeCondition = function(edge){
-            return {id_tipo_doc: edge.id_tipo_doc, 'data.source': edge.data.source, 'data.target': edge.data.target};
+            return {graphId: edge.id_tipo_doc, 'data.source': edge.data.source, 'data.target': edge.data.target};
         };
         graph.nodes.forEach(node => Nodes.upsert(uniqueNodeCondition(node), {$set: node}));
         graph.edges.forEach(edge => Edges.upsert(uniqueEdgeCondition(edge), {$set: edge}));
 
-        CyGraphs.upsert({id_tipo_doc: graph.id_tipo_doc}, {$set: {name: graph.name}});
+        CyGraphs.upsert({graphId: graph.id_tipo_doc}, {$set: {name: graph.name, kind: 'SIE fluxo'}});
     },
     /**
      * Remove nó no array de elements do grafo correspondente
@@ -71,7 +71,7 @@ Meteor.methods({
      * @return newId: Number
      */
     insertEdge: function(edge){
-        edge.id_tipo_doc = edge.data.id_tipo_doc;
+        edge.graphId = edge.data.graphId;
         edge.data.id = 'temp_' + Date.now().toString();
         console.log("Inserindo nova aresta");
         return Edges.insert(edge);
@@ -95,13 +95,13 @@ Meteor.methods({
     saveGraph: function(id, elements){
         id = Number(id);
         let result = CyGraphs.upsert(
-            { id_tipo_doc: id },
-            { $set: {id_tipo_doc: id, elements:elements} });
+            { graphId: id },
+            { $set: {graphId: id, elements:elements} });
         return result.numberAffected;
     },
     changeGraphLayout: function(id_tipo_doc, layout){
         console.log("changeGraphLayout: Tem certeza que você queria estar me chamando?");
-        CyGraphs.update({id_tipo_doc: id_tipo_doc}, {$set:{layout: layout}});
+        CyGraphs.update({graphId: id_tipo_doc}, {$set:{layout: layout}});
     },
     updateTramitacoes: function(id_documento){
         const tramitacoes = apiClient.call_procedure('TramitacoesComoGrafo', [{
@@ -115,5 +115,9 @@ Meteor.methods({
         Documentos.upsert({ID_DOCUMENTO: id_documento}, {$set: {ID_DOCUMENTO:id_documento, ID_TIPO_DOC: tramitacoes.id_tipo_doc}});
         
         return tramitacoes.id_tipo_doc;
+    },
+    
+    createNewGraph: function(){
+        return CyGraphs.insert({name: 'Sem nome'});
     }
 });
