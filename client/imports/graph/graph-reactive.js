@@ -4,8 +4,8 @@
 import {Graph} from './graph.js';
 
 export class ReactiveGraph extends Graph{
-    constructor(id, containerId='cy'){
-        super(id, containerId);
+    constructor(cyGraph, containerId='cy'){
+        super(cyGraph, containerId);
         this.edgesObserver = undefined;
         this.nodesObserver = undefined;
     }
@@ -73,8 +73,8 @@ export class ReactiveGraph extends Graph{
         }
     }
     __observeChanges(){
-        this.edgesObserver = Edges.find({id_tipo_doc: this.id}).observeChanges(this.edgesObserverHandler());
-        this.nodesObserver = Nodes.find({id_tipo_doc: this.id}).observeChanges(this.nodesObserverHandler());
+        this.edgesObserver = Edges.find({graphId: this.id}).observeChanges(this.edgesObserverHandler());
+        this.nodesObserver = Nodes.find({graphId: this.id}).observeChanges(this.nodesObserverHandler());
     }
 
     renderGraph(){

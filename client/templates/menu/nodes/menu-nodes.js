@@ -23,8 +23,10 @@ Template.addEdge.helpers({
         return this.node;
     },
     nodesOptions: function(){
-        const id_tipo_doc = this.node.data.id_tipo_doc;
-        const nodes = Nodes.find({id_tipo_doc}).fetch();
+        const graphId = this.node.data.graphId;
+        const nodes = Nodes.find({graphId}).fetch();
+
+        nodes.sort((a,b) => a.data.name > b.data.name);
         return nodes.map( node => ({label: node.data.name, value: node.data.id}) );
     }
 });
@@ -34,7 +36,7 @@ AutoForm.addHooks('addNewEdge', {
         method: function(doc){
             /** @type Nodes **/
             const node = this.template.data.currentNode;
-            doc.data.id_tipo_doc = node.data.id_tipo_doc;
+            doc.data.graphId = node.data.graphId;
             
             return doc;
         }

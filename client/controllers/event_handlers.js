@@ -28,7 +28,7 @@ FluxoEventHandlers.nodes = {
         const node = graph.getElementByData('nodes', target.data());
         const position = this.position();
 
-        const currentCyGraph = graph.collection.fetch()[0];
+        const currentCyGraph = graph.document;
         const layout = currentCyGraph.layout;
         if ((typeof layout === 'undefined') || (layout !== 'preset')){
             CyGraphs.update({_id:currentCyGraph._id}, {$set: {layout:'preset'} });

@@ -40,3 +40,22 @@ Template.autoSaveButton.events({
         console.log("Toggling autosave ", Session.get('autoSave'));
     }
 });
+
+/**
+ * Graph is directed Toggler
+ */
+
+Template.isDirectedButton.helpers({
+    icon: function(){
+        return this.options.isDirected ? 'glyphicon glyphicon-expand' : 'glyphicon glyphicon-unchecked';
+    },
+    text: function(){
+        return this.options.isDirected ? 'Direcionado': 'Não-direcionado';
+    }
+});
+
+Template.isDirectedButton.events({
+   click: function(){
+       console.log('Flip directed');
+   } 
+});

@@ -16,9 +16,21 @@
         </div>
         <!-- Autosave On/off -->
         {{> autoSaveButton}}
+        <!-- Is Directed switch -->
+        {{> isDirectedButton}}
     </div>
+    <button type="button" class="btn btn-primary pull-right share-graph">
+        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Compartilhar
+    </button>
+
 </template>
 
 <template name="autoSaveButton">
     <button type="button" class="btn {{btnClass}} autosave-mode-toggler">{{btnContent}}</button>
+</template>
+
+<template name="isDirectedButton">
+    <button type="button" class="btn btn-default is-directed">
+        <span class="glyphicon {{icon}}" aria-hidden="true"></span> {{text}}
+    </button>
 </template>
