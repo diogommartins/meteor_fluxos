@@ -3,6 +3,7 @@
  */
 import {GraphAdjacencyHelper} from './graph-adjacency';
 import {Meteor} from 'meteor/meteor';
+import { Session } from 'meteor/session'
 
 export class GraphColoringHelper{
     constructor(){
@@ -20,6 +21,10 @@ export class GraphColoringHelper{
         return color;
     }
 
+    shouldReactToEvents(){
+        return Session.get('autoColor');
+    }
+
     getColor(i){
         while (this.colors.length <= i){
             this.colors.push(this.newColor());
@@ -31,6 +36,23 @@ export class GraphColoringHelper{
         const node = this.graph.getElementByData('nodes', {id: elementId});
         const data = {'data.color': this.getColor(colorId)};
         Meteor.call('updateNodeData', node, data);
+    }
+
+    graphDidChange(){
+        if (this.shouldReactToEvents())
+            this.colorNodes();
+    }
+
+    /**
+     * Escuta os eventos de add e remove de elementos no grafo
+     *
+     * @returns {{add: function, remove: function}}
+     */
+    eventHandlers(){
+        return {
+            add: () => this.graphDidChange(),
+            remove: () => this.graphDidChange()
+        }
     }
 
     /**
@@ -78,9 +100,9 @@ export class GraphColoringHelper{
             this.updateNodeColor(nodes[u], color);
 
             // Reset the values back to false for the next iteration
-            for (let con of connections) {
-                if (result[con] != -1)
-                    available[result[con]] = false;
+            for (let conn of connections) {
+                if (result[conn] != -1)
+                    available[result[conn]] = false;
             }
         }
 

@@ -7,15 +7,29 @@
 export class GraphAdjacencyHelper{
     constructor(){
         /** @type: Graph */
-        this.graph = undefined
+        this.graph = undefined;
     }
 
+    /**
+     * Dada uma `collection`, a função retorna um array com as `property`
+     *
+     * @param collection: cytoscape.collection
+     * @param property: String
+     * @returns {Array}
+     */
     static dataFromCollection(collection, property){
         const names = [];
         collection.each((i, node) => names.push(node.data()[property]));
         return names;
     }
 
+    /**
+     * Retorna uma "lista" de adjacência, na forma de um objecto, em que cada propriedade
+     * é um node, identificiado pelo seu atributo `id` e um atributo `connected`, correspondente
+     * a uma `Collection` de outros `nodes` conectados.
+     *
+     * @returns {{}}
+     */
     list(){
         const container = {};
 
@@ -35,7 +49,9 @@ export class GraphAdjacencyHelper{
     }
 
     /**
+     * Matriz de adjacência
      *
+     * todo: Melhorar essa documentação
      * @returns {{}}
      */
     matrix(){
@@ -56,6 +72,7 @@ export class GraphAdjacencyHelper{
     }
 
     /**
+     * Método para auxiliar a impressão de listas e matrizes no console em formato humano
      *
      * @param arg: {{data:Object, type:String}}
      */

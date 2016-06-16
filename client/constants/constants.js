@@ -5,6 +5,7 @@
 Meteor.startup(function(){
     Session.setDefault({
         autoSave: true,
+        autoColor: false,
         askConfirmationOnDelete: false,
         enableChat: true,
         showEdgesNameOnMouseOver: true,

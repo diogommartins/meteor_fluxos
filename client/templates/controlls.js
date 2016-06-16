@@ -59,3 +59,18 @@ Template.isDirectedButton.events({
        console.log('Flip directed');
    } 
 });
+
+Template.autoColoringBurron.helpers({
+    btnClass: function(){
+        return Session.get('autoColor') ? 'btn-success' : 'btn-danger';
+    },
+    'text': function(){
+        return Session.get('autoColor') ? 'Autocolor on' : 'Autocolor off';
+    }
+});
+
+Template.autoColoringBurron.events({
+    'click': function(){
+        Session.set('autoColor', !Session.get('autoColor'));
+    }
+});

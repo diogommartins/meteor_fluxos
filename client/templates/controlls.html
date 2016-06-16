@@ -18,11 +18,12 @@
         {{> autoSaveButton}}
         <!-- Is Directed switch -->
         {{> isDirectedButton}}
+        <!-- Coloração de nós automática on/off -->
+        {{> autoColoringBurron}}
     </div>
     <button type="button" class="btn btn-primary pull-right share-graph">
         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Compartilhar
     </button>
-
 </template>
 
 <template name="autoSaveButton">
@@ -33,4 +34,8 @@
     <button type="button" class="btn btn-default is-directed">
         <span class="glyphicon {{icon}}" aria-hidden="true"></span> {{text}}
     </button>
+</template>
+
+<template name="autoColoringBurron">
+    <button type="button" class="btn {{btnClass}} autocolor-toggler">{{text}}</button>
 </template>
