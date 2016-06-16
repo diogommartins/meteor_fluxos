@@ -22,9 +22,9 @@ export class Graph{
     }
     
     registerPlugin(name, plugin){
-        plugin.graphRendered = this;
+        plugin.graph = this;
         this.plugins[name] = plugin;
-        
+
         return this;
     }
 
@@ -36,6 +36,10 @@ export class Graph{
         this.visibleMenu = menu;
 
         return menu;
+    }
+
+    isDirected(){
+        return this.document.options.isDirected;
     }
 
     hideMenu(){
@@ -94,7 +98,7 @@ export class Graph{
             graphId: this.id,
             group: 'nodes',
             data: {
-                id: Date.now().toString(),
+                id: 'n'+Date.now().toString(),
                 graphId: this.id,
                 name: 'Clique para editar',
                 color:'rgb(100, 100, 100)'
@@ -217,17 +221,16 @@ export class Graph{
     }
 
     renderGraph(){
-        var self = this;
         this.cy = cytoscape({
             container: this.container,
 
             zoom: 1,
             zoomingEnabled: false,
 
-            ready: function(){
-                window.graph = self;
+            ready: () => {
+                window.graph = this;
                 // todo: deveria escutar outro evento ou esse custom é aceitavel?
-                $(self.container).trigger('graph.didRender', self);
+                $(this.container).trigger('graph.didRender', this);
             }
         });
         return this;
