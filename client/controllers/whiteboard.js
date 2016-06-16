@@ -17,13 +17,10 @@ Template.whiteboard.rendered = function(){
         const nodes = Nodes.find({graphId: graph.id}).fetch();
         
         const elements = edges.concat(nodes);
+
+        graph.registerPlugin('adjacencyHelper', new GraphAdjacencyHelper());
+        graph.registerPlugin('coloringHelper', new GraphColoringHelper());
+
         graph.load(elements).applyStyle(cyGraph.layout);
-
-        const adjacencyHelper = new GraphAdjacencyHelper();
-        graph.registerPlugin('adjacencyHelper', adjacencyHelper);
-
-        const coloringHelper = new GraphColoringHelper();
-        graph.registerPlugin('coloringHelper', coloringHelper);
-        coloringHelper.colorNodes();
     })
 };

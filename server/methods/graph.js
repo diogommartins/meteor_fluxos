@@ -61,6 +61,10 @@ Meteor.methods({
     updateNodeData: function(node, data){
         return Nodes.update({_id: node._id}, {$set: data});
     },
+    updateNodeData2: function(modifier, _id){
+        console.log(`Atualizou no ${_id}    metodo deve ser renomeado`);
+        return Nodes.update({_id: _id}, modifier);
+    },
     /**
      * Insere aresta no array de elements do grafo correspondente
      * @param edge: Edges
