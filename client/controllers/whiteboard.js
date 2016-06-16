@@ -3,11 +3,13 @@
  */
 
 import {ReactiveGraph} from '../imports/graph/graph-reactive.js';
+import {GraphAdjacencyHelper} from '../imports/graph/graph-adjacency.js';
+import {GraphColoringHelper} from '../imports/graph/graph-coloring.js';
+
 
 Template.whiteboard.rendered = function(){
     const cyGraph = this.data;
     const graph = new ReactiveGraph(cyGraph).renderGraph();
-
 
     graph.cy.ready(function (){
         // todo: elements pode ser salvo e recuperado de uma sessão ou sempre começa do zero?
@@ -17,5 +19,11 @@ Template.whiteboard.rendered = function(){
         const elements = edges.concat(nodes);
         graph.load(elements).applyStyle(cyGraph.layout);
 
+        const adjacencyHelper = new GraphAdjacencyHelper();
+        graph.registerPlugin('adjacencyHelper', adjacencyHelper);
+
+        const coloringHelper = new GraphColoringHelper();
+        graph.registerPlugin('coloringHelper', coloringHelper);
+        coloringHelper.colorNodes();
     })
 };
