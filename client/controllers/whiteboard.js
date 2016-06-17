@@ -12,7 +12,6 @@ Template.whiteboard.rendered = function(){
     const graph = new ReactiveGraph(cyGraph).renderGraph();
 
     graph.cy.ready(function (){
-        // todo: elements pode ser salvo e recuperado de uma sessão ou sempre começa do zero?
         const edges = Edges.find({graphId: graph.id}).fetch();
         const nodes = Nodes.find({graphId: graph.id}).fetch();
         
@@ -22,5 +21,17 @@ Template.whiteboard.rendered = function(){
         graph.registerPlugin('coloringHelper', new GraphColoringHelper());
 
         graph.load(elements).applyStyle(cyGraph.layout);
+        
+        if(cyGraph.owner === Meteor.userId()){
+            console.log("Dono");
+            setInterval(function(){
+                let snapshot = graph.cy.png({
+                    full: true,
+                    maxWidth: 300,
+                    maxHeight: 300
+                });
+                Meteor.call('updateGraphThumbnail', cyGraph._id, snapshot);
+            }, 5*1000)
+        }
     })
 };
