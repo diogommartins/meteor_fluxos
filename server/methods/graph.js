@@ -43,6 +43,7 @@ Meteor.methods({
             cyGraphId = CyGraphs.insert({
                 name: graph.name,
                 kind: 'fluxo',
+                layout: 'circle',
                 options: {
                     isDirected: true
                 }
