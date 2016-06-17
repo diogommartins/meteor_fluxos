@@ -17,12 +17,11 @@ class FluxosParser{
 
     addNode(name, fluxo) {
         const node = {
-            id_tipo_doc: this.id,
             data: {
                 id: 'node_' + String(name),
                 name: String(name),
                 tipo: String(fluxo.TIPO_DESTINO) + String(fluxo.ID_DESTINO),
-                id_tipo_doc: this.id
+                graphId: undefined
             },
             group: 'nodes'
         };
@@ -48,13 +47,12 @@ class FluxosParser{
         const gambiDescricaoTipoDocumento = this.fluxos[0].DESCR_TIPO_DOC.trimRight();
         for(let fluxo of this.fluxos){
             this._edges.push({
-                id_tipo_doc: this.id,
                 data: {
                     id: this._edgesPrefrix + String(fluxo.ID_FLUXO),
                     source: this._nodesPrefrix + String(fluxo.SITUACAO_ATUAL),
                     target: this._nodesPrefrix + String(fluxo.SITUACAO_FUTURA),
                     name: String(fluxo.DESCR_FLUXO).trim(),
-                    id_tipo_doc: this.id
+                    graphId: undefined
                 },
                 group: 'edges'
             });

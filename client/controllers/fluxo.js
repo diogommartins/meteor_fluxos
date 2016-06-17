@@ -1,69 +1,31 @@
+import {ReactiveGraph} from '../imports/graph/graph-reactive.js';
 
-Template.graphContainer.created = function(){
-    const id_tipo_doc = this.data.id_tipo_doc;
 
-    Meteor.call('getFluxo', id_tipo_doc, function(error, elements){
-        const graph = new Graph(id_tipo_doc).renderGraph();
-
-        graph.cy.ready(function () {
-            const graphCanvasContainer = $(graph.container).children('div');
-            graph.registerPlugin('canvasSketcher', new CanvasSketcher(graphCanvasContainer));
-            
-            const layout = graph.collection.fetch()[0].layout;
-            graph.load(elements).applyStyle(layout);
-
-            var edgesObserver = Edges.find({id_tipo_doc: id_tipo_doc}).observeChanges({
-                added: function(_id, newEdge){
-                    if (!edgesObserver) return;
-                    newEdge._id = _id;
-                    graph.addElement('edges', newEdge);
-                },
-                changed: function(_id, data){
-                    if (typeof data.data === 'object'){
-                        const updatedEdgeData = data.data;
-                        graph.cy.getElementById(updatedEdgeData.id).data(updatedEdgeData);
-                    }
-                },
-                removed: function(_id){
-                    let edge = graph.getElementById('edges', _id);
-                    graph.removeElement('edges', edge);
-                    graph.refresh();
-                    if (typeof graph.visibleMenu !== 'undefined'){
-                        if (graph.visibleMenu.currentItem._id === edge._id){
-                            graph.hideMenu();
-                        }
-                    }
-                }
-            });
-
-            var nodesObserver = Nodes.find({id_tipo_doc: id_tipo_doc}).observeChanges({
-                added: function (_id, newNode) {
-                    if (!nodesObserver) return;
-                    newNode._id = _id;
-                    graph.addElement('nodes', newNode);
-                },
-                changed: function (_id, data) {
-                    const node = graph.getElementById('nodes', _id);
-                    if ((typeof data.position !== 'undefined') && (!graph.isGrabbed(node))){
-                        const currentPosition = graph.cy.$("#" + node.data.id).position();
-
-                        if (!_.isEqual(currentPosition, data.position.x)){
-                            graph.cy.$("#" + node.data.id).position(data.position);
-                        }
-                    }
-                    else if (typeof data.data === 'object'){
-                        const updatedNodeData = data.data;
-                        graph.cy.getElementById(updatedNodeData.id).data(updatedNodeData);
-                    }
-                },
-                removed: function (_id) {
-                    let node = graph.getElementById('nodes', _id);
-                    graph.removeElement('nodes', node);
-                    graph.refresh();
-                }
-            });
-        });
+Template.graphContainer.rendered = function(){
+    const cyGraph = this.data;
+    const graph = new ReactiveGraph(cyGraph).renderGraph();
+    Meteor.call('getFluxo', 217, function(error, elements){
+        console.log('shit');        
     });
+    graph.cy.ready(function (){
+        const edges = Edges.find({graphId: graph.id}).fetch();
+        const nodes = Nodes.find({graphId: graph.id}).fetch();
+        const elements = edges.concat(nodes);
+
+        graph.load(elements).applyStyle(cyGraph.layout);
+
+        if(cyGraph.owner === Meteor.userId()){
+            console.log("Dono");
+            setInterval(function(){
+                let snapshot = graph.cy.png({
+                    full: true,
+                    maxWidth: 300,
+                    maxHeight: 300
+                });
+                Meteor.call('updateGraphThumbnail', cyGraph._id, snapshot);
+            }, 5*1000)
+        }
+    })
 };
 
 

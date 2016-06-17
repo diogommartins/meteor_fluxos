@@ -51,7 +51,9 @@ export class GraphColoringHelper{
     eventHandlers(){
         return {
             add: () => this.graphDidChange(),
-            remove: () => this.graphDidChange()
+            remove: () => this.graphDidChange(),
+            'graph.coloring.startColoring': () =>  console.log("Vou começar a colorir"),
+            'graph.coloring.stopColoring': () => console.log("Vou parar de colorir")
         }
     }
 

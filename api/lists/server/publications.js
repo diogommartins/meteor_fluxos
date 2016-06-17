@@ -3,8 +3,10 @@
  */
 import { Meteor } from 'meteor/meteor';
 
-
+Meteor.publish('myGraphs', () => CyGraphs.find({owner: this.userId}));
 Meteor.publish('publicGraphs', () => CyGraphs.find({}));
 Meteor.publish('graphNodes', graphId => Nodes.find({graphId: graphId}));
 Meteor.publish('graphEdges', graphId => Edges.find({graphId: graphId}));
 Meteor.publish('chatMessages', graphId => Chats.find({graphId: graphId}));
+
+Meteor.publish('documentos', () => Documentos.find({}));

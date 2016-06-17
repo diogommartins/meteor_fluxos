@@ -1,0 +1,21 @@
+<template name="graphs.thumbnail">
+    <ul class="media-list">
+    {{#each graphs}}
+        {{> graphThumbnail}}
+    {{/each}}
+        </ul>
+</template>
+
+<template name="graphThumbnail">
+    <li class="media">
+        <div class="media-left">
+            <a href="{{urlPath}}">
+                <img src="{{thumbnail}}" alt="{{name}}" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{kind}} - {{name}}</h4>
+            Criado em: {{createdAt}}
+        </div>
+    </li>
+</template>

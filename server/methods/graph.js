@@ -32,16 +32,46 @@ Meteor.methods({
      * @param graph: {{nodes:[], edges:[], name:String, graphId:Number}}
      */
     updateGraphDefinitions: function(graph){
-        var uniqueNodeCondition = function(node){
-            return {graphId: node.id_tipo_doc, 'data.id': node.data.id};
-        };
-        var uniqueEdgeCondition = function(edge){
-            return {graphId: edge.id_tipo_doc, 'data.source': edge.data.source, 'data.target': edge.data.target};
-        };
-        graph.nodes.forEach(node => Nodes.upsert(uniqueNodeCondition(node), {$set: node}));
-        graph.edges.forEach(edge => Edges.upsert(uniqueEdgeCondition(edge), {$set: edge}));
+        let sieDocumento = Documentos.findOne({id_tipo_doc: graph.id_tipo_doc});
+        var cyGraphId;
 
-        CyGraphs.upsert({graphId: graph.id_tipo_doc}, {$set: {name: graph.name, kind: 'SIE fluxo'}});
+        if (typeof sieDocumento !== 'undefined') {
+            cyGraphId = sieDocumento.graphId;
+        } 
+        else {
+            // Ainda não existe um grafo 
+            cyGraphId = CyGraphs.insert({
+                name: graph.name,
+                kind: 'fluxo',
+                options: {
+                    isDirected: true
+                }
+            });
+            Documentos.insert({
+                id_tipo_doc: graph.id_tipo_doc,
+                graphId: cyGraphId
+            })
+        }
+
+        var uniqueNodeCondition = function(node){
+            return {graphId: cyGraphId, 'data.id': node.data.id};
+        };
+        
+        var uniqueEdgeCondition = function(edge){
+            return {graphId: cyGraphId, 'data.source': edge.data.source, 'data.target': edge.data.target};
+        };
+        
+        graph.nodes.forEach(function(node){
+            node.data.graphId = cyGraphId;
+            Nodes.upsert(uniqueNodeCondition(node), {$set: node})
+        });
+        
+        graph.edges.forEach(function(edge){
+            edge.data.graphId = cyGraphId;
+            Edges.upsert(uniqueEdgeCondition(edge), {$set: edge})
+        });
+        ;
+        // CyGraphs.upsert({graphId: cyGraphId}, {$set: {name: graph.name, kind: 'fluxo'}});
     },
     /**
      * Remove nó no array de elements do grafo correspondente
@@ -119,5 +149,16 @@ Meteor.methods({
     
     createNewGraph: function(){
         return CyGraphs.insert({name: 'Sem nome'});
+    },
+    
+    updateGraphThumbnail: function(_id, png){
+        const graph = CyGraphs.findOne(_id);
+        if (graph.isOwnder()){
+            CyGraphs.update(_id, {$set: {thumbnail: png}});
+            console.log("updateGraphThumbnail: ", _id);
+        } else{
+            // todo
+            console.log("Não é dono, deveria fazer alguma coisa...");    
+        }
     }
 });
