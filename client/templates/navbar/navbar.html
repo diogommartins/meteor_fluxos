@@ -16,7 +16,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Início</a></li>
-                    <li class="active"><a href="#">Fake Link</a></li>
+                    <li><a href="{{pathFor route='graphs.list'}}">Public</a></li>
+                    <li><a href="{{pathFor route='graphs.owned'}}">My graphs</a></li>
                 </ul>
                 <ul class="nav navbar-nav" style="float: right">
                     {{> modalLogin}}
