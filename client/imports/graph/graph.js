@@ -172,6 +172,16 @@ export class Graph{
         this.cy.makeLayout({name: layout}).run();
     }
 
+    getSnapshot(){
+        const png = this.cy.png({
+            full: true,
+            maxWidth: 300,
+            maxHeight: 300
+        });
+        this.cy.trigger('snapshot', png);
+        return png
+    }
+
     applyStyle(layout='circle', directed=false){
         this.cy.style(cytoscape.stylesheet()
             .selector('node')

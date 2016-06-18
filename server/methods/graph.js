@@ -2,7 +2,7 @@
  * Created by diogomartins on 4/6/16.
  */
 Meteor.methods({
-    getFluxo: function(id_tipo_doc){
+    getDocumento: (id_tipo_doc) =>{
         let fluxos = apiClient.get('V_FLUXOS', {
             ID_TIPO_DOC: id_tipo_doc,
             IND_ATIVO: 'S',
@@ -10,13 +10,9 @@ Meteor.methods({
             LMAX: 1000
         });
         const graph = new FluxosParser(id_tipo_doc, fluxos.content).parse();
+        const async = Meteor.call('updateGraphDefinitions', graph);
 
-        Meteor.call('updateGraphDefinitions', graph);
-
-        const edges = Edges.find({graphId: id_tipo_doc}).fetch();
-        const nodes = Nodes.find({graphId: id_tipo_doc}).fetch();
-
-        return edges.concat(nodes);
+        return Meteor.wrapAsync(async);
     },
     searchFluxos: function(name){
         let fluxos = apiClient.get('V_TIPOS_DOC', {
@@ -71,7 +67,9 @@ Meteor.methods({
             edge.data.graphId = cyGraphId;
             Edges.upsert(uniqueEdgeCondition(edge), {$set: edge})
         });
-        ;
+        console.log('hmm ', cyGraphId);
+
+        return cyGraphId;
         // CyGraphs.upsert({graphId: cyGraphId}, {$set: {name: graph.name, kind: 'fluxo'}});
     },
     /**

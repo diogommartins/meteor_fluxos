@@ -47,10 +47,10 @@ Template.autoSaveButton.events({
 
 Template.isDirectedButton.helpers({
     icon: function(){
-        return this.options.isDirected ? 'glyphicon glyphicon-expand' : 'glyphicon glyphicon-unchecked';
+        return this.cyGraph.options.isDirected ? 'glyphicon glyphicon-expand' : 'glyphicon glyphicon-unchecked';
     },
     text: function(){
-        return this.options.isDirected ? 'Direcionado': 'Não-direcionado';
+        return this.cyGraph.options.isDirected ? 'Direcionado': 'Não-direcionado';
     }
 });
 
