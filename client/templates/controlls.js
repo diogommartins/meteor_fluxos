@@ -71,6 +71,11 @@ Template.autoColoringBurron.helpers({
 
 Template.autoColoringBurron.events({
     'click': function(){
+        /** @type: ReactiveGraph */
+        const graph = window.graph;
         Session.set('autoColor', !Session.get('autoColor'));
+        const event = Session.get('autoColor') ? 'start.coloring.graph' : 'stop.coloring.graph';
+        console.log(event);
+        graph.cy.trigger(event);
     }
 });

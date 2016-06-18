@@ -10,6 +10,7 @@ export class GraphColoringHelper{
         /** @type: Graph */
         this.graph = undefined;
         this.colors = [];
+        this.__reactToEvents = false;
     }
 
     newColor(){
@@ -19,10 +20,6 @@ export class GraphColoringHelper{
             return this.newColor();
 
         return color;
-    }
-
-    shouldReactToEvents(){
-        return Session.get('autoColor');
     }
 
     getColor(i){
@@ -39,21 +36,25 @@ export class GraphColoringHelper{
     }
 
     graphDidChange(){
-        if (this.shouldReactToEvents())
+        if (this.__reactToEvents)
             this.colorNodes();
     }
 
     /**
-     * Escuta os eventos de add e remove de elementos no grafo
+     * Escuta os eventos de add e remove de elementos no grafo e reage de acordo
      *
-     * @returns {{add: function, remove: function}}
+     * @returns {{add: function, remove: function, [start.coloring.graph]: function, [stop.coloring.graph]: function}}
      */
     eventHandlers(){
         return {
             add: () => this.graphDidChange(),
             remove: () => this.graphDidChange(),
-            'graph.coloring.startColoring': () =>  console.log("Vou começar a colorir"),
-            'graph.coloring.stopColoring': () => console.log("Vou parar de colorir")
+            'start.coloring.graph': () => {
+                this.__reactToEvents = true;
+            },
+            'stop.coloring.graph': () => {
+                this.__reactToEvents = false;
+            }
         }
     }
 
