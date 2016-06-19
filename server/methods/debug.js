@@ -11,9 +11,9 @@ Meteor.methods({
     getRandomMockUser: function(){
         let result = HTTP.get('https://randomuser.me/api/');
         if(result.statusCode === 200){
-            const user  = result.data.results[0].user;
+            const user  = result.data.results[0];
             let mockUser = {
-                username: user.username,
+                username: user.email,
                 profile:{
                     fullname: `${user.name.first} ${user.name.last}`,
                     avatar: user.picture.medium

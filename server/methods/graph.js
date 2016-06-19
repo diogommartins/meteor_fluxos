@@ -70,7 +70,6 @@ Meteor.methods({
         const graph = CyGraphs.findOne(_id);
         if (graph.isOwnder()){
             CyGraphs.update(_id, {$set: {thumbnail: png}});
-            console.log("updateGraphThumbnail: ", _id);
         } else{
             // todo
             console.log("Não é dono, deveria fazer alguma coisa...");    

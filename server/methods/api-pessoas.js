@@ -2,16 +2,16 @@
  * Created by diogomartins on 4/6/16.
  */
 Meteor.methods({
-   'getPessoaDados': function (cpf) {
-       let dados = apiClient.get('V_PESSOAS_FOTO', {
-           'CPF': cpf,
-           'LMIN': 0,
-           'LMAX': 1,
-           'ORDERBY': 'CPF'
-       }, ['NOME_PESSOA', 'FOTO']);
-       
-       return dados.content[0];
-   }
+    'getPessoaDados': function (cpf) {
+        let dados = apiClient.get('V_PESSOAS_FOTO', {
+            'CPF': cpf,
+            'LMIN': 0,
+            'LMAX': 1,
+            'ORDERBY': 'CPF'
+        }, ['NOME_PESSOA', 'FOTO']);
+
+        return dados.content[0];
+    }
 });
 
 
@@ -27,14 +27,27 @@ Accounts.onLogin(function(info){
             'ORDERBY': 'CPF'
         }, ['NOME_PESSOA', 'FOTO']);
         const dados = result.content[0];
-        
+
         if (typeof dados.FOTO !== 'string'){
-            const mockUser = Meteor.call('getRandomMockUser');
-            dados.FOTO = mockUser.profile.avatar;
+            Meteor.call('getRandomMockUser', (error, result) => {
+                if (typeof error === 'undefined') {
+                    Meteor.users.update(user._id, {
+                        $set: {
+                            'profile.fullname': dados.NOME_PESSOA,
+                            'profile.avatar': result.profile.avatar
+                        }
+                    });
+                } else{
+                    // todo: tratar erro
+                    console.log("Erro atualizando foto: ", error);
+                }
+            });
+
         } else{
             dados.FOTO = "data:image/jpeg;base64," + dados.FOTO;
+            Meteor.users.update(user._id, {$set: {'profile.fullname': dados.NOME_PESSOA, 'profile.avatar': dados.FOTO}});
         }
-        
-        Meteor.users.update(user._id, {$set: {'profile.fullname': dados.NOME_PESSOA, 'profile.avatar': dados.FOTO}});
+
+
     }
 });
