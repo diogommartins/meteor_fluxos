@@ -33,16 +33,14 @@ export class GraphAdjacencyHelper{
     list(){
         const container = {};
 
-        if (this.graph.isDirected()){
-            for (let node of this.graph.nodes){
-                const element = this.graph.cy.$("#" + node.data.id);
-                const connected = element.neighbourhood().nodes();
+        for (let node of this.graph.nodes){
+            const element = this.graph.cy.$("#" + node.data.id);
+            const connected = element.neighbourhood().nodes();
 
-                container[node.data.id] = {
-                    name: node.data.name,
-                    connected: connected
-                };
-            }
+            container[node.data.id] = {
+                name: node.data.name,
+                connected: connected
+            };
         }
 
         return container;
