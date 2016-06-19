@@ -4,14 +4,9 @@
 Template.chatBox.events({
     'submit .new-message': function(event, template){
         event.preventDefault();
+        let newMessage = event.target.message;
 
-        const newMessage = event.target.message;
-
-        Chats.insert({
-            id_tipo_doc: this.id_tipo_doc,
-            content: newMessage.value,
-            timestamp: new Date()
-        });
+        Meteor.call('chat.newMessage', { graphId: this.cyGraph._id, content: newMessage.value });
 
         newMessage.value = "";
     },
@@ -25,7 +20,7 @@ Template.chatBox.events({
 
 Template.chatBox.helpers({
     messages: function(){
-        return Chats.find({id_tipo_doc: this.id_tipo_doc});
+        return Chats.find({graphId: this.cyGraph._id});
     },
     onlineUsers: function(){
         return {
@@ -37,8 +32,7 @@ Template.chatBox.helpers({
         return Meteor.user() ? '' : 'disabled';
     },
     newMessagePlaceholder: function(){
-        const user = Meteor.user();
-        return (typeof user !== 'undefined') ? `Comunique-se, ${user.firstname()}!` : "Autentique-se para enviar mensagens"
+        return Meteor.user() ? `Comunique-se, ${user.firstname()}!` : "Autentique-se para enviar mensagens"
     }
 });
 
@@ -59,6 +53,9 @@ Template.chatMessage.helpers({
 });
 
 Template.chatBox.rendered = function(){
+    Meteor.subscribe('chatMessages', this.data.cyGraph._id);
+    Meteor.subscribe('users.publicData');
+
     Template.chatMessage.rendered = function(){
         if (Session.get("chatAutoScrollEnabled")) {
             const FIXER_GAMBI = 50;
