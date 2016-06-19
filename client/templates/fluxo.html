@@ -1,23 +1,20 @@
 <template name="fluxo">
     <h2>{{name}}</h2>
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            {{> chatBox}}
-        </div>
-
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-lg-12">
-                        {{> graphControlls}}
-                        {{> graphContainer}}
-                    </div>
+                    {{> graphControlls}}
+                </div>
+                <div class="row">
+                    {{> graphContainer}}
                 </div>
             </div>
+            <div class="col-lg-3 chat-container">
+                <!-- Sidebar - chatarea -->
+                {{> chatBox}}
+            </div>
         </div>
-
     </div>
 </template>
 

@@ -1,11 +1,20 @@
+.chat-container{
+    max-width: 300px;
+    position: fixed;
+    height: 100%;
+    right: 0;
+}
+
 .box {
-    position: absolute;
+    /*position: absolute;*/
     border-radius: 3px;
     background: #ffffff;
     border-top: 3px solid #d2d6de;
-    margin-bottom: 120px;
-    width: 100%;
+    /*margin-bottom: 120px;*/
+    /*width: 100%;*/
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
 }
 .box.box-primary {
     border-top-color: #3c8dbc;
@@ -275,7 +284,7 @@
     -o-transform: translate(0,  0);
     transform: translate(0,  0);
     padding: 10px;
-    height: 600px;
+    height: 300px;
     overflow: auto;
 }
 .direct-chat-msg, .direct-chat-text {

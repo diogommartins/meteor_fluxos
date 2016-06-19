@@ -19,7 +19,8 @@ body {
 }
 
 #cy {
-    height: 800px;
+    height: 500px;
+    max-height: 800px;
     width: 100%;
     display: block;
     /*position: absolute;*/
