@@ -32,7 +32,8 @@ Template.chatBox.helpers({
         return Meteor.user() ? '' : 'disabled';
     },
     newMessagePlaceholder: function(){
-        return Meteor.user() ? `Comunique-se, ${user.firstname()}!` : "Autentique-se para enviar mensagens"
+        const user = Meteor.user();
+        return user ? `Comunique-se, ${user.firstname()}!` : "Autentique-se para enviar mensagens"
     }
 });
 
