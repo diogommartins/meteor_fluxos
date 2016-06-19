@@ -20,7 +20,7 @@ export class Graph{
         this.document = cyGraph;
         this.plugins = {};
     }
-    
+
     registerPlugin(name, plugin){
         plugin.graph = this;
         this.plugins[name] = plugin;
@@ -66,7 +66,7 @@ export class Graph{
     }
 
     /**
-     * retorna se o nó está ou não sendo arrastado pelo usuário 
+     * retorna se o nó está ou não sendo arrastado pelo usuário
      * @param node: Nodes
      * @return boolean
      */
@@ -76,7 +76,7 @@ export class Graph{
     }
 
     /**
-     * 
+     *
      * @param data: Object
      * @return Nodes
      */
@@ -85,7 +85,7 @@ export class Graph{
     }
 
     /**
-     * 
+     *
      * @param id: String identificador único na collection Nodes
      * @return Nodes
      */
@@ -117,18 +117,18 @@ export class Graph{
             node._id = newId;
         });
     }
-    
+
     _registerEventHandlers(){
         this.cy.on(FluxoEventHandlers.cytoscape);
         this.cy.nodes().on(FluxoEventHandlers.nodes);
         this.cy.edges().on(FluxoEventHandlers.edges);
-        
+
         for(let p in this.plugins){
             if (typeof this.plugins[p].eventHandlers === 'function')
                 this.cy.on(this.plugins[p].eventHandlers());
         }
     }
-    
+
     addElement(group, element){
         this[group].push(element);
         this.cy.add(element).on(FluxoEventHandlers[group]);
@@ -160,14 +160,14 @@ export class Graph{
     refresh(){
         this.cy.elements("node:visible").select().unselect();
     }
-    
+
     load(elements){
         elements.forEach(element => this[element.group].push(element));
         this.cy.add(elements);
         this._registerEventHandlers();
         return this;
     }
-    
+
     changeLayout(layout){
         this.cy.makeLayout({name: layout}).run();
     }
@@ -182,7 +182,36 @@ export class Graph{
         return png
     }
 
-    applyStyle(layout='circle', directed=false){
+    applyStyle(style) {
+        const styles = {
+            directed: () => {
+                return this.cy
+                    .layout({name: 'preset', directed: true})
+                    .style().selector('edge')
+                    .css({
+                        'target-arrow-shape': 'triangle',
+                        'width': 2,
+                        'line-color': '#777',
+                        'target-arrow-color': '#666'
+                    })
+                    .update()
+            },
+            undirected: () => {
+                return this.cy
+                    .layout({name: 'preset', directed: false})
+                    .style().selector('edge')
+                    .css({
+                        'target-arrow-shape': 'none',
+                        'width': 2,
+                        'line-color': '#777'
+                    })
+                    .update()
+            }
+        };
+        return styles[style]();
+    }
+
+    applyLayout(layout='circle', directed=false){
         this.cy.style(cytoscape.stylesheet()
             .selector('node')
             .css({
@@ -224,9 +253,12 @@ export class Graph{
             name: layout,
             //fit: true,
             padding: 10,
-            directed: false,
+            directed: directed,
             roots: "#node_1"
         });
+
+        directed ? this.applyStyle('directed') : this.applyStyle('undirected');
+
         return this;
     }
 
@@ -246,5 +278,3 @@ export class Graph{
         return this;
     }
 }
-
-this.Graph = Graph;

@@ -55,9 +55,9 @@ Template.isDirectedButton.helpers({
 });
 
 Template.isDirectedButton.events({
-   click: function(){
-       console.log('Flip directed');
-   } 
+    click: function(){
+        CyGraphs.update(this.cyGraph._id, {$set:{'options.isDirected': !this.cyGraph.options.isDirected}});
+    }
 });
 
 Template.autoColoringBurron.helpers({

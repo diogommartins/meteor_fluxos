@@ -16,7 +16,7 @@ Template.whiteboard.rendered = function(){
         graph.registerPlugin('adjacencyHelper', new GraphAdjacencyHelper());
         graph.registerPlugin('coloringHelper', new GraphColoringHelper());
 
-        graph.load(this.data.elements).applyStyle(cyGraph.layout);
+        graph.load(this.data.elements).applyLayout(cyGraph.layout, cyGraph.options.isDirected);
         
         if(cyGraph.owner === Meteor.userId()){
             snapper = setInterval(function(){

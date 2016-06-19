@@ -7,7 +7,7 @@ Template.graphContainer.rendered = function(){
     const graph = new ReactiveGraph(cyGraph).renderGraph();
 
     graph.cy.ready(() => {
-        graph.load(this.data.elements).applyStyle(cyGraph.layout);
+        graph.load(this.data.elements).applyLayout(cyGraph.layout, cyGraph.options.isDirected);
 
         if(cyGraph.owner === Meteor.userId()){
             snapper = setInterval(function(){

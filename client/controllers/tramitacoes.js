@@ -79,7 +79,7 @@ Template.tramitacoes.onCreated(function(){
             graph.cy.ready(function(){
                 graph.registerPlugin('animation', new GraphAnimation(graph, tramitacoes.fetch()));
                 const layout = graph.collection.fetch()[0].layout;
-                graph.load(elements).applyStyle(layout);
+                graph.load(elements).applyLayout(layout);
             });
         });
     });

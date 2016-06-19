@@ -8,6 +8,7 @@ export class ReactiveGraph extends Graph{
         super(cyGraph, containerId);
         this.edgesObserver = undefined;
         this.nodesObserver = undefined;
+        this.cyGraphsObserver = undefined;
     }
     /**
      *
@@ -72,9 +73,22 @@ export class ReactiveGraph extends Graph{
             }
         }
     }
+
+    cyGraphsObserverHandler(){
+        return {
+            changed: (_id, data) => {
+                if (typeof data.options.isDirected !== 'undefined'){
+                    (data.options.isDirected) ? this.applyStyle('directed') : this.applyStyle('undirected');
+                }
+                console.log(_id, data);
+            }
+        }
+    }
+
     __observeChanges(){
         this.edgesObserver = Edges.find({graphId: this.id}).observeChanges(this.edgesObserverHandler());
         this.nodesObserver = Nodes.find({graphId: this.id}).observeChanges(this.nodesObserverHandler());
+        this.cyGraphsObserver = CyGraphs.find(this.id, {fields: {options: 1, layout: 1, privacy: 1}}).observeChanges(this.cyGraphsObserverHandler());
     }
 
     renderGraph(){
